@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/03 10:11:40 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/03 12:10:37 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,26 +16,29 @@ SRC_DIR		:=	src
 INC_DIR		:=	$(SRC_DIR)
 BUILD_DIR	:=	build
 
-AR			:=	ar
-CC			:=	gcc
-LD			:=	ld
-LDFLAGS		:=	-L$(SRC_DIR)/libft -lft
-LDFLAGS		+=	-L$(SRC_DIR)/libmlx -lmlx
-
-CFLAGS		:=	-Wall -Werror -Wextra
-CPPFLAGS	:=	-MMD -I$(INC_DIR) -I$(SRC_DIR)/libmlx
-DFLAGS		:=	-g -fsanitize='address,undefined'
-
-SRC_FILES	:=	$(SRC_DIR)/main.c
-INC_FILES	:=	$(INC_DIR)/cub3D.h
-
-OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
-
 LIBFT_DIR	:=	$(SRC_DIR)/libft
 LIBMLX_DIR	:=	$(SRC_DIR)/libmlx
 LIBFT		:=	$(LIBFT_DIR)/libft.a
 LIBMLX		:=	$(LIBMLX_DIR)/libmlx.a
+
+AR			:=	/usr/bin/ar
+CC			:=	gcc
+#LD			:=	ld
+LDFLAGS		:=	-L$(LIBFT_DIR) -lft
+#LDFLAGS		+=	-L$(LIBMLX_DIR) -lmlx
+#LDFLAGS		+=	-lm
+
+CFLAGS		:=	-Wall -Werror -Wextra
+CPPFLAGS	:=	-MMD -I$(INC_DIR)
+CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
+DFLAGS		:=	-g -fsanitize='address,undefined'
+
+SRC_FILES	:=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/ft_endswith.c
+INC_FILES	:=	$(INC_DIR)/cub3D.h
+
+OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
 
 .PHONY: all debug clean fclean re
 
@@ -46,7 +49,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(LIBMLX) $(OBJ_FILES) $(INC_FILES)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ_FILES) -o $(basename $@) # use ld instead??
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJ_FILES) -o $(basename $@)
 
 debug:: CFLAGS += $(DFLAGS)
 debug:: $(NAME)
