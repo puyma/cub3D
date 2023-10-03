@@ -6,26 +6,35 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/02 13:11:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:12:21 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <fcntl.h>		// open ,
+# include <fcntl.h>		// open
 # include <unistd.h>	// close, read, write
 # include <sys/types.h>	// write
 # include <sys/uio.h>	// write
 # include <stdio.h>		// printf, perror, strerror
-# include <stdlib.h>	// malloc, free, exit
+# include <stdlib.h>	// malloc, free, exit, EXIT_*
+# include <sys/errno.h>	// errno
 # include <math.h>		// all funcs. of the math library // -lm
+# include <limits.h>	// _POSIX_PATH_MAX, PATH_MAX
 
-# include "mlx.h"
+# include "mlx.h"		// all the graphic related shit
+# include "libft.h"
+
+# define VERSION	"0.1-alpha"
+# define EXEC_NAME	"cub3D"
+# define MAP_EXT	".cub"
 
 typedef struct s_data
 {
 	int			game;
 }				t_data;
+
+int		ft_endswith(char *filename, char *ext);
 
 #endif /* cub3D.h */
