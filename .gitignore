@@ -1,0 +1,6 @@
+*.o
+*.swp *.swo
+*.a
+cub3D
+*.dylib
+.DS_Store
