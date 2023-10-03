@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/03 12:12:21 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:30:20 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <unistd.h>	// close, read, write
 # include <sys/types.h>	// write
 # include <sys/uio.h>	// write
-# include <stdio.h>		// printf, perror, strerror
+# include <stdio.h>		// printf, perror
+# include <string.h>	// strerror
 # include <stdlib.h>	// malloc, free, exit, EXIT_*
 # include <sys/errno.h>	// errno
 # include <math.h>		// all funcs. of the math library // -lm
@@ -32,9 +33,11 @@
 
 typedef struct s_data
 {
-	int			game;
+	void		*mlx;
+	void		*mlx_window;
 }				t_data;
 
+//		string utils
 int		ft_endswith(char *filename, char *ext);
 
 #endif /* cub3D.h */
