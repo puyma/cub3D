@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/03 12:30:20 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:58:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_window;
+	int			**map;
+	unsigned	width;
+	unsigned	height;
 }				t_data;
+
+//		map stuff
+t_list	*ft_read_map(int fd);
+int		ft_load_map(t_list *map, t_data *data);
 
 //		string utils
 int		ft_endswith(char *filename, char *ext);
