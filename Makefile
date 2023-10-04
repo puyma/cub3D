@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/03 12:10:37 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/04 17:13:36 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ AR			:=	/usr/bin/ar
 CC			:=	gcc
 #LD			:=	ld
 LDFLAGS		:=	-L$(LIBFT_DIR) -lft
-#LDFLAGS		+=	-L$(LIBMLX_DIR) -lmlx
+LDFLAGS		+=	-framework OpenGL -framework AppKit -L$(LIBMLX_DIR) -lmlx
 #LDFLAGS		+=	-lm
 
 CFLAGS		:=	-Wall -Werror -Wextra
@@ -34,6 +34,8 @@ CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'
 
 SRC_FILES	:=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/ft_load_map.c \
+				$(SRC_DIR)/ft_read_file.c \
 				$(SRC_DIR)/ft_endswith.c
 INC_FILES	:=	$(INC_DIR)/cub3D.h
 
@@ -60,8 +62,8 @@ $(LIBFT) $(LIBMLX)::
 
 clean:
 	rm -rf $(BUILD_DIR)
-	make fclean -C $(LIBFT_DIR)
-	make clean -C $(LIBMLX_DIR)
+	#make fclean -C $(LIBFT_DIR)
+	#make clean -C $(LIBMLX_DIR)
 
 fclean: clean
 	rm -f $(NAME)
