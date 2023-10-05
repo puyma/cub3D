@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/04 12:05:51 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:16:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define PIX_SIZE		32
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
+//# define WIN_WIDTH		1440
+//# define WIN_HEIGHT		1080
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
@@ -67,6 +69,10 @@
 # define KEY_P			35
 # define KEY_N			45
 
+# define ON_KEYDOWN		2
+# define ON_KEYUP		3
+# define ON_DESTROY		17
+
 # define PRINT_LIST(list) while (list != NULL) \
 { ft_printf("%s\n", (char *) list->content); list = list->next; }
 
@@ -88,7 +94,7 @@ typedef struct s_map
 	int					**board;
 }						t_map;
 
-typedef struct s_data
+typedef struct s_game
 {
 	//					mlx pointers
 	void				*mlx;
@@ -103,13 +109,23 @@ typedef struct s_data
 	t_imgdata			*i_west;
 	t_imgdata			*i_east;
 	t_imgdata			*i_floor;
-}						t_data;
+}						t_game;
 
 //						map stuff
 t_list					*ft_read_file(int fd);
-int						ft_load_map(t_list *file, t_data *data);
+int						ft_load_map(t_list *file, t_game *game);
+
+//						game/events/graphic stuff
+int						ft_load_game(t_game *game);
+int						ft_load_events(t_game *game);
+int						ft_keycode(int keycode, t_game *game);
+int						ft_destroy(t_game *game);
 
 //						string utils
 int						ft_endswith(char *filename, char *ext);
+
+//						list utils
+size_t					ft_lstwidth(t_list *list);
+size_t					ft_lstheight(t_list *list);
 
 #endif /* cub3D.h */

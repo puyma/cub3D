@@ -6,27 +6,24 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/04 17:14:42 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/05 13:03:38 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static int	ft_init_main(int argc, char **argv);
-static int	ft_init_data(t_data *data, char **argv);
-static int	ft_init_game(t_data *data);
+static int	ft_init_game(t_game *game, char **argv);
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_game	game;
 
-	// check arguments
-	if (ft_init_main(argc, argv) == EXIT_FAILURE)
+	// check arguments, load map && game values
+	if (ft_init_main(argc, argv) == EXIT_FAILURE
+		|| ft_init_game(&game, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	// load map && data values
-	if (ft_init_data(&data, argv) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (ft_init_game(&data) == EXIT_FAILURE)
+	if (ft_load_game(&game) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (errno || EXIT_SUCCESS);
 }
@@ -52,7 +49,7 @@ static int	ft_init_main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_init_data(t_data *data, char **argv)
+static int	ft_init_game(t_game *game, char **argv)
 {
 	int		fd;
 	t_list	*file;
@@ -67,18 +64,8 @@ static int	ft_init_data(t_data *data, char **argv)
 	if (file == NULL)
 		return (EXIT_FAILURE);
 	// load map details from t_list (textures, colors, map)
-	if (ft_load_map(file, data) == EXIT_FAILURE)
-		return (ft_lstclear(&file, &free), EXIT_SUCCESS);
-	PRINT_LIST(file)
-	// clean map (t_list)
-	//ft_lstclear(&file, &free);
-	return (EXIT_SUCCESS);
-}
-
-static int	ft_init_game(t_data *data)
-{
-	data->mlx = mlx_init();
-	if (data->mlx == NULL)
+	if (ft_load_map(file, game) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	// clean map (t_list)
 	return (EXIT_SUCCESS);
 }

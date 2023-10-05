@@ -6,13 +6,16 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/04 18:41:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:37:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//static void		ft_set_map_detail(char *line, t_data *data);
+static t_list	*ft_extract_map_segment(t_list *file);
+static t_list	*ft_extract_info_segment(t_list *file);
+static int		ft_set_info(t_list *info, t_game *game);
+static int		ft_set_map(t_list *map, t_game *game);
 
 /*
 ** The map must be composed of only 6 possible characters: 
@@ -31,67 +34,94 @@
 ** can be separated by one or more space(s).
 */
 
-// prev should not be NULL, map should not start directly with '0' or '1'
-
-int	ft_load_map(t_list *file, t_data *data)
+int	ft_load_map(t_list *file, t_game *game)
 {
-	size_t	line_num;
+	t_list	*info;
+	t_list	*map;
+
+	map = ft_extract_map_segment(file);
+	info = ft_extract_info_segment(file);
+	ft_set_info(info, game);
+	ft_set_map(map, game);
+	ft_lstclear(&map, &free);
+	ft_lstclear(&info, &free);
+	return (EXIT_SUCCESS);
+}
+
+/*
+** DESCRIPTION
+** Both ft_extract_segment() functions will return a pointer to the first node 
+** of the map segment. It will also point the last node (->next) to NULL.
+**
+** Each segment, then, will have to be freed individually!
+*/
+
+// prev should not be NULL, map should not start directly with '0' or '1'
+// for this -> check that more than one line
+
+static t_list	*ft_extract_map_segment(t_list *file)
+{
 	char	*line;
 	t_list	*prev;
 
-	line_num = 1;
 	prev = NULL;
 	while (file != NULL)
 	{
-		line = file->content;
-		++line_num;
+		line = (char *) file->content;
+		while (line && ft_isspace(*line) == 1)
+			++line;
 		if (*line == '0' || *line == '1')
 		{
 			file = prev->next;
 			prev->next = NULL;
 			break ;
 		}
-		//if (func() == EXIT_FAILURE)
-		//	return (EXIT_FAILURE);
 		prev = file;
 		file = file->next;
 	}
-	(void) data;
-	return (EXIT_SUCCESS);
+	return (file);
 }
 
-/*
-int	ft_load_map(t_list *file, t_data *data)
+static t_list	*ft_extract_info_segment(t_list *file)
 {
-	size_t	line_num;
-	char	*line;
+	t_list	*cpy;
+	char	*content;
+	char	*tmp;
 
-	line_num = 1;
-	file = ft_load_map_details(file, data, &line_num);
-	if (file == NULL)
-		return (EXIT_FAILURE);
-	while (file != NULL)
+	cpy = file;
+	while (cpy != NULL)
 	{
-		line = file->content;
-		if (ft_strchr(C_ALLOWED, *line) == NULL && *line != '#' && ft_isspace(*line) == 0)
-			return (ft_fprintf(stderr, "%s: %s\n",
-					EXEC_NAME, "Invalid map"), EXIT_FAILURE);
-		else
-		{
-			data->map
-			ft_printf("%u. OK (map): %s\n", line_num, line);
-		}
-		++line_num;
-		file = file->next;
+		tmp = cpy->content;
+		content = ft_strtrim(tmp, " \t");
+		free(tmp);
+		cpy->content = content;
+		cpy = cpy->next;
 	}
+	return (file);
+}
+
+static int	ft_set_info(t_list *info, t_game *game)
+{
+	PRINT_LIST(info)
+	(void) info;
+	(void) game;
 	return (EXIT_SUCCESS);
 }
-*/
 
-/*
-** DESCRIPTION
-** Loads map info into t_data.
-**
-** RETURN VALUE
-** Returns pointer to where map (board) starts.
-*/
+static int	ft_set_map(t_list *map_lst, t_game *game)
+{
+	t_map	*map;
+
+	map = ft_calloc(1, sizeof(t_map));
+	if (map == NULL)
+		return (EXIT_FAILURE);
+	map->width = ft_lstwidth(map_lst);
+	map->height = ft_lstheight(map_lst);
+	ft_printf("lines: %u, len: %u, prod: %u\n",
+		map->height, map->width, map->height * map->width);
+	map->board = ft_calloc(map->width * map->height, sizeof(int));
+	if (map->board == NULL)
+		return (EXIT_FAILURE);
+	game->map = map;
+	return (EXIT_SUCCESS);
+}

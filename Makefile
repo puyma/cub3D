@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/04 17:13:36 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/05 16:17:05 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT		:=	$(LIBFT_DIR)/libft.a
 LIBMLX		:=	$(LIBMLX_DIR)/libmlx.a
 
 AR			:=	/usr/bin/ar
-CC			:=	gcc
+CC			:=	/usr/bin/gcc
 #LD			:=	ld
 LDFLAGS		:=	-L$(LIBFT_DIR) -lft
 LDFLAGS		+=	-framework OpenGL -framework AppKit -L$(LIBMLX_DIR) -lmlx
@@ -34,9 +34,13 @@ CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'
 
 SRC_FILES	:=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/ft_destroy.c \
+				$(SRC_DIR)/ft_endswith.c \
+				$(SRC_DIR)/ft_keycode.c \
+				$(SRC_DIR)/ft_load_game.c \
 				$(SRC_DIR)/ft_load_map.c \
-				$(SRC_DIR)/ft_read_file.c \
-				$(SRC_DIR)/ft_endswith.c
+				$(SRC_DIR)/ft_lstutils.c \
+				$(SRC_DIR)/ft_read_file.c
 INC_FILES	:=	$(INC_DIR)/cub3D.h
 
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
