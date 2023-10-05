@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/05 16:37:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:02:08 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static t_list	*ft_extract_map_segment(t_list *file);
 static t_list	*ft_extract_info_segment(t_list *file);
-static int		ft_set_info(t_list *info, t_game *game);
-static int		ft_set_map(t_list *map, t_game *game);
 
 /*
 ** The map must be composed of only 6 possible characters: 
@@ -92,36 +90,10 @@ static t_list	*ft_extract_info_segment(t_list *file)
 	while (cpy != NULL)
 	{
 		tmp = cpy->content;
-		content = ft_strtrim(tmp, " \t");
+		content = ft_strtrim(tmp, " \t\n");
 		free(tmp);
 		cpy->content = content;
 		cpy = cpy->next;
 	}
 	return (file);
-}
-
-static int	ft_set_info(t_list *info, t_game *game)
-{
-	PRINT_LIST(info)
-	(void) info;
-	(void) game;
-	return (EXIT_SUCCESS);
-}
-
-static int	ft_set_map(t_list *map_lst, t_game *game)
-{
-	t_map	*map;
-
-	map = ft_calloc(1, sizeof(t_map));
-	if (map == NULL)
-		return (EXIT_FAILURE);
-	map->width = ft_lstwidth(map_lst);
-	map->height = ft_lstheight(map_lst);
-	ft_printf("lines: %u, len: %u, prod: %u\n",
-		map->height, map->width, map->height * map->width);
-	map->board = ft_calloc(map->width * map->height, sizeof(int));
-	if (map->board == NULL)
-		return (EXIT_FAILURE);
-	game->map = map;
-	return (EXIT_SUCCESS);
 }

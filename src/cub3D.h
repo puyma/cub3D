@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/05 16:16:46 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/05 17:02:44 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct s_game
 //						map stuff
 t_list					*ft_read_file(int fd);
 int						ft_load_map(t_list *file, t_game *game);
+int						ft_set_map(t_list *map_lst, t_game *game);
+int						ft_set_info(t_list *map_lst, t_game *game);
 
 //						game/events/graphic stuff
 int						ft_load_game(t_game *game);

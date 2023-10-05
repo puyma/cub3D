@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/05 16:17:05 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/05 17:01:48 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_load_game.c \
 				$(SRC_DIR)/ft_load_map.c \
 				$(SRC_DIR)/ft_lstutils.c \
-				$(SRC_DIR)/ft_read_file.c
+				$(SRC_DIR)/ft_read_file.c \
+				$(SRC_DIR)/ft_set_info.c \
+				$(SRC_DIR)/ft_set_map.c
 INC_FILES	:=	$(INC_DIR)/cub3D.h
 
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
