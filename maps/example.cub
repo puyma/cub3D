@@ -1,5 +1,5 @@
 NO string
-EA string
+ 	EA string
 WE			string
 F   string,str,s
 # comment here
@@ -12,6 +12,6 @@ SO string
 000000000
 000111100
 001000100
-00100010000
+0010001000000000
 000111
 000000000
