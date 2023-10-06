@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/05 17:02:44 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:01:07 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@
 
 # define PRINT_LIST(list) while (list != NULL) \
 { ft_printf("%s\n", (char *) list->content); list = list->next; }
+
+# define PRINT_MAP(map) size_t x, y; y = 0; while (y < map->height) \
+{ x = 0; while (x < map->width) \
+	{ ft_printf("%d\t", map->board[x][y]); ++x; } ft_printf("\n"); ++y; }
+
 
 typedef struct s_imgdata
 {
