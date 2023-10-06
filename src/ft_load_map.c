@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/05 17:02:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:37:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,19 @@ static t_list	*ft_extract_info_segment(t_list *file);
 
 int	ft_load_map(t_list *file, t_game *game)
 {
+	int		exit_status;
 	t_list	*info;
 	t_list	*map;
 
+	exit_status = EXIT_SUCCESS;
 	map = ft_extract_map_segment(file);
 	info = ft_extract_info_segment(file);
-	ft_set_info(info, game);
-	ft_set_map(map, game);
+	if (ft_set_info(info, game) == EXIT_FAILURE
+		|| ft_set_map(map, game) == EXIT_FAILURE)
+		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
-	return (EXIT_SUCCESS);
+	return (exit_status);
 }
 
 /*

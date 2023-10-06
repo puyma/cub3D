@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/06 11:01:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/06 18:29:27 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define PIX_SIZE		32
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
-//# define WIN_WIDTH		1440
-//# define WIN_HEIGHT		1080
+//# define WIN_WIDTH	1440
+//# define WIN_HEIGHT	1080
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
@@ -50,7 +50,7 @@
 # define C_EXIT			'E'
 # define C_PLAYER		'P'
 # define C_ENEMY		'N'
-# define C_ALLOWED		"01NSEW"
+# define C_ALLOWED		"NSEWFP"
 
 # define KEY_A			0
 # define KEY_S			1
@@ -62,12 +62,6 @@
 # define KEY_UP			126
 # define KEY_ESC		53
 # define KEY_PAUSE		35
-# define KEY_0			29
-# define KEY_1			18
-# define KEY_C			8
-# define KEY_E			14
-# define KEY_P			35
-# define KEY_N			45
 
 # define ON_KEYDOWN		2
 # define ON_KEYUP		3
@@ -80,6 +74,8 @@
 { x = 0; while (x < map->width) \
 	{ ft_printf("%d\t", map->board[x][y]); ++x; } ft_printf("\n"); ++y; }
 
+# define PRINT_ARRAY(arr) int i = 0; while (arr && arr[i] != NULL) \
+{ ft_printf("%s\n", arr[i]); ++i; } ft_printf("\n");
 
 typedef struct s_imgdata
 {
@@ -106,8 +102,8 @@ typedef struct s_game
 	void				*mlx_window;
 	//					map && map details
 	t_map				*map;
-	size_t				width;
-	size_t				height;
+	size_t				width;	// change to win_width
+	size_t				height;	// change to win_height
 	//					img pointers (to each texture)
 	t_imgdata			*i_north;
 	t_imgdata			*i_south;
@@ -130,6 +126,7 @@ int						ft_destroy(t_game *game);
 
 //						string utils
 int						ft_endswith(char *filename, char *ext);
+void					ft_replace_isspace(unsigned int position, char *str);
 
 //						list utils
 size_t					ft_lstwidth(t_list *list);
