@@ -1,11 +1,11 @@
 NO string
  	EA string
 WE			string
-F   string,str,s
+F  9, 9 ,9  
 #comment here
 SO string
 
-P	
+P 0 , 0 , 0	
 # comment there
 
 #	ignored line ?
