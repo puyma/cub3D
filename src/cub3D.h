@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/06 18:29:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:59:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,13 @@
 # define PRINT_ARRAY(arr) int i = 0; while (arr && arr[i] != NULL) \
 { ft_printf("%s\n", arr[i]); ++i; } ft_printf("\n");
 
+typedef struct s_color
+{
+	unsigned char		red;
+	unsigned char		green;
+	unsigned char		blue;
+}						t_color;
+
 typedef struct s_imgdata
 {
 	void				*img;
@@ -86,6 +93,7 @@ typedef struct s_imgdata
 	int					endian;
 	int					width;
 	int					height;
+	char				*path_to_image_file;
 }						t_imgdata;
 
 typedef struct s_map
@@ -104,12 +112,17 @@ typedef struct s_game
 	t_map				*map;
 	size_t				width;	// change to win_width
 	size_t				height;	// change to win_height
-	//					img pointers (to each texture)
-	t_imgdata			*i_north;
-	t_imgdata			*i_south;
-	t_imgdata			*i_west;
-	t_imgdata			*i_east;
-	t_imgdata			*i_floor;
+	//					img(s)
+	t_imgdata			i_north;
+	t_imgdata			i_south;
+	t_imgdata			i_west;
+	t_imgdata			i_east;
+	t_imgdata			i_floor;
+	//					color(s)
+	t_color				p_color;
+	t_color				f_color;
+	//					temporal data storage
+	size_t				tmp_counter;
 }						t_game;
 
 //						map stuff
@@ -124,9 +137,16 @@ int						ft_load_events(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
 int						ft_destroy(t_game *game);
 
+//						array utils
+size_t					ft_arrlen(char **array);
+
+//						color utils
+int						ft_set_rgb_color(char **color_values, t_color *color);
+
 //						string utils
 int						ft_endswith(char *filename, char *ext);
 void					ft_replace_isspace(unsigned int position, char *str);
+void					ft_replace_ispunct(unsigned int p, char *str);
 
 //						list utils
 size_t					ft_lstwidth(t_list *list);

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strutils.c                                      :+:      :+:    :+:   */
+/*   ft_arrutils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 18:29:53 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 15:54:42 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/10/09 11:17:29 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/09 11:17:36 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_replace_isspace(unsigned int p, char *str)
+size_t	ft_arrlen(char **arr)
 {
-	if (ft_isspace(*str) != 0)
-		*str = ' ';
-	(void) p;
-}
+	size_t	len;
 
-void	ft_replace_ispunct(unsigned int p, char *str)
-{
-	if (ft_ispunct(*str) != 0)
-		*str = ' ';
-	(void) p;
+	len = 0;
+	while (arr && arr[len])
+		++len;
+	return (len);
 }
