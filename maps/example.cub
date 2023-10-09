@@ -2,13 +2,13 @@ NO string
  	EA string
 WE			string
 F   string,str,s
-# comment here
+#comment here
 SO string
 
+P	
+# comment there
 
-#comment there
-
-#// ignored line ?
+#	ignored line ?
 000000000
 000111100
 001000100
