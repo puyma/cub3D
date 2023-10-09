@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 16:04:33 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:10:28 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	ft_set_info_values(char *line, t_game *game)
 	ft_striteri(line, &ft_replace_isspace);
 	ft_striteri(line, &ft_replace_ispunct);
 	values = ft_split(line, 040);
+	if (values == NULL)
+		return (EXIT_FAILURE);
 	if (ft_strcmp("NO", values[0]) == 0
 		|| ft_strcmp("EA", values[0]) == 0
 		|| ft_strcmp("WE", values[0]) == 0
@@ -60,8 +62,7 @@ static int	ft_set_info_values(char *line, t_game *game)
 
 static int	ft_set_info_value_path(char **values, t_game *game)
 {
-	if (values == NULL || values[0] == NULL
-		|| values[1] == NULL || values[2] != NULL)
+	if (values[0] == NULL || values[1] == NULL || ft_arrlen(values) != 2)
 		return (ft_fprintf(stderr, "Invalid value\n"), EXIT_FAILURE);
 	if (ft_strcmp("NO", values[0]) == 0)
 		game->i_north.path_to_image_file = ft_strdup(values[1]);
