@@ -1,0 +1,17 @@
+NO string
+ 	EA string
+WE			string
+F   4,4, 90
+#comment here
+SO string
+
+P 255,0,0	
+# comment there
+
+#	ignored line ?
+000000000
+001111100
+001N00100
+001000100
+001111100
+000000000
