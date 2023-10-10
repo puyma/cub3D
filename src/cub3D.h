@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 15:59:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:33:40 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_game
 	t_color				f_color;
 	//					temporal data storage
 	size_t				tmp_counter;
+	char				*map_filename_ptr;
 }						t_game;
 
 //						map stuff
@@ -134,6 +135,7 @@ int						ft_set_info(t_list *map_lst, t_game *game);
 //						game/events/graphic stuff
 int						ft_load_game(t_game *game);
 int						ft_load_events(t_game *game);
+int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
 int						ft_destroy(t_game *game);
 

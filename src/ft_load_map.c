@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/06 17:37:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:33:29 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int	ft_load_map(t_list *file, t_game *game)
 		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
+	if (exit_status == EXIT_FAILURE)
+		return (exit_status);
+	if (ft_load_textures(game) == EXIT_FAILURE)
+		exit_status = EXIT_FAILURE;
 	return (exit_status);
 }
 
