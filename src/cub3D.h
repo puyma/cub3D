@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 10:33:40 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:34:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 # define WIN_HEIGHT		600
 //# define WIN_WIDTH	1440
 //# define WIN_HEIGHT	1080
+
+# define N_IMAGES		4
+# define IMG_PREFIX		src/assets #with / or without / (at end).
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
@@ -112,12 +115,13 @@ typedef struct s_game
 	t_map				*map;
 	size_t				width;	// change to win_width
 	size_t				height;	// change to win_height
-	//					img(s)
+	//					img(s) - #N_IMAGES
 	t_imgdata			i_north;
 	t_imgdata			i_south;
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
+	t_imgdata			**i_load_cueue;
 	//					color(s)
 	t_color				p_color;
 	t_color				f_color;
@@ -153,5 +157,9 @@ void					ft_replace_ispunct(unsigned int p, char *str);
 //						list utils
 size_t					ft_lstwidth(t_list *list);
 size_t					ft_lstheight(t_list *list);
+
+void					ft_clean(t_game *game);
+void					ft_clean_map(t_map *map);
+void					ft_clean_textures(t_game *game);
 
 #endif /* cub3D.h */
