@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 10:46:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:40:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,16 @@ static int	ft_set_info_values(char *line, t_game *game)
 	values = ft_split(line, 040);
 	if (values == NULL)
 		return (EXIT_FAILURE);
-	if (ft_strcmp("NO", values[0]) == 0 || ft_strcmp("EA", values[0]) == 0
-		|| ft_strcmp("WE", values[0]) == 0 || ft_strcmp("SO", values[0]) == 0)
+	if ((ft_strcmp("NO", values[0]) == 0 || ft_strcmp("EA", values[0]) == 0
+			|| ft_strcmp("WE", values[0]) == 0
+			|| ft_strcmp("SO", values[0]) == 0) && ft_arrlen(values) == 2)
 		exit_status = ft_set_info_value_path(values, game);
 	else if (ft_strcmp("F", values[0]) == 0 || ft_strcmp("P", values[0]) == 0)
 		exit_status = ft_set_info_value_color(values, game);
 	else
 	{
 		ft_fprintf(stderr, "%s: %s: line %d: %s\n", EXEC_NAME,
-			game->map_filename_ptr, game->tmp_counter, "invalid character");
+			game->map_filename_ptr, game->tmp_counter, "invalid value");
 		exit_status = EXIT_FAILURE;
 	}
 	return (ft_free_arr(values), exit_status);
@@ -67,22 +68,29 @@ static int	ft_set_info_values(char *line, t_game *game)
 
 static int	ft_set_info_value_path(char **values, t_game *game)
 {
-	if (values[0] == NULL || values[1] == NULL || ft_arrlen(values) != 2)
-	{
-		ft_fprintf(stderr, "%s: %s: line %d: %s\n", EXEC_NAME,
-			game->map_filename_ptr, game->tmp_counter, "invalid value");
-		return (EXIT_FAILURE);
-	}
+	static int	i = 0;
+
 	if (ft_strcmp("NO", values[0]) == 0)
+	{
 		game->i_north.path_to_image_file = ft_strdup(values[1]);
+		game->i_load_cueue[i] = &game->i_north;
+	}
 	else if (ft_strcmp("SO", values[0]) == 0)
+	{
 		game->i_south.path_to_image_file = ft_strdup(values[1]);
+		game->i_load_cueue[i] = &game->i_south;
+	}
 	else if (ft_strcmp("WE", values[0]) == 0)
+	{
 		game->i_west.path_to_image_file = ft_strdup(values[1]);
+		game->i_load_cueue[i] = &game->i_west;
+	}
 	else if (ft_strcmp("EA", values[0]) == 0)
+	{
 		game->i_east.path_to_image_file = ft_strdup(values[1]);
-	else
-		return (EXIT_FAILURE);
+		game->i_load_cueue[i] = &game->i_east;
+	}
+	++i;
 	return (EXIT_SUCCESS);
 }
 
