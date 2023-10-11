@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/04 15:57:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:24:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 /*
 ** DESCRIPTION
-** The function ft_read_file(int) reads each line from 
+** The function ft_read_file(int) reads each line from
 ** a file descriptor and stores it in a t_list.
 **
 ** RETURN VALUE
-** Returns a pointer to the allocated t_list. 
+** Returns a pointer to the allocated t_list.
 */
 
-t_list	*ft_read_file(int fd)
+t_list	*ft_read_file(char *filename)
 {
-	t_list	*list;
+	int		fd;
 	char	*line;
 	char	*trimmed;
+	t_list	*list;
 
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
+				filename, strerror(errno)), NULL);
 	list = NULL;
 	line = get_next_line(fd);
 	while (line != NULL)

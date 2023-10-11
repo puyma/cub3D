@@ -6,13 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 09:45:22 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:42:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_load_game(t_game *game)
+int	ft_start_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL || ft_load_textures(game) == EXIT_FAILURE)
