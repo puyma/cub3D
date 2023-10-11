@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 15:59:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:46:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 //# define WIN_WIDTH	1440
 //# define WIN_HEIGHT	1080
 
+# define N_IMAGES		4
+# define IMG_PREFIX		src/assets #with / or without / (at end).
+
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
 # define C_COLLECTIBLE	'C'
@@ -67,8 +70,8 @@
 # define ON_KEYUP		3
 # define ON_DESTROY		17
 
-# define PRINT_LIST(list) while (list != NULL) \
-{ ft_printf("%s\n", (char *) list->content); list = list->next; }
+# define PRINT_LIST(list) t_list *rlist = list; while (rlist != NULL) \
+{ ft_printf("%s\n", (char *) rlist->content); rlist = rlist->next; }
 
 # define PRINT_MAP(map) size_t x, y; y = 0; while (y < map->height) \
 { x = 0; while (x < map->width) \
@@ -112,17 +115,19 @@ typedef struct s_game
 	t_map				*map;
 	size_t				width;	// change to win_width
 	size_t				height;	// change to win_height
-	//					img(s)
+	//					img(s) - #N_IMAGES
 	t_imgdata			i_north;
 	t_imgdata			i_south;
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
+	t_imgdata			**i_load_cueue;
 	//					color(s)
 	t_color				p_color;
 	t_color				f_color;
 	//					temporal data storage
 	size_t				tmp_counter;
+	char				*map_filename_ptr;
 }						t_game;
 
 //						map stuff
@@ -134,6 +139,7 @@ int						ft_set_info(t_list *map_lst, t_game *game);
 //						game/events/graphic stuff
 int						ft_load_game(t_game *game);
 int						ft_load_events(t_game *game);
+int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
 int						ft_destroy(t_game *game);
 
@@ -151,5 +157,9 @@ void					ft_replace_ispunct(unsigned int p, char *str);
 //						list utils
 size_t					ft_lstwidth(t_list *list);
 size_t					ft_lstheight(t_list *list);
+
+void					ft_clean(t_game *game);
+void					ft_clean_map(t_map *map);
+void					ft_clean_textures(t_game *game);
 
 #endif /* cub3D.h */

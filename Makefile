@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/09 15:06:26 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/10 15:35:29 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,14 @@ DFLAGS		:=	-g -fsanitize='address,undefined'
 
 SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_arrutils.c \
+				$(SRC_DIR)/ft_clean.c \
 				$(SRC_DIR)/ft_colorutils.c \
 				$(SRC_DIR)/ft_destroy.c \
 				$(SRC_DIR)/ft_endswith.c \
 				$(SRC_DIR)/ft_keycode.c \
 				$(SRC_DIR)/ft_load_game.c \
 				$(SRC_DIR)/ft_load_map.c \
+				$(SRC_DIR)/ft_load_textures.c \
 				$(SRC_DIR)/ft_lstutils.c \
 				$(SRC_DIR)/ft_read_file.c \
 				$(SRC_DIR)/ft_set_info.c \
