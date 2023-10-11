@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 17:03:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:45:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	ft_load_map(t_list *file, t_game *game)
 	map = ft_extract_map_segment(file);
 	info = ft_extract_info_segment(file);
 	return (0);
-	game->i_load_cueue = (t_imgdata **) ft_calloc(sizeof(t_imgdata *), N_IMAGES);
+	game->i_load_cueue = (t_imgdata **)
+		ft_calloc(sizeof(t_imgdata *), N_IMAGES);
 	if (game->i_load_cueue == NULL)
 		return (EXIT_FAILURE);
 	if (ft_set_info(info, game) == EXIT_FAILURE

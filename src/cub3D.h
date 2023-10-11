@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 16:34:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:46:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@
 # define ON_KEYUP		3
 # define ON_DESTROY		17
 
-# define PRINT_LIST(list) while (list != NULL) \
-{ ft_printf("%s\n", (char *) list->content); list = list->next; }
+# define PRINT_LIST(list) t_list *rlist = list; while (rlist != NULL) \
+{ ft_printf("%s\n", (char *) rlist->content); rlist = rlist->next; }
 
 # define PRINT_MAP(map) size_t x, y; y = 0; while (y < map->height) \
 { x = 0; while (x < map->width) \

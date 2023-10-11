@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 16:32:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 09:44:32 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int	ft_load_textures(t_game *game)
 	game->tmp_counter = 0;
 	while (game->tmp_counter < N_IMAGES)
 	{
-		if (ft_load_texture(game->i_load_cueue[game->tmp_counter],
-				game) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		//if (ft_load_texture(&game->i_north, game) == EXIT_FAILURE)
+		(void) ft_load_texture;
 		++(game->tmp_counter);
 	}
 	return (EXIT_SUCCESS);
