@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 09:45:01 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:34:47 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,33 @@ static t_list	*ft_extract_info_segment(t_list *file);
 ** The map must be composed of only 6 possible characters: 
 **  0 for an empty space, 
 **  1 for a wall, 
-**  and N,S,E or W for the player’s start position 
-**  and spawning orientation.
+**  and N,S,E or W for the player’s start position and spawning orientation.
 **
-** Except for the map content, each type of element 
-** can be separated by one or more empty line(s).
+** Except for the map content, each type of element can be separated by one
+** or more empty line(s).
 **
-** Except for the map content which always has to be the last, 
-** each type of element can be set in any order in the file.
+** Except for the map content which always has to be the last, each type of
+** element can be set in any order in the file.
 **
-** Except for the map, each type of information from an element 
-** can be separated by one or more space(s).
+** Except for the map, each type of information from an element can be 
+** separated by one or more space(s).
 */
 
 int	ft_load_map(t_list *file, t_game *game)
 {
 	int		exit_status;
-	t_list	*info;
 	t_list	*map;
+	t_list	*info;
 
 	exit_status = EXIT_SUCCESS;
 	map = ft_extract_map_segment(file);
 	info = ft_extract_info_segment(file);
-	return (0);
-	game->i_load_cueue = (t_imgdata **)
-		ft_calloc(sizeof(t_imgdata *), N_IMAGES);
-	if (game->i_load_cueue == NULL)
-		return (EXIT_FAILURE);
-	if (ft_set_info(info, game) == EXIT_FAILURE
-		|| ft_set_map(map, game) == EXIT_FAILURE)
+	if (ft_set_info(info, game) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
+	if (ft_set_board(map, game) == EXIT_FAILURE && exit_status != EXIT_FAILURE)
+		exit_status = EXIT_FAILURE; // clean board (?)
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
-	if (exit_status == EXIT_FAILURE)
-		return (exit_status);
 	return (exit_status);
 }
 
