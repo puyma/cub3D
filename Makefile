@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/11 12:49:34 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/11 16:02:02 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ DFLAGS		:=	-g -fsanitize='address,undefined'
 
 SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_arrutils.c \
-				$(SRC_DIR)/ft_clean.c \
 				$(SRC_DIR)/ft_colorutils.c \
 				$(SRC_DIR)/ft_destroy.c \
 				$(SRC_DIR)/ft_endswith.c \
@@ -45,8 +44,8 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_load_textures.c \
 				$(SRC_DIR)/ft_lstutils.c \
 				$(SRC_DIR)/ft_read_file.c \
+				$(SRC_DIR)/ft_set_board.c \
 				$(SRC_DIR)/ft_set_info.c \
-				$(SRC_DIR)/ft_set_map.c \
 				$(SRC_DIR)/ft_strutils.c 
 INC_FILES	:=	$(INC_DIR)/cub3D.h
 
