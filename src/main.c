@@ -6,25 +6,32 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 15:04:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 16:38:16 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	ft_check_args(int argc, char **argv);
+static int		ft_check_args(int argc, char **argv);
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	t_list	*file;
 
 	if (ft_check_args(argc, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	game.mlx = NULL;
+	game.mlx_window = NULL;
+	game.map = NULL;
 	game.map_filename_ptr = argv[1];
-	if (ft_load_game(&game) == EXIT_FAILURE)
+	file = ft_read_file(game.map_filename_ptr);
+	if (file == NULL)
 		return (EXIT_FAILURE + 1);
-	if (ft_start_game(&game) == EXIT_FAILURE)
+	if (ft_load_map(file, &game) == EXIT_FAILURE)
 		return (EXIT_FAILURE + 2);
+	if (ft_start_game(&game) == EXIT_FAILURE)
+		return (EXIT_FAILURE + 3);
 	return (ft_clean(&game), EXIT_SUCCESS);
 }
 
@@ -48,4 +55,9 @@ static int	ft_check_args(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
+}
+
+void	ft_clean(t_game *game)
+{
+	(void) game;
 }
