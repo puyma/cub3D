@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 09:46:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:30:35 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 //# define WIN_HEIGHT	1080
 
 # define N_IMAGES		4
-# define IMG_PREFIX		src/assets #with / or without / (at end).
+# define IMG_PREFIX		"src/assets" #with / or without / (at end).
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
@@ -73,12 +73,12 @@
 # define PRINT_LIST(list) t_list *rlist = list; while (rlist != NULL) \
 { ft_printf("%s\n", (char *) rlist->content); rlist = rlist->next; }
 
-# define PRINT_MAP(map) size_t x, y; y = 0; while (y < map->height) \
-{ x = 0; while (x < map->width) \
-	{ ft_printf("%d\t", map->board[x][y]); ++x; } ft_printf("\n"); ++y; }
+# define PRINT_MAP(map) size_t rx, ry; ry = 0; while (ry < map->height) \
+{ rx = 0; while (rx < map->width) \
+	{ ft_printf("%d\t", map->board[rx][ry]); ++rx; } ft_printf("\n"); ++ry; }
 
-# define PRINT_ARRAY(arr) int i = 0; while (arr && arr[i] != NULL) \
-{ ft_printf("%s\n", arr[i]); ++i; } ft_printf("\n");
+# define PRINT_ARRAY(arr) int ri = 0; while (arr && arr[ri] != NULL) \
+{ ft_printf("%s\n", arr[ri]); ++ri; } ft_printf("\n");
 
 typedef struct s_color
 {
@@ -121,7 +121,7 @@ typedef struct s_game
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
-	t_imgdata			**i_load_cueue;
+	int					i_load_cueue[N_IMAGES];
 	//					color(s)
 	t_color				p_color;
 	t_color				f_color;
@@ -131,13 +131,13 @@ typedef struct s_game
 }						t_game;
 
 //						map stuff
-t_list					*ft_read_file(int fd);
+t_list					*ft_read_file(char *filename);
 int						ft_load_map(t_list *file, t_game *game);
-int						ft_set_map(t_list *map_lst, t_game *game);
+int						ft_set_board(t_list *map_lst, t_game *game);
 int						ft_set_info(t_list *map_lst, t_game *game);
 
 //						game/events/graphic stuff
-int						ft_load_game(t_game *game);
+int						ft_start_game(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
@@ -159,7 +159,5 @@ size_t					ft_lstwidth(t_list *list);
 size_t					ft_lstheight(t_list *list);
 
 void					ft_clean(t_game *game);
-void					ft_clean_map(t_map *map);
-void					ft_clean_textures(t_game *game);
 
 #endif /* cub3D.h */
