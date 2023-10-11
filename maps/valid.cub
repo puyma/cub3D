@@ -1,6 +1,6 @@
-NO string
- 	EA string
-WE			string
+NO src/assets/floor.xpm
+ 	EA floor.xpm
+WE			floor
 F   4,4, 90
 #comment here
 SO string
