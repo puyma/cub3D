@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:06:39 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:43:21 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 
 static int	ft_check_map(t_map *map)
 {
+	PRINT_MAP(map)
 	(void) map;
 	return (EXIT_SUCCESS);
 }
