@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:38:46 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:31:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_load_texture(t_imgdata *imgdata, t_game *game);
 static char	*ft_resolve_texture_path(char *value);
+static void	ft_free_loaded_images(t_game *game, size_t iterator);
 
 int	ft_load_textures(t_game *game)
 {
@@ -33,6 +34,8 @@ int	ft_load_textures(t_game *game)
 			exit_status = ft_load_texture(&(game->i_east), game);
 		++(game->tmp_counter);
 	}
+	if (exit_status == EXIT_FAILURE)
+		ft_free_loaded_images(game, game->tmp_counter - 1);
 	return (exit_status);
 }
 
@@ -75,4 +78,19 @@ static char	*ft_resolve_texture_path(char *value)
 			ft_strlcat(str, ".xpm", dst_len);
 	}
 	return (str);
+}
+
+static void	ft_free_loaded_images(t_game *game, size_t iterator)
+{
+	while (iterator-- > 0)
+	{
+		if (game->i_load_cueue[iterator] == 'N')
+			mlx_destroy_image(game->mlx, game->i_north.img);
+		else if (game->i_load_cueue[iterator] == 'S')
+			mlx_destroy_image(game->mlx, game->i_south.img);
+		else if (game->i_load_cueue[iterator] == 'W')
+			mlx_destroy_image(game->mlx, game->i_west.img);
+		else if (game->i_load_cueue[iterator] == 'E')
+			mlx_destroy_image(game->mlx, game->i_east.img);
+	}
 }
