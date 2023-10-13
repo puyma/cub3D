@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 09:35:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:47:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_set_info(t_list *info, t_game *game)
 	}
 	if (exit_status == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: line %d: %s\n", EXEC_NAME,
-				game->map_filename_ptr, i, "invalid value e"), EXIT_FAILURE);
+				game->map_filename_ptr, i, "invalid value"), EXIT_FAILURE);
 	return (exit_status);
 }
 
