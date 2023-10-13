@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 09:09:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:43:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # include "mlx.h"		// all the graphic related shit
 # include "libft.h"
+
+# include "_debug.h"
 
 # define VERSION		"0.1-alpha"
 # define EXEC_NAME		"cub3D"
@@ -68,22 +70,13 @@
 # define ON_KEYUP		3
 # define ON_DESTROY		17
 
-# define PRINT_LIST(list) t_list *rlist = list; while (rlist != NULL) \
-{ ft_printf("%s\n", (char *) rlist->content); rlist = rlist->next; }
-
-# define PRINT_MAP(map) size_t rx, ry; ry = 0; while (ry < map->height) \
-{ rx = 0; while (rx < map->width) \
-	{ ft_printf("%d\t", map->board[rx][ry]); ++rx; } ft_printf("\n"); ++ry; }
-
-# define PRINT_ARRAY(arr) int ri = 0; while (arr && arr[ri] != NULL) \
-{ ft_printf("%s\n", arr[ri]); ++ri; } ft_printf("\n");
-
 typedef struct s_color
 {
 	unsigned char		red;
 	unsigned char		green;
 	unsigned char		blue;
 	unsigned char		alpha;
+	int					ARGB;
 }						t_color;
 
 typedef struct s_imgdata
