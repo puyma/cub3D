@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 17:30:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:09:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@
 # define PIX_SIZE		32
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
-//# define WIN_WIDTH	1440
-//# define WIN_HEIGHT	1080
 
 # define N_IMAGES		4
 # define IMG_PREFIX		"src/assets" #with / or without / (at end).
@@ -85,6 +83,7 @@ typedef struct s_color
 	unsigned char		red;
 	unsigned char		green;
 	unsigned char		blue;
+	unsigned char		alpha;
 }						t_color;
 
 typedef struct s_imgdata
@@ -113,8 +112,8 @@ typedef struct s_game
 	void				*mlx_window;
 	//					map && map details
 	t_map				*map;
-	size_t				width;	// change to win_width
-	size_t				height;	// change to win_height
+	size_t				win_width;
+	size_t				win_height;
 	//					img(s) - #N_IMAGES
 	t_imgdata			i_north;
 	t_imgdata			i_south;
