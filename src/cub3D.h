@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 10:43:22 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:34:38 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define WIN_HEIGHT		600
 
 # define N_IMAGES		4
-# define IMG_PREFIX		"src/assets" #with / or without / (at end).
+# define IMG_PREFIX		"src/assets/"
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'

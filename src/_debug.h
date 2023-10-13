@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 10:43:32 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:51:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ while (arr && arr[ri] != NULL) \
 ENDL
 
 # define PRINT_INFO(game) \
-ft_printf("-- game info --"); ENDL \
+ft_printf("-- start game info --"); ENDL \
 ft_printf("mlx: %p", &game->mlx); ENDL \
 ft_printf("mlx_window: %p", &game->mlx_window); ENDL \
 ft_printf("window width: %u", game->win_width); ENDL \
@@ -56,5 +56,4 @@ ft_printf("map width: %u", game->map->width); ENDL \
 ft_printf("map height: %u", game->map->height); ENDL \
 ft_printf("f color: %p", game->f_color.ARGB); ENDL \
 ft_printf("p color: %p", game->p_color.ARGB); ENDL \
-ENDL
-
+ft_printf("-- end game info --"); ENDL
