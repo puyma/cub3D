@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:05:05 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/10 10:44:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 10:40:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_set_rgb_color(char **color_values, t_color *color)
 		|| ft_set_single_color(color_values[1], &color->green) == EXIT_FAILURE
 		|| ft_set_single_color(color_values[2], &color->blue) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
+	color->ARGB = (*(int *)(unsigned char [4]){color->blue, color->green,
+			color->red, color->alpha});
 	return (EXIT_SUCCESS);
 }
 
