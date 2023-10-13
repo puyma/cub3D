@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 17:46:23 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:35:35 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_set_info_value_path(char *values, t_game *game);
 static int	ft_set_info_value_color(char *values, t_game *game);
-
 static int	ft_fill_map(t_list *map_lst, t_map *map);
 
 int	ft_set_info(t_list *info, t_game *game)
@@ -102,14 +101,9 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 		return (free(game->map), EXIT_FAILURE);
 	i = 0;
 	while (i < game->map->width)
-	{
 		game->map->board[i++] = ft_calloc(game->map->height, sizeof(int));
-		// do fill map for each line here
-	}
 	if (ft_fill_map(map_lst, game->map) == EXIT_FAILURE)
-	{
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
 
@@ -126,7 +120,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		str = map_lst->content;
 		while (x < map->width && str[x] != '\0')
 		{
-			if (ft_strchr(C_ALLOWED, str[x]) != NULL)
+			if (ft_strchr(C_ALLOWED, str[x]) != NULL || str[x] == '1')
 				map->board[x][y] = str[x];
 			++x;
 		}
