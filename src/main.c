@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 16:38:16 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:14:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	game.mlx = NULL;
 	game.mlx_window = NULL;
+	game.win_width = WIN_WIDTH;
+	game.win_height = WIN_HEIGHT;
 	game.map = NULL;
 	game.map_filename_ptr = argv[1];
 	file = ft_read_file(game.map_filename_ptr);
