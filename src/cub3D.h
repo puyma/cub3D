@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:34:38 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:43:19 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_color
 	unsigned char		green;
 	unsigned char		blue;
 	unsigned char		alpha;
-	int					ARGB;
+	int					argb;
 }						t_color;
 
 typedef struct s_imgdata
