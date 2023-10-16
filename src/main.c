@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 16:38:16 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:43:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	game.mlx = NULL;
 	game.mlx_window = NULL;
+	game.win_width = WIN_WIDTH;
+	game.win_height = WIN_HEIGHT;
 	game.map = NULL;
 	game.map_filename_ptr = argv[1];
 	file = ft_read_file(game.map_filename_ptr);
 	if (file == NULL)
 		return (EXIT_FAILURE + 1);
 	if (ft_load_map(file, &game) == EXIT_FAILURE)
-		return (EXIT_FAILURE + 2);
+		return (ft_clean(&game), EXIT_FAILURE + 2);
 	if (ft_start_game(&game) == EXIT_FAILURE)
-		return (EXIT_FAILURE + 3);
+		return (ft_clean(&game), EXIT_FAILURE + 3);
 	return (ft_clean(&game), EXIT_SUCCESS);
 }
 
@@ -59,5 +61,22 @@ static int	ft_check_args(int argc, char **argv)
 
 void	ft_clean(t_game *game)
 {
-	(void) game;
+	size_t	counter;
+
+	free(game->i_north.path_to_image_file);
+	free(game->i_south.path_to_image_file);
+	free(game->i_west.path_to_image_file);
+	free(game->i_east.path_to_image_file);
+	if (game->mlx != NULL)
+		free(game->mlx);
+	if (game->mlx_window != NULL)
+		mlx_destroy_window(game->mlx, game->mlx_window);
+	if (game->map != NULL)
+	{
+		counter = game->map->width;
+		while (counter-- > 0)
+			free(game->map->board[counter]);
+		free(game->map->board);
+		free(game->map);
+	}
 }

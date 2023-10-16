@@ -1,3 +1,8 @@
+#                                                                              #
+# maps/valid.cub                                                               #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Fri Oct 13 10:52:25 2023                                                     #
+
 NO src/assets/floor.xpm
  	EA floor.xpm
 WE			floor
@@ -8,7 +13,7 @@ SO string
 P 255,0,0	
 # comment there
 
-#	ignored line ?
+#	ignored line ? sure!
 000000000
 001111100
 001N00100
