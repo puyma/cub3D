@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:46:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:04:08 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ static int	ft_set_info_value_color(char *values, t_game *game);
 int	ft_set_info(t_list *info, t_game *game)
 {
 	char	*ln;
-	size_t	i;
 	int		exit_status;
 
 	exit_status = EXIT_SUCCESS;
-	i = 0;
-	while (exit_status == EXIT_SUCCESS && info != NULL && ++i)
+	game->tmp_counter = 0;
+	while (exit_status == EXIT_SUCCESS && info != NULL && ++(game->tmp_counter))
 	{
 		ln = (char *) info->content;
 		ft_striteri(ln, &ft_replace_isspace);
@@ -38,7 +37,8 @@ int	ft_set_info(t_list *info, t_game *game)
 	}
 	if (exit_status == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: line %d: %s\n", EXEC_NAME,
-				game->map_filename_ptr, i, "invalid value"), EXIT_FAILURE);
+				game->map_filename_ptr, game->tmp_counter, "invalid value"),
+			EXIT_FAILURE);
 	return (exit_status);
 }
 
