@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:37:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:58:50 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_load_map(t_list *file, t_game *game)
 	if (ft_set_info(info, game) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
 	if (exit_status == EXIT_SUCCESS && ft_set_board(map, game) == EXIT_FAILURE)
-		exit_status = EXIT_FAILURE; // clean board (?)
+		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
 	return (exit_status);
