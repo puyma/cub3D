@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 14:15:56 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:23:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-// no sure if I check the map for invalid characters
-
 static int	ft_fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
@@ -61,7 +59,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		{
 			if (ft_strchr("NSEW", str[x]) != NULL)
 				++nb_c_allowed;
-			else if ((str[x] != '1' && str[x] != '0' && str[x] != 0 && str[x] != ' ')
+			else if ((ft_strchr("10 ", str[x]) == NULL && str[x] != 0)
 				|| nb_c_allowed > 1)
 				return (y + 1);
 			map->board[x][y] = str[x];
