@@ -6,14 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 14:23:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:02:24 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static int	ft_fill_map(t_list *map_lst, t_map *map);
-static int	ft_check_map(t_map *map);
 
 int	ft_set_board(t_list *map_lst, t_game *game)
 {
@@ -38,7 +37,6 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 	if (ft_check_map(game->map) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
 				EXEC_NAME, game->map_filename_ptr), EXIT_FAILURE);
-	ft_fill_map(map_lst, game->map);
 	return (EXIT_SUCCESS);
 }
 
@@ -68,12 +66,5 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		++y;
 		map_lst = map_lst->next;
 	}
-	return (EXIT_SUCCESS);
-}
-
-static int	ft_check_map(t_map *map)
-{
-	PRINT_MAP(map)
-	(void) map;
 	return (EXIT_SUCCESS);
 }

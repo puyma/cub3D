@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:46:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:02:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ t_list					*ft_read_file(char *filename);
 int						ft_load_map(t_list *file, t_game *game);
 int						ft_set_board(t_list *map_lst, t_game *game);
 int						ft_set_info(t_list *map_lst, t_game *game);
+int						ft_check_map(t_map *map);
 
 //						game/events/graphic stuff
 int						ft_start_game(t_game *game);
