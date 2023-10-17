@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:58:15 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:06:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,27 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 	i = 0;
 	while (i < game->map->width)
 		game->map->board[i++] = ft_calloc(game->map->height, sizeof(int));
-	if (ft_fill_map(map_lst, game->map) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+	i = (size_t) ft_fill_map(map_lst, game->map);
+	if (i != EXIT_SUCCESS)
+		return (ft_fprintf(stderr, "%s: %s: line %d: invalid character\n",
+				EXEC_NAME, game->map_filename_ptr, game->tmp_counter + i),
+			EXIT_FAILURE);
 	if (ft_check_map(game->map) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
 				EXEC_NAME, game->map_filename_ptr), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
+// no sure if I check the map for invalid characters
+
 static int	ft_fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
 	size_t	x;
 	size_t	y;
+	size_t	nb_c_allowed;
 
+	nb_c_allowed = 0;
 	y = 0;
 	while (map_lst != NULL)
 	{
@@ -51,9 +58,12 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		str = map_lst->content;
 		while (x < map->width && str[x] != '\0')
 		{
-			if (ft_strchr(C_ALLOWED, str[x]) != NULL
-				|| str[x] == '1' || str[x] == '0')
-				map->board[x][y] = str[x];
+			if (ft_strchr("NSEW", str[x]) != NULL)
+				++nb_c_allowed;
+			else if ((str[x] != '1' && str[x] != '0' && str[x] != 0)
+				|| nb_c_allowed > 1)
+				return (y + 1);
+			map->board[x][y] = str[x];
 			++x;
 		}
 		++y;
