@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:43:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:46:07 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define C_EXIT			'E'
 # define C_PLAYER		'P'
 # define C_ENEMY		'N'
-# define C_ALLOWED		"NSEWFP"
+# define C_ALLOWED		"NSEWFC"
 
 # define KEY_A			0
 # define KEY_S			1
