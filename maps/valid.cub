@@ -8,7 +8,7 @@ NO src/assets/floor.xpm
 WE			floor
 F   4,4, 90
 #comment here
-SO string
+SO floor
 
 P 255,0,0	
 # comment there
