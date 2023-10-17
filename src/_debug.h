@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 16:38:50 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:56:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ while (ry < map->height) \
 	while (rx < map->width) \
 	{ \
 		c = map->board[rx][ry]; \
-		if (c == 0) { ft_printf("%c ", c + 48); } \
+		if (c == '0') { ft_printf("%c ", c); } \
+		else if (c == 0) { ft_printf("  "); } \
 		else { ft_printf("%s%c%s ", "\033[1;32m", c, "\033[0m"); } \
 		++rx; \
 	} \

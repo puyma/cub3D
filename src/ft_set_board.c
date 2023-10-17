@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 15:43:21 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:55:28 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		str = map_lst->content;
 		while (x < map->width && str[x] != '\0')
 		{
-			if (ft_strchr(C_ALLOWED, str[x]) != NULL || str[x] == '1')
+			if (ft_strchr(C_ALLOWED, str[x]) != NULL || str[x] == '1' || str[x] == '0')
 				map->board[x][y] = str[x];
 			++x;
 		}
