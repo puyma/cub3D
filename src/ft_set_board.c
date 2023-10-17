@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 14:06:22 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:15:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 	if (ft_check_map(game->map) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
 				EXEC_NAME, game->map_filename_ptr), EXIT_FAILURE);
+	ft_fill_map(map_lst, game->map);
 	return (EXIT_SUCCESS);
 }
 
@@ -60,7 +61,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 		{
 			if (ft_strchr("NSEW", str[x]) != NULL)
 				++nb_c_allowed;
-			else if ((str[x] != '1' && str[x] != '0' && str[x] != 0)
+			else if ((str[x] != '1' && str[x] != '0' && str[x] != 0 && str[x] != ' ')
 				|| nb_c_allowed > 1)
 				return (y + 1);
 			map->board[x][y] = str[x];
