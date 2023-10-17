@@ -1,0 +1,19 @@
+#                                                                              #
+# maps/rombe.cub                                                               #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Fri Oct 13 15:50:50 2023                                                     #
+
+NO src/assets/floor.xpm
+EA floor.xpm
+WE	 floor
+SO floor
+F   4,4, 90
+P 255,0,0
+
+   000000000000
+0000001000001
+00100101000011111
+001010N01000
+000111100100
+001000111010
+001111101000
