@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 14:04:08 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:37:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	ft_set_info_value_color(char *s, t_game *game)
 		&& ft_set_rgb_color(color_values, &game->f_color) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
 	else if (ft_strcmp("C", values[0]) == 0
-		&& ft_set_rgb_color(color_values, &game->p_color) == EXIT_FAILURE)
+		&& ft_set_rgb_color(color_values, &game->c_color) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
 	return (ft_free_arr(values), exit_status);
 }
