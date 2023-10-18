@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:02:30 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/18 15:36:31 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:24:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_check_left(t_map *map)
 		{
 			if (ft_check_row(map->board, y, left, prev_left) == EXIT_FAILURE
 				&& ft_check_row(map->board, y - 1, left, prev_left) == EX_F)
-				return (EXIT_FAILURE);
+				return (ft_fprintf(stderr, "LEFT\n"), EXIT_FAILURE);
 		}
 		++y;
 		prev_left = left;
@@ -72,7 +72,7 @@ static int	ft_check_right(t_map *map)
 
 	y = 0;
 	prev_right = 0;
-	while (y < map->width)
+	while (y < map->height)
 	{
 		right = map->width - 1;
 		while (right > 0 && map->board[right][y] != '1')
@@ -82,7 +82,7 @@ static int	ft_check_right(t_map *map)
 		{
 			if (ft_check_row(map->board, y, right, prev_right) == EXIT_FAILURE
 				&& ft_check_row(map->board, y - 1, right, prev_right) == EX_F)
-				return (printf("f (%lu)\n", y), EXIT_FAILURE);
+				return (ft_fprintf(stderr, "RIGHT\n"), EXIT_FAILURE);
 		}
 		++y;
 		prev_right = right;
@@ -109,7 +109,7 @@ static int	ft_check_up(t_map *map)
 		{
 			if (ft_check_column(map->board, x, up, prev_up) == EXIT_FAILURE
 				&& ft_check_column(map->board, x - 1, up, prev_up) == EX_F)
-				return (EXIT_FAILURE);
+				return (ft_fprintf(stderr, "UP\n"), EXIT_FAILURE);
 		}
 		++x;
 		prev_up = up;
@@ -131,96 +131,24 @@ static int	ft_check_down(t_map *map)
 		down = map->height - 1;
 		while (down > 0 && map->board[x][down] != '1')
 			--down;
-		sub = down - prev_down;
-		if (x != 0 && (sub > 1 || sub < -1))
+		while (down > 0 && map->board[x][down - 1] == '\0')
 		{
-			if (ft_check_column(map->board, x, down, prev_down) == EXIT_FAILURE
-				&& ft_check_column(map->board, x - 1, down, prev_down) == EX_F)
-				return (EXIT_FAILURE);
-		}
-		++x;
-		prev_down = down;
-	}
-	return (EXIT_SUCCESS);
-}
-
-/*
-int	ft_check_map(t_map *map)
-{
-	size_t	left;
-	size_t	prev_left;
-	size_t	right;
-	size_t	prev_right;
-	size_t	x;
-	size_t	y;
-	int		sub;
-	size_t	up;
-	size_t	down;
-	size_t	prev_up;
-	size_t	prev_down;
-
-	prev_left = 0;
-	prev_right = 0;
-	y = 0;
-	while (y < map->height)
-	{
-		left = 0;
-		right = map->width - 1;
-		while (left < map->width && map->board[left][y] != '1')
-			++left;
-		while (right > 0 && map->board[right][y] != '1')
-			--right;
-		sub = left - prev_left;
-		if (y != 0 && (sub > 1 || sub < -1))
-		{
-			if (ft_check_row(map->board, y, left, prev_left) == EXIT_FAILURE
-				&& ft_check_row(map->board, y - 1, left, prev_left) == EX_F)
-				return (EXIT_FAILURE);
-		}
-		sub = right - prev_right;
-		if (y != 0 && (sub > 1 || sub < -1))
-		{
-			if (ft_check_row(map->board, y, right, prev_right) == EXIT_FAILURE
-				&& ft_check_row(map->board, y - 1, right, prev_right) == EX_F)
-				return (printf("f (%lu)\n", y), EXIT_FAILURE);
-		}
-		++y;
-		prev_left = left;
-		prev_right = right;
-	}
-
-	x = 0;
-	prev_up = 0;
-	prev_down = 0;
-	while (x < map->width)
-	{
-		up = 0;
-		down = map->height - 1;
-		while (up < map->height && map->board[x][up] != '1')
-			++up;
-		while (down > 0 && map->board[x][down] != '1')
+			while (down > 0 && map->board[x][down] != '1')
+				--down;
 			--down;
-		sub = up - prev_up;
-		if (x != 0 && (sub > 1 || sub < -1))
-		{
-			if (ft_check_column(map->board, x, up, prev_up) == EXIT_FAILURE
-				&& ft_check_column(map->board, x - 1, up, prev_up) == EX_F)
-				return (EXIT_FAILURE);
 		}
 		sub = down - prev_down;
 		if (x != 0 && (sub > 1 || sub < -1))
 		{
 			if (ft_check_column(map->board, x, down, prev_down) == EXIT_FAILURE
 				&& ft_check_column(map->board, x - 1, down, prev_down) == EX_F)
-				return (EXIT_FAILURE);
+				return (ft_fprintf(stderr, "DOWN\n"), EXIT_FAILURE);
 		}
 		++x;
-		prev_up = up;
 		prev_down = down;
 	}
 	return (EXIT_SUCCESS);
 }
-*/
 
 static int	ft_check_row(int **board, size_t y, size_t from, size_t to)
 {
