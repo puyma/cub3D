@@ -1,7 +1,7 @@
 #                                                                              #
-# maps/rombe.cub                                                               #
+# maps/not_so_simple.cub                                                       #
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
-# Fri Oct 13 15:50:50 2023                                                     #
+# Wed Oct 18 09:32:56 2023                                                     #
 
 #	Path to north, south, west and east textures
 NO	floor
@@ -13,10 +13,9 @@ EA	floor
 F	0.0.0
 C	255,255,255
 
-#	The map:
-      11
-     101
-    10N01
-   1111001
-  100011101
- 1111111111
+#	MAP
+   111111
+   100111
+1110001
+1100N1
+11 111

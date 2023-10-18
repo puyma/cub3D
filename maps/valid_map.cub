@@ -1,3 +1,8 @@
+#                                                                              #
+# maps/valid_map.cub                                                           #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Wed Oct 18 09:36:04 2023                                                     #
+
 NO src/assets/floor.xpm
 WE			floor
 F   4,4, 90

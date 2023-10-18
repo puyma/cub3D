@@ -3,20 +3,18 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Fri Oct 13 10:52:25 2023                                                     #
 
-NO src/assets/floor.xpm
- 	EA floor.xpm
-WE			floor
-F   4,4, 90
-#comment here
-SO floor
+NO	src/assets/floor.xpm
+EA	floor.xpm
+WE	floor
+F	4,4, 90
+#	comment here
+SO	floor
+C	255,0,0	
+#	comment there
 
-P 255,0,0	
-# comment there
-
-#	ignored line ? sure!
-000000000
-001111100
-001N00100
-001000100
-001111100
-000000000
+#	MAP
+111111
+100101
+101001
+1100N1
+110111
