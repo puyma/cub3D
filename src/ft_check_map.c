@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:02:30 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/18 17:24:06 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:58:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,13 @@ static int	ft_check_up(t_map *map)
 	{
 		up = 0;
 		while (up < map->height && map->board[x][up] != '1')
+			++up;	
+		while (up < map->height && map->board[x][up + 1] == ' ')
+		{
 			++up;
+			while (up < map->height && map->board[x][up] != '1')
+				++up;
+		}
 		sub = up - prev_up;
 		if (x != 0 && (sub > 1 || sub < -1))
 		{
@@ -129,14 +135,17 @@ static int	ft_check_down(t_map *map)
 	while (x < map->width)
 	{
 		down = map->height - 1;
+		size_t down_cp = down;
 		while (down > 0 && map->board[x][down] != '1')
 			--down;
-		while (down > 0 && map->board[x][down - 1] == '\0')
+		while (down > 0 && (map->board[x][down - 1] == '\0' || map->board[x][down - 1] == ' '))
 		{
+			--down;
 			while (down > 0 && map->board[x][down] != '1')
 				--down;
-			--down;
 		}
+		if (down == 0)
+			down = down_cp;
 		sub = down - prev_down;
 		if (x != 0 && (sub > 1 || sub < -1))
 		{
