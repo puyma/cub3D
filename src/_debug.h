@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 19:32:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:17:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ ft_printf("window width: %u", game->win_width); ENDL \
 ft_printf("window height: %u", game->win_height); ENDL \
 ft_printf("map width: %u", game->map->width); ENDL \
 ft_printf("map height: %u", game->map->height); ENDL \
-ft_printf("f color: %p", game->f_color.ARGB); ENDL \
-ft_printf("p color: %p", game->p_color.ARGB); ENDL \
+ft_printf("f color: %p", game->f_color.argb); ENDL \
+ft_printf("c color: %p", game->c_color.argb); ENDL \
 ft_printf("-- end game info --"); ENDL
