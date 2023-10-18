@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 16:02:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:01:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,26 +98,26 @@ typedef struct s_map
 	int					**board;
 }						t_map;
 
+//						mlx pointers
+//						map && map details
+//						img(s) - #N_IMAGES
+//						color(s)
+//						temporal data storage
 typedef struct s_game
 {
-	//					mlx pointers
 	void				*mlx;
 	void				*mlx_window;
-	//					map && map details
 	t_map				*map;
 	size_t				win_width;
 	size_t				win_height;
-	//					img(s) - #N_IMAGES
 	t_imgdata			i_north;
 	t_imgdata			i_south;
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
 	int					i_load_cueue[N_IMAGES];
-	//					color(s)
 	t_color				p_color;
 	t_color				f_color;
-	//					temporal data storage
 	size_t				tmp_counter;
 	char				*map_filename_ptr;
 }						t_game;
