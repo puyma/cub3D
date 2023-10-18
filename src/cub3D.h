@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/18 13:01:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:37:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ typedef struct s_game
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
 	int					i_load_cueue[N_IMAGES];
-	t_color				p_color;
 	t_color				f_color;
+	t_color				c_color;
 	size_t				tmp_counter;
 	char				*map_filename_ptr;
 }						t_game;
