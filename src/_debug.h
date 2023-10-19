@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/18 16:17:02 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:34:33 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,29 @@ while (ry < map->height) \
 	} \
 	ENDL\
 	++ry; \
+}
+
+# define PRINT_MAP_ASCII(map) \
+size_t rax, ray; ray = 0; \
+int rac; \
+while (ray < map->height) \
+{ \
+	rax = 0; \
+	while (rax < map->width) \
+	{ \
+		rac = map->board[rax][ray]; \
+		if (rac < 10) \
+			ft_printf("   "); \
+		else if (rac == '1') \
+			ft_printf("%s%d%s ", "\033[1;32m", rac, "\033[0m"); \
+		else if (rac == 'N' || rac == 'S' || rac == 'E' || rac == 'W') \
+			ft_printf("%s%d%s ", "\033[1;34m", rac, "\033[0m"); \
+		else \
+			ft_printf("%d ", rac); \
+		++rax; \
+	} \
+	ENDL\
+	++ray; \
 }
 
 # define PRINT_MAP_INVERSE(map) \
