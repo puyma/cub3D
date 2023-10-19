@@ -1,0 +1,18 @@
+#	Simple map
+
+#	Path to north, south, west and east textures
+NO	floor
+SO	floor
+WE	floor
+EA	floor
+
+#	Floor and ceiling's color
+F	8,8,8
+C	1,1,1
+
+#	MAP
+11111111
+10010001
+10100011
+1100N1
+111111

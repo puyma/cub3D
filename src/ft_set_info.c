@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:48:18 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:37:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,18 @@ static int	ft_set_info_value_color(char *values, t_game *game);
 int	ft_set_info(t_list *info, t_game *game)
 {
 	char	*ln;
-	size_t	i;
 	int		exit_status;
 
 	exit_status = EXIT_SUCCESS;
-	i = 0;
-	while (info != NULL && exit_status == EXIT_SUCCESS && ++i)
+	game->tmp_counter = 0;
+	while (exit_status == EXIT_SUCCESS && info != NULL && ++(game->tmp_counter))
 	{
 		ln = (char *) info->content;
 		ft_striteri(ln, &ft_replace_isspace);
 		if (ft_strncmp("NO ", ln, 3) == 0 || ft_strncmp("SO ", ln, 3) == 0
 			|| ft_strncmp("EA ", ln, 3) == 0 || ft_strncmp("WE ", ln, 3) == 0)
 			exit_status = ft_set_info_value_path(ln, game);
-		else if (ft_strncmp("F ", ln, 2) == 0 || ft_strncmp("P ", ln, 2) == 0)
+		else if (ft_strncmp("F ", ln, 2) == 0 || ft_strncmp("C ", ln, 2) == 0)
 			exit_status = ft_set_info_value_color(ln, game);
 		else if (*ln != '#' && *ln != '\0')
 			exit_status = EXIT_FAILURE;
@@ -38,7 +37,8 @@ int	ft_set_info(t_list *info, t_game *game)
 	}
 	if (exit_status == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: line %d: %s\n", EXEC_NAME,
-				game->map_filename_ptr, i, "invalid value"), EXIT_FAILURE);
+				game->map_filename_ptr, game->tmp_counter, "invalid value"),
+			EXIT_FAILURE);
 	return (exit_status);
 }
 
@@ -48,6 +48,8 @@ static int	ft_set_info_value_path(char *s, t_game *game)
 	char		**values;
 
 	values = ft_split(s, 040);
+	if (values == NULL)
+		return (EXIT_FAILURE);
 	if (ft_arrlen(values) != 2)
 		return (ft_free_arr(values), EXIT_FAILURE);
 	if (ft_strcmp("NO", values[0]) == 0)
@@ -72,16 +74,18 @@ static int	ft_set_info_value_color(char *s, t_game *game)
 	exit_status = EXIT_SUCCESS;
 	ft_striteri(s, &ft_replace_ispunct);
 	values = ft_split(s, 040);
+	if (values == NULL)
+		return (EXIT_FAILURE);
 	if (ft_arrlen(values) != 4)
 		return (ft_free_arr(values), EXIT_FAILURE);
 	color_values = values + 1;
 	if (color_values == NULL || ft_arrlen(color_values) != 3)
-		exit_status = EXIT_FAILURE;
+		return (ft_free_arr(values), EXIT_FAILURE);
 	if (ft_strcmp("F", values[0]) == 0
 		&& ft_set_rgb_color(color_values, &game->f_color) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
-	else if (ft_strcmp("P", values[0]) == 0
-		&& ft_set_rgb_color(color_values, &game->p_color) == EXIT_FAILURE)
+	else if (ft_strcmp("C", values[0]) == 0
+		&& ft_set_rgb_color(color_values, &game->c_color) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
 	return (ft_free_arr(values), exit_status);
 }
