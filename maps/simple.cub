@@ -7,8 +7,8 @@ WE	floor
 EA	floor
 
 #	Floor and ceiling's color
-F	8,8,8
-C	1,1,1
+C	38,121,204
+F	76,76,76
 
 #	MAP
 11111111
