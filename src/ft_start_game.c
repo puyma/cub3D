@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 10:12:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:07:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_start_game(t_game *game)
 			game->win_width, game->win_height, EXEC_NAME);
 	mlx_hook(game->mlx_window, ON_DESTROY, 0, &ft_destroy, (void *) game);
 	mlx_hook(game->mlx_window, ON_KEYDOWN, 0, &ft_keycode, (void *) game);
-	//mlx_hook(game->mlx_window, ON_MOUSEMOVE, 0, &ft_mouse, (void *) game);
+	mlx_hook(game->mlx_window, ON_MOUSEMOVE, 0, &ft_mouse, (void *) game);
 	mlx_mouse_hide();
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
