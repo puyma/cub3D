@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 10:09:25 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:12:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int						ft_start_game(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
-int						ft_mouse(t_game *game);
+int						ft_mouse(int x, int y, void *game);
 int						ft_destroy(t_game *game);
 
 //						array utils
