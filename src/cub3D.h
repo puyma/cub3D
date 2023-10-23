@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 15:12:22 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:39:37 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define FLOOR			"floor.xpm"
 # define CEILING		"ceiling.xpm"
 
-# define PIX_SIZE		32
+# define PIX_SIZE		64
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
 
@@ -131,6 +131,7 @@ int						ft_set_info(t_list *map_lst, t_game *game);
 int						ft_check_map(t_map *map);
 
 //						game/events/graphic stuff
+int						ft_render(t_game *game);
 int						ft_start_game(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
