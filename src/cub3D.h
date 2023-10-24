@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/23 12:39:37 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:16:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_game
 	t_map				*map;
 	size_t				win_width;
 	size_t				win_height;
+	t_imgdata			i_main_frame;
 	t_imgdata			i_north;
 	t_imgdata			i_south;
 	t_imgdata			i_west;
