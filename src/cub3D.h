@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/24 11:16:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:13:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 # define C_ENEMY		'N'
 # define C_ALLOWED		"NSEWFC"
 
+// Key codes (MLX)
+
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
@@ -66,10 +68,16 @@
 # define KEY_ESC		53
 # define KEY_PAUSE		35
 
+// Event codes (MLX)
+
 # define ON_KEYDOWN		2
 # define ON_KEYUP		3
 # define ON_MOUSEMOVE	6
 # define ON_DESTROY		17
+
+// Minimap settings
+
+# define MINIMAP_COLOR	0x00c6c6c6
 
 typedef struct s_color
 {
