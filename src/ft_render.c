@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/24 13:03:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:29:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,7 @@ void	ft_mlx_pixel_put(t_imgdata *img, int x, int y, int color)
 #define START	0
 #define END		1
 
-void	ft_draw_quadrangle_range(t_imgdata *img, size_t range_x[2],
-		size_t range_y[2], int color)
-{
-	size_t	x;
-	size_t	y;
-
-	y = range_y[START];
-	while (y < range_y[END])
-	{
-		x = range_x[START];
-		while (x < range_x[END])
-			ft_mlx_pixel_put(img, x++, y, color);
-		++y;
-	}
-}
+// this is more like range than coordinates
 
 void	ft_draw_quadrangle_coordinates(t_imgdata *i, size_t coord_x[2],
 		size_t coord_y[2], int color)
@@ -66,10 +52,10 @@ void	ft_add_background(t_imgdata *img, t_game *game)
 	range_x[END] = game->win_width;
 	range_y[START] = 0;
 	range_y[END] = game->win_height / 2;
-	ft_draw_quadrangle_range(img, range_x, range_y, game->c_color.argb);
+	ft_draw_quadrangle_coordinates(img, range_x, range_y, game->c_color.argb);
 	range_y[START] = range_y[END];
 	range_y[END] = game->win_height;
-	ft_draw_quadrangle_range(img, range_x, range_y, game->f_color.argb);
+	ft_draw_quadrangle_coordinates(img, range_x, range_y, game->f_color.argb);
 }
 
 void	ft_add_minimap(t_imgdata *img, t_game *game)

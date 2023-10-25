@@ -6,11 +6,22 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/24 11:15:10 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:29:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	ft_rays(t_game *game)
+{
+	PRINT_MAP(game->map)
+	double	Px = 3, Py = 2;
+	size_t	view_angle = 90;
+	size_t	i = view_angle - 30;
+	double	FirstIntersectX, FirstIntersectY;
+
+	exit(0);
+}
 
 int	ft_start_game(t_game *game)
 {
@@ -25,6 +36,7 @@ int	ft_start_game(t_game *game)
 	mlx_hook(game->mlx_window, ON_KEYDOWN, 0, &ft_keycode, (void *) game);
 	mlx_hook(game->mlx_window, ON_MOUSEMOVE, 0, &ft_mouse, (void *) game);
 	mlx_loop_hook(game->mlx, &ft_render, (void *) game);
+	ft_rays(game);
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
 }
