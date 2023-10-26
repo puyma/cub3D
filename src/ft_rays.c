@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:27:51 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/26 17:28:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:56:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
  * based on permadi's example... */
 
 #define ALPHA 60
+
+/* 64 from PIX_SIZE / GRID_SIZE 
+ * defined in cub3D.h */
 
 /* Temporal 'vector'-like struct
  * as we have not gotten to a consensus yet. */
@@ -49,6 +52,9 @@ void	ft_rays(t_game *game)
 {
 	t_vector	player;
 	t_vector	point_a;
+	t_vector	point_b;
+	t_vector	point_c;
+	t_vector	point_d;
 	double		init_angle;
 	double		angle_increment;
 	double		view_angle;
@@ -65,7 +71,7 @@ void	ft_rays(t_game *game)
 
 	// 1. Find coordinate A
 
-	printf("player is at: %f, %f\n", player.x, player.y);
+	printf("player: %f, %f\n", player.x, player.y);
 	if ((view_angle - 180) > 0)
 	// if ray faces down
 	{
@@ -111,17 +117,22 @@ void	ft_rays(t_game *game)
 
 	// 4. Find coordinate C
 
-	t_vector	point_c;
 	point_c.x = trunc(point_a.x) + trunc(Xa);
 	point_c.y = trunc(point_a.y) + trunc(Ya);
 	printf("C: %d, %d\n", (int) point_c.x, (int) point_c.y);
+
 	/*
 	 * (C programmer's note: Remember we always round down,
 	 * this is especially true since
-	 * you can use right shift by 8 to divide by 64).
+	 * you can use right shift by 8 to divide by 64) !?!?!.
 	 */
 
-	// 5. Check coordinate ? "" : extend to D
+	// 5. Check coordinate ? "no wall" : extend to D
+	
+	if (game->map->board[(int) point_c.x / 64][(int) point_c.y / 64] != '1')
+	{
+		printf("no wall\n");
+	}
 
 	// Angle iteration (Field Of View; FOV)
 
@@ -130,6 +141,10 @@ void	ft_rays(t_game *game)
 		//printf("angle: %f\n", i);
 		i += angle_increment;
 	}
+	(void) point_a;
+	(void) point_b;
+	(void) point_c;
+	(void) point_d;
 	(void) game;
 	exit(0);
 }
