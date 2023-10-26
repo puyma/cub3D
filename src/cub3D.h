@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/26 17:30:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:40:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define CEILING		"ceiling.xpm"
 
 # define PIX_SIZE		64
+# define GRID_SIZE		PIX_SIZE
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
 
