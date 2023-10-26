@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/26 16:43:41 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:44:13 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	ft_rays(t_game *game)
 	(void) player;
 	(void) point_a;
 	(void) game;
-	exit(0);
+	//exit(0);
 }
 
 /* This function is in charge of loading
