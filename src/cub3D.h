@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:43:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:09:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define C_EXIT			'E'
 # define C_PLAYER		'P'
 # define C_ENEMY		'N'
-# define C_ALLOWED		"NSEWFP"
+# define C_ALLOWED		"NSEWFC"
 
 # define KEY_A			0
 # define KEY_S			1
@@ -68,6 +68,7 @@
 
 # define ON_KEYDOWN		2
 # define ON_KEYUP		3
+# define ON_MOUSEMOVE	6
 # define ON_DESTROY		17
 
 typedef struct s_color
@@ -98,26 +99,26 @@ typedef struct s_map
 	int					**board;
 }						t_map;
 
+//						mlx pointers
+//						map && map details
+//						img(s) - #N_IMAGES
+//						color(s)
+//						temporal data storage
 typedef struct s_game
 {
-	//					mlx pointers
 	void				*mlx;
 	void				*mlx_window;
-	//					map && map details
 	t_map				*map;
 	size_t				win_width;
 	size_t				win_height;
-	//					img(s) - #N_IMAGES
 	t_imgdata			i_north;
 	t_imgdata			i_south;
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
 	int					i_load_cueue[N_IMAGES];
-	//					color(s)
-	t_color				p_color;
 	t_color				f_color;
-	//					temporal data storage
+	t_color				c_color;
 	size_t				tmp_counter;
 	char				*map_filename_ptr;
 }						t_game;
@@ -127,12 +128,14 @@ t_list					*ft_read_file(char *filename);
 int						ft_load_map(t_list *file, t_game *game);
 int						ft_set_board(t_list *map_lst, t_game *game);
 int						ft_set_info(t_list *map_lst, t_game *game);
+int						ft_check_map(t_map *map);
 
 //						game/events/graphic stuff
 int						ft_start_game(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
+int						ft_mouse(t_game *game);
 int						ft_destroy(t_game *game);
 
 //						array utils

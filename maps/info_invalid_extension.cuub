@@ -1,0 +1,19 @@
+#                                                                              #
+# info_invalid_extension.cuub                                                  #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Wed Oct 18 09:37:27 2023                                                     #
+
+NO string
+SO string
+EA string
+WE string
+
+F  0,0,0
+C  0,0,0
+
+1111111111
+   1111001
+  10001001
+1100010011
+   111111
+ 11111111

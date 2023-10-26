@@ -1,0 +1,22 @@
+#                                                                              #
+# maps/rombe.cub                                                               #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Fri Oct 13 15:50:50 2023                                                     #
+
+#	Path to north, south, west and east textures
+NO	floor
+SO	floor
+WE	floor
+EA	floor
+
+#	Floor and ceiling's color
+F	0.0.0
+C	255,255,255
+
+#	The map:
+      11
+     101
+    10N01
+   1111001
+  100011101
+ 1111111111

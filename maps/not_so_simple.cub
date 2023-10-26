@@ -1,0 +1,21 @@
+#                                                                              #
+# maps/not_so_simple.cub                                                       #
+# mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
+# Wed Oct 18 09:32:56 2023                                                     #
+
+#	Path to north, south, west and east textures
+NO	floor
+SO	floor
+WE	floor
+EA	floor
+
+#	Floor and ceiling's color
+F	0.0.0
+C	255,255,255
+
+#	MAP
+   111111
+   100111
+1110001
+1100N1
+11 111
