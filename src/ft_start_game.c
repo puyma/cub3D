@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/26 16:35:02 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:43:41 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	ft_rays(t_game *game)
 	angle_increment = init_angle / WIN_WIDTH;
 	view_angle = 60;
 	i = view_angle - (init_angle / 2);
-	
+
 	// 1. Find coordinate A
-	
+
 	printf("player is at: %f, %f\n", player.x, player.y);
 	if ((view_angle - 180) > 0)
 	// if ray faces down
@@ -77,7 +77,7 @@ void	ft_rays(t_game *game)
 		point_a.y = (ft_round_down(player.y / 64) * 64) - 1;
 		// -1 cause it start from 0 (0-63,...)
 	}
-	
+
 	printf("A.y: %f\n", point_a.y);
 	point_a.x = player.x + (player.y - point_a.y) / tan(ALPHA * (M_PI / 180));
 	printf("A.x: %f\n", point_a.x);
@@ -85,9 +85,9 @@ void	ft_rays(t_game *game)
 	if (game->map->board[(int) point_a.x / 64][(int) point_a.y / 64] == '1')
 		printf("there is a wall in %d, %d\n",
 			(int) point_a.x / 64, (int) point_a.y / 64);
-	
+
 	// 2. Find Ya
-	
+
 	if ((view_angle - 180) > 0)
 	// ray faces down
 	{
@@ -100,14 +100,14 @@ void	ft_rays(t_game *game)
 		Ya = -PIX_SIZE;
 	}
 	printf("Ya: %f\n", trunc(Ya));
-	
+
 	// 3. Find Xa
-	
+
 	Xa = 64 / tan(60 * (M_PI / 180));
 	printf("Xa: %f\n", trunc(Xa));
 
 	// 4. Find coordinate C
-	
+
 	t_vector	C = {0.0, 0.0};
 	C.x = trunc(point_a.x) + trunc(Xa);
 	C.y = trunc(point_a.y) + trunc(Ya);
@@ -121,14 +121,16 @@ void	ft_rays(t_game *game)
 	// 5. Check coordinate ? "" : extend to D
 
 	// Angle iteration (Field Of View; FOV)
-	
+
 	while (i < view_angle + 30) // i < (view_angle + (init_angle / 2))
 	{
 		//printf("angle: %f\n", i);
 		i += angle_increment;
 	}
-	(void) player; (void) point_a; (void) game;
-	//exit(0);
+	(void) player;
+	(void) point_a;
+	(void) game;
+	exit(0);
 }
 
 /* This function is in charge of loading
