@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/23 12:39:54 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/26 17:28:50 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_load_textures.c \
 				$(SRC_DIR)/ft_lstutils.c \
 				$(SRC_DIR)/ft_mouse.c \
+				$(SRC_DIR)/ft_rays.c \
 				$(SRC_DIR)/ft_read_file.c \
 				$(SRC_DIR)/ft_render.c \
 				$(SRC_DIR)/ft_set_board.c \
