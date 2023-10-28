@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:58:50 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/28 12:20:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static t_list	*ft_extract_map_segment(t_list *file);
 static t_list	*ft_extract_info_segment(t_list *file);
+static void		ft_set_player(t_game *game);
+static void		ft_set_view_direction(t_player *player, char c);
 
 /*
 ** The map must be composed of only 6 possible characters: 
@@ -46,6 +48,7 @@ int	ft_load_map(t_list *file, t_game *game)
 		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
+	ft_set_player(game);
 	return (exit_status);
 }
 
@@ -99,4 +102,40 @@ static t_list	*ft_extract_info_segment(t_list *file)
 		cpy = cpy->next;
 	}
 	return (file);
+}
+
+static void	ft_set_player(t_game *game)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (y < game->map->height)
+	{
+		x = 0;
+		while (x < game->map->width)
+		{
+			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL)
+			{
+				game->player.position.x = x * GRID_SIZE;
+				game->player.position.y = y * GRID_SIZE;
+				ft_set_view_direction(&game->player, game->map->board[x][y]);
+				return ;
+			}
+			++x;
+		}
+		++y;
+	}
+}
+
+static void	ft_set_view_direction(t_player *player, char c)
+{
+	if (c == 'N')
+		player->direction = 90;
+	else if (c == 'S')
+		player->direction = 270;
+	else if (c == 'W')
+		player->direction = 180;
+	else
+		player->direction = 0;
 }
