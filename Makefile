@@ -6,14 +6,14 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/26 17:28:50 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/10/28 11:25:11 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	cub3D
 
 SRC_DIR		:=	src
-INC_DIR		:=	$(SRC_DIR)
+INC_DIR		:=	include
 BUILD_DIR	:=	build
 
 LIBFT_DIR	:=	$(SRC_DIR)/libft
@@ -26,10 +26,10 @@ CC			:=	/usr/bin/gcc
 #LD			:=	ld
 LDFLAGS		:=	-L$(LIBFT_DIR) -lft
 LDFLAGS		+=	-framework OpenGL -framework AppKit -L$(LIBMLX_DIR) -lmlx
-#LDFLAGS		+=	-lm
+#LDFLAGS	+=	-lm
 
 CFLAGS		:=	-Wall -Werror -Wextra
-CPPFLAGS	:=	-MMD -I$(INC_DIR)
+CPPFLAGS	:=	-MMD -iquote$(INC_DIR)
 CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'
 
@@ -42,6 +42,7 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_load_map.c \
 				$(SRC_DIR)/ft_load_textures.c \
 				$(SRC_DIR)/ft_lstutils.c \
+				$(SRC_DIR)/ft_mathutils.c \
 				$(SRC_DIR)/ft_mouse.c \
 				$(SRC_DIR)/ft_rays.c \
 				$(SRC_DIR)/ft_read_file.c \
@@ -50,7 +51,6 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_set_info.c \
 				$(SRC_DIR)/ft_start_game.c \
 				$(SRC_DIR)/ft_strutils.c 
-INC_FILES	:=	$(INC_DIR)/cub3D.h
 
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
@@ -63,7 +63,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(LIBMLX) $(OBJ_FILES) $(INC_FILES)
+$(NAME): $(LIBFT) $(LIBMLX) $(OBJ_FILES)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJ_FILES) -o $(basename $@)
 
 debug:: CFLAGS += $(DFLAGS)
