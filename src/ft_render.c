@@ -3,100 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 11:32:18 by jsebasti          #+#    #+#             */
-/*   Updated: 2023/10/24 02:17:59 by jsebasti         ###   ########.fr       */
-=======
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/25 17:29:54 by mpuig-ma         ###   ########.fr       */
->>>>>>> puyma-minimap
+/*   Updated: 2023/10/30 20:35:48 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-<<<<<<< HEAD
-int	get_x_coord(t_player *player, t_ray *ray)
-{
-	float	xcoord;
-
-	if (ray->side == 0)
-		xcoord = player->locy + ray->perpwalldist * ray->diry;
-	else
-		xcoord = player->locx + ray->perpwalldist * ray->dirx;
-	return ((int)(xcoord * 64));
-}
-
-float	get_dist(t_player *player, t_ray *ray)
-{
-	if (ray->side == 0)
-		return ((ray->mapx - player->locx + (1 - ray->stepx) / 2) / ray->dirx);
-	else
-		return ((ray->mapy - player->locy + (1 - ray->stepy) / 2) / ray->diry);
-}
-
-int	find_colission(t_game *game, t_ray *ray)
-{
-	while (ray->colission == 0)
-	{
-		if (ray->sidedistx < ray->sidedisty)
-		{
-			ray->sidedistx += ray->deltadistx;
-			ray->mapx += ray->stepx;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->sidedisty += ray->deltadisty;
-			ray->mapy += ray->stepy;
-			ray->side = 1;
-		}
-		if (game->map->board[ray->mapx][ray->mapy] == C_WALL)
-			ray->colission = 1;
-	}
-	return (EXIT_SUCCESS);
-}
-
-int	find_dist_to_edge(t_player *player, t_ray *ray)
-{
-	if (ray->dirx < 0)
-	{
-		ray->stepx = -1;
-		ray->sidedistx = (player->locx - ray->mapx) * ray->deltadistx;
-	}
-	else
-	{
-		ray->stepx = 1;
-		ray->sidedistx = (ray->mapx + 1.0 - player->locx) * ray->deltadistx;
-	}
-	if (ray->diry < 0)
-	{
-		ray->stepy = -1;
-		ray->sidedisty = (player->locy - ray->mapy) * ray->deltadisty;
-	}
-	else
-	{
-		ray->stepy = 1;
-		ray->sidedisty = (ray->mapy + 1.0 - player->locy) * ray->deltadisty;
-	}
-	return (EXIT_SUCCESS);
-}
-
-int	init_render_vars(t_player *player, t_ray *ray, int x)
-{
-	ray->camera = 2 * x / (float)WIN_WIDTH - 1;
-	ray->dirx = player->dirx + player->planex * ray->camera;
-	ray->diry = player->diry + player->planey * ray->camera;
-	ray->mapx = player->locx;
-	ray->mapy = player->locy;
-	ray->deltadistx = fabs(1 / ray->dirx);
-	ray->deltadisty = fabs(1 / ray->diry);
-	ray->colission = 0;
-=======
 void	ft_mlx_pixel_put(t_imgdata *img, int x, int y, int color)
 {
 	char	*dst;
@@ -175,6 +90,5 @@ int	ft_render(t_game *game)
 	ft_add_handheld(&game->i_main_frame, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	free(i->img);
->>>>>>> puyma-minimap
 	return (EXIT_SUCCESS);
 }

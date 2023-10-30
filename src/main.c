@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsebasti <jsebasti@student.42barcelona.com>+#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/18 16:09:58 by jsebasti         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/17 17:51:33 by mpuig-ma         ###   ########.fr       */
->>>>>>> puyma-minimap
+/*   Updated: 2023/10/30 20:28:26 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

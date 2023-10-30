@@ -6,11 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/22 01:09:15 by jsebasti         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/28 12:20:03 by mpuig-ma         ###   ########.fr       */
->>>>>>> puyma-minimap
+/*   Updated: 2023/10/30 21:55:49 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +44,7 @@ int	ft_load_map(t_list *file, t_game *game)
 	info = ft_extract_info_segment(file);
 	if (ft_set_info(info, game) == EXIT_FAILURE)
 		exit_status = EXIT_FAILURE;
-<<<<<<< HEAD
-	if (ft_set_board(map, game) == EXIT_FAILURE && exit_status != EXIT_FAILURE)
-=======
 	if (exit_status == EXIT_SUCCESS && ft_set_board(map, game) == EXIT_FAILURE)
->>>>>>> puyma-minimap
 		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);

@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/30 20:20:12 by jsebasti         ###   ########.fr        #
+#    Updated: 2023/10/30 20:36:31 by jsebasti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,6 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_set_board.c \
 				$(SRC_DIR)/ft_set_info.c \
 				$(SRC_DIR)/ft_start_game.c \
-				$(SRC_DIR)/ft_strutils.c \
-				$(SRC_DIR)/ft_draw.c \
-				$(SRC_DIR)/ft_render.c \
-				$(SRC_DIR)/render_utils.c \
 				$(SRC_DIR)/ft_strutils.c
 
 INC_FILES	:=	$(INC_DIR)/cub3D.h

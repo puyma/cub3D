@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/28 12:01:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:32:51 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define GRID_SIZE		PIX_SIZE
 # define WIN_WIDTH		800
 # define WIN_HEIGHT		600
+# define WIN_NAME		"cub3D"
 
 // Field Of View
 
