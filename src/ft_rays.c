@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rays.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:27:51 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/28 13:31:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/30 23:47:37 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,4 @@ void	ft_rays(t_game *game)
 	(void) point_c;
 	(void) point_d;
 	(void) game;
-	exit(0);
 }
