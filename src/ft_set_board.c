@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_board.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2023/10/27 18:23:23 by jsebasti         ###   ########.fr       */
+=======
 /*   Updated: 2023/10/19 12:35:04 by mpuig-ma         ###   ########.fr       */
+>>>>>>> puyma-minimap
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +24,7 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 {
 	size_t	i;
 
-	game->map = ft_calloc(1, sizeof(t_map));
+	game->map = ft_calloc(sizeof(t_map), 1);
 	if (game->map == NULL)
 		return (EXIT_FAILURE);
 	game->map->width = ft_lstwidth(map_lst);
