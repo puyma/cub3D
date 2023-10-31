@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/11 15:24:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:59:09 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ t_list	*ft_read_file(char *filename)
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (list == NULL)
+		ft_fprintf(stderr, "%s: %s: file is empty\n", EXEC_NAME, filename);
 	return (list);
 }
