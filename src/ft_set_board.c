@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 15:48:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:31:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 
 static int	ft_check_characters(t_game *game, t_list *map_lst)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	char	*str;
 
 	y = 0;
@@ -70,9 +70,9 @@ static int	ft_check_characters(t_game *game, t_list *map_lst)
 static int	ft_fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
-	int	x;
-	int	y;
-	int	nb_c_allowed;
+	int		x;
+	int		y;
+	int		nb_c_allowed;
 
 	nb_c_allowed = 0;
 	y = 0;
