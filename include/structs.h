@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:15:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:01:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_imgdata
 
 typedef struct s_map
 {
-	size_t				width;
-	size_t				height;
+	int				width;
+	int				height;
 	int					**board;
 }						t_map;
 

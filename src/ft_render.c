@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:26:01 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:56:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	ft_mlx_pixel_put(t_imgdata *img, int x, int y, int color)
 
 // this is more like range than coordinates
 
-void	ft_draw_quadrangle_coordinates(t_imgdata *i, size_t coord_x[2],
-		size_t coord_y[2], int color)
+void	ft_draw_quadrangle_coordinates(t_imgdata *i, int coord_x[2],
+		int coord_y[2], int color)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 
 	y = coord_y[START];
 	while (y < coord_y[END])
@@ -45,8 +45,8 @@ void	ft_draw_quadrangle_coordinates(t_imgdata *i, size_t coord_x[2],
 
 void	ft_add_background(t_imgdata *img, t_game *game)
 {
-	static size_t		range_x[2];
-	static size_t		range_y[2];
+	static int		range_x[2];
+	static int		range_y[2];
 
 	range_x[START] = 0;
 	range_x[END] = game->win_width;
@@ -60,8 +60,8 @@ void	ft_add_background(t_imgdata *img, t_game *game)
 
 void	ft_add_minimap(t_imgdata *img, t_game *game)
 {
-	static size_t	x[2];
-	static size_t	y[2];
+	static int	x[2];
+	static int	y[2];
 
 	(void) game;
 	x[START] = PIX_SIZE / 4;
@@ -84,7 +84,7 @@ int	ft_render(t_game *game)
 	i = &game->i_main_frame;
 	ft_add_background(i, game);
 	ft_add_minimap(&game->i_main_frame, game);
-	ft_add_handheld(&game->i_main_frame, game);
+	//ft_add_handheld(&game->i_main_frame, game);
 	ft_raycast_loop(game, i);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	return (EXIT_SUCCESS);

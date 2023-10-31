@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 17:51:33 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:17:14 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	ft_check_args(int argc, char **argv)
 
 void	ft_clean(t_game *game)
 {
-	size_t	counter;
+	int	counter;
 
 	if (game->i_north.path_to_image_file != NULL)
 		free(game->i_north.path_to_image_file);
