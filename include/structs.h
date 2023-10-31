@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/28 12:03:53 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:15:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_vector
 typedef struct s_player
 {
 	t_vector			position;
-	double				direction;
+	t_vector			direction;
 }						t_player;
 
 //						mlx pointers
