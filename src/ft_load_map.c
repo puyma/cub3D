@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 14:15:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:06:51 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ static void	ft_set_player(t_game *game)
 	int	y;
 
 	y = 0;
-	printf("h %p\n", game->map);
 	while (y < game->map->height)
 	{
 		x = 0;
