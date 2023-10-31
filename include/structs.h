@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:01:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:14:24 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ typedef struct s_vector
 	double				x;
 	double				y;
 }						t_vector;
+
+typedef struct s_ray
+{
+	double				camera_x;
+	s_vector			ray_dir;
+	s_vector			delta_dist;
+	
+}						t_ray;
 
 typedef struct s_player
 {

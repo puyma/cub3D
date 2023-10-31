@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rays.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:47:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:09:53 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 double	posX = 3;
 double	posY = 18;
-double	dirX = -1;
+double	dirX = 1;
 double	dirY = 0;
-double	planeX = 0;
-double	planeY = 0.66;
+double	planeX = 0.66;
+double	planeY = -0.66;
 
 double	time = 0;
 double	oldTime = 0;
