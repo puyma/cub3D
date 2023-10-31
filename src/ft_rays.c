@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 11:03:47 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:49:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,10 @@ void	ft_raycast_loop(t_game *game, t_imgdata *img)
 		if (game->map->board[mapX][mapY] == '1')
 			color.argb = 0x387959;
 		ft_verLine(game, x, drawStart, drawEnd, color.argb);
-
 		++x;
 	}
-	(void) game;
+
+	// time FPS stuff
+
 	(void) img;
 }
