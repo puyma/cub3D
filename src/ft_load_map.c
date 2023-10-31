@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_load_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/30 21:55:49 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:19:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,12 +130,14 @@ static void	ft_set_player(t_game *game)
 
 static void	ft_set_view_direction(t_player *player, char c)
 {
+	player->direction.x = 0;
+	player->direction.y = 0;
 	if (c == 'N')
-		player->direction = 90;
+		player->direction.x = -1;
 	else if (c == 'S')
-		player->direction = 270;
+		player->direction.x = 1;
 	else if (c == 'W')
-		player->direction = 180;
+		player->direction.y = -1;
 	else
-		player->direction = 0;
+		player->direction.y = 1;
 }

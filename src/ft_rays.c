@@ -3,161 +3,128 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rays.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 17:27:51 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/30 23:47:37 by jsebasti         ###   ########.fr       */
+/*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/31 11:49:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* WIP: testing ray's behaviour 
- * https://permadi.com/1996/05/ray-casting-tutorial-7 */
+double	posX = 12;
+double	posY = 12;
+double	dirX = -1;
+double	dirY = 0;
+double	planeX = 0;
+double	planeY = 0.66;
 
-/* We assume ALPHA is 60 degrees
- * based on permadi's example... */
+double	time = 0;
+double	oldTime = 0;
 
-#define ALPHA		60
-#define HORIZONTAL	0
-#define VERTICAL	1
-
-double	ft_degrees_2_rad(double angle)
+void	ft_verLine(t_game *game, int x, int drawStart, int drawEnd, int color)
 {
-	return (angle * (M_PI / 180));
+	int	y;
+
+	y = drawStart;
+	while (y <= drawEnd)
+	{
+		ft_mlx_pixel_put(&game->i_main_frame, x, y, color);
+		++y;
+	}
 }
 
-// consider if angle is 0: -30 to 30 degrees?
-
-void	ft_y_intersection(t_player *player, t_vector point, int mode)
+void	ft_raycast_loop(t_game *game, t_imgdata *img)
 {
-	if (mode == HORIZONTAL)
+	size_t	x;
+
+	x = 0;
+	while (x < WIN_WIDTH)
 	{
-		point.y = ft_round_down(player->position.y / GRID_SIZE) * GRID_SIZE;
-		if ((player->direction - 180) <= 0)
-			point.y += - 1;
+		double cameraX = 2 * x / (double) WIN_WIDTH - 1;
+		double rayDirX = dirX + planeX * cameraX;
+		double rayDirY = dirY + planeY + cameraX;
+
+		int	mapX = (int) posX;
+		int	mapY = (int) posY;
+
+		double	sideDistX;
+		double	sideDistY;
+
+		double	deltaDistX = (rayDirX == 0) ? 1e30 : abs((int) (1 / rayDirX));
+		double	deltaDistY = (rayDirY == 0) ? 1e30 : abs((int) (1 / rayDirY));
+		double	perpWallDist;
+
+		int	stepX;
+		int	stepY;
+
+		int	hit = 0;
+		int	side;
+
+		if (rayDirX < 0)
+		{
+			stepX = -1;
+			sideDistX = (posX - mapX) * deltaDistX;
+		}
 		else
-			point.y += 64;
-	}
-	else
-		point.y = player->position.y
-			+ (player->position.x - point.x) * tan(ft_degrees_2_rad(ALPHA));
-}
+		{
+			stepX = 1;
+			sideDistX = (mapX + 1.0 - posX) *deltaDistY;
+		}
+		if (rayDirY < 0)
+		{
+			stepY = -1;
+			sideDistY = (posY - mapY) * deltaDistY;
+		}
+		else
+		{
+			stepY = 1;
+			sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+		}
 
-void	ft_x_intersection(t_player *player, t_vector point, int mode)
-{
-	if (mode == HORIZONTAL)
-		point.x = player->position.x
-			+ (player->position.y - point.y) * tan(ft_degrees_2_rad(ALPHA));
-	else
-	{
-		point.x = ft_round_down(player->position.x / GRID_SIZE) * GRID_SIZE;
-		if (player->direction) // LEFT
-			point.x += - 1;
-		else // RIGHT
-			point.x += + 64;
-	}
-}
+		// DDA
+		while (hit == 0)
+		{
+			if (sideDistX < sideDistY)
+			{
+				sideDistX += deltaDistX;
+				mapX += stepX;
+				side = 0;
+			}
+			else
+			{
+				sideDistY += deltaDistY;
+				mapY += stepY;
+				side = 1;
+			}
+			if (game->map->board[mapX][mapY] != '0')
+				hit = 1;
+		}
 
-void	ft_rays(t_game *game)
-{
-	t_vector	point_a;
-	t_vector	point_b;
-	t_vector	point_c;
-	t_vector	point_d;
-	double		angle_increment;
-	double		i;
-	double		Ya;
-	double		Xa;
+		if (side == 0)
+			perpWallDist = (sideDistX - deltaDistX);
+		else
+			perpWallDist = (sideDistY - deltaDistY);
 
-	game->player.direction = 90.0;
-	game->player.position.x = (1.5 * GRID_SIZE);
-	game->player.position.y = (3.5 * GRID_SIZE);
-	printf("player.x: %f\n", game->player.position.x);
-	printf("player.y: %f\n", game->player.position.y);
-	angle_increment = (double) FOV / WIN_WIDTH;	
-	i = game->player.direction - (FOV / 2);
-	i = 60.0;
-	printf("i: %f\n", i);
+		int	lineHeight = (int) (WIN_HEIGHT / perpWallDist);
 
-	// 1. Find coordinate A
+		int	drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
+		if (drawStart < 0)
+			drawStart = 0;
 
-	printf("player: %f, %f\n", game->player.position.x, game->player.position.y);
-	if ((game->player.direction - 180) > 0)
-	// if ray faces down
-	{
-		point_a.y = (ft_round_down(game->player.position.y / 64) * 64) + 64;
-	}
-	else
-	// else, ray faces up
-	{
-		point_a.y = (ft_round_down(game->player.position.y / 64) * 64) - 1;
-		// -1 cause it start from 0 (0-63,...)
-	}
+		int drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
+		if (drawEnd >= WIN_HEIGHT)
+			drawEnd = WIN_HEIGHT - 1;
 
-	printf("A.y: %f\n", point_a.y);
-	
-	point_a.x = game->player.position.x + (game->player.position.y - point_a.y) / tan(ft_degrees_2_rad(ALPHA));
-	printf("A.x: %f\n", point_a.x);
-	
-	printf("A: %d, %d\n",
-			(int) point_a.x / GRID_SIZE, (int) point_a.y / GRID_SIZE);
-	
-	if (game->map->board[(int) point_a.x / 64][(int) point_a.y / 64] == '1')
-		printf("there is a wall in %d, %d\n",
-			(int) point_a.x / GRID_SIZE, (int) point_a.y / GRID_SIZE);
-
-	// 2. Find Ya
-
-	if ((game->player.direction - 180) > 0)
-	// if ray faces down
-	{
-		// GRID_SIZE (alias or rename macro PIX_SIZE)
-		Ya = GRID_SIZE;
-	}
-	else
-	// if ray faces up
-	{
-		Ya = -GRID_SIZE;
-	}
-	printf("Ya: %f\n", trunc(Ya));
-
-	// 3. Find Xa
-
-	Xa = GRID_SIZE / tan(i * (M_PI / 180));
-	printf("Xa: %f\n", trunc(Xa));
-
-	// 4. Find coordinate C
-
-	point_c.x = trunc(point_a.x) + trunc(Xa);
-	point_c.y = trunc(point_a.y) + trunc(Ya);
-	printf("C.x: %f\n", point_c.x);
-	printf("C.y: %f\n", point_c.y);
-	printf("C: %d, %d\n",
-			(int) point_c.x / GRID_SIZE, (int) point_c.y / GRID_SIZE);
-
-	/*
-	 * (C programmer's note: Remember we always round down,
-	 * this is especially true since
-	 * you can use right shift by 8 to divide by 64 (GRID_SIZE)) !?!?!.
-	 */
-
-	// 5. Check coordinate ? "no wall" : extend to D
-	
-	if (game->map->board[(int) point_c.x / GRID_SIZE][(int) point_c.y / GRID_SIZE] != '1')
-	{
-		printf("no wall\n");
+		t_color color;
+		color.argb = 0xFF171717;
+		if (game->map->board[mapX][mapY] == '1')
+			color.argb = 0x387959;
+		ft_verLine(game, x, drawStart, drawEnd, color.argb);
+		++x;
 	}
 
-	// Angle iteration (Field Of View; FOV)
-	//while (i < game->player.direction + (FOV / 2))
-	//{
-		//printf("angle: %f\n", i);
-	//	i += angle_increment;
-	//}
-	(void) point_a;
-	(void) point_b;
-	(void) point_c;
-	(void) point_d;
-	(void) game;
+	// time FPS stuff
+
+	(void) img;
 }
