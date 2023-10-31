@@ -6,14 +6,18 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 11:49:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:47:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	posX = 12;
-double	posY = 12;
+/* WIP:
+ * https://lodev.org/cgtutor/raycasting.html
+ */
+
+double	posX = 3;
+double	posY = 18;
 double	dirX = -1;
 double	dirY = 0;
 double	planeX = 0;
@@ -36,7 +40,7 @@ void	ft_verLine(t_game *game, int x, int drawStart, int drawEnd, int color)
 
 void	ft_raycast_loop(t_game *game, t_imgdata *img)
 {
-	size_t	x;
+	int x;
 
 	x = 0;
 	while (x < WIN_WIDTH)
@@ -51,8 +55,8 @@ void	ft_raycast_loop(t_game *game, t_imgdata *img)
 		double	sideDistX;
 		double	sideDistY;
 
-		double	deltaDistX = (rayDirX == 0) ? 1e30 : abs((int) (1 / rayDirX));
-		double	deltaDistY = (rayDirY == 0) ? 1e30 : abs((int) (1 / rayDirY));
+		double	deltaDistX = (rayDirX == 0) ? 0.1 : abs((int) (1 / rayDirX));
+		double	deltaDistY = (rayDirY == 0) ? 0.1 : abs((int) (1 / rayDirY));
 		double	perpWallDist;
 
 		int	stepX;
@@ -117,9 +121,20 @@ void	ft_raycast_loop(t_game *game, t_imgdata *img)
 			drawEnd = WIN_HEIGHT - 1;
 
 		t_color color;
-		color.argb = 0xFF171717;
+		color.argb = 0x00171717;
 		if (game->map->board[mapX][mapY] == '1')
-			color.argb = 0x387959;
+			color.argb = 0x00387959;
+		else if (game->map->board[mapX][mapY] == '2')
+			color.argb = 0x000000FF;
+		else if (game->map->board[mapX][mapY] == '3')
+			color.argb = 0x00FFFF00;
+		else if (game->map->board[mapX][mapY] == '4')
+			color.argb = 0x00AA8895;
+		else if (game->map->board[mapX][mapY] == '5')
+			color.argb = 0x00FF7F00;
+
+		if (side == 1) {color.argb = color.argb / 2;}
+
 		ft_verLine(game, x, drawStart, drawEnd, color.argb);
 		++x;
 	}

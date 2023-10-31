@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:02:30 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 12:36:50 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:03:36 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_check_up(t_map *map);
 static int	ft_check_down(t_map *map);
 static int	ft_check_left(t_map *map);
 static int	ft_check_right(t_map *map);
-static int	ft_check_range(int **board, int type, size_t pos, size_t range[2]);
+static int	ft_check_range(int **board, int type, size_t pos, int range[2]);
 
 int	ft_check_map(t_map *map)
 {
@@ -39,10 +39,10 @@ int	ft_check_map(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_range(int **board, int type, size_t pos, size_t range[2])
+static int	ft_check_range(int **board, int type, size_t pos, int range[2])
 {
-	size_t	from;
-	size_t	to;
+	int	from;
+	int	to;
 
 	from = range[0];
 	to = range[1];
@@ -63,9 +63,9 @@ static int	ft_check_range(int **board, int type, size_t pos, size_t range[2])
 
 static int	ft_check_left(t_map *map)
 {
-	size_t	range[2];
-	size_t	y;
-	int		sub;
+	int	range[2];
+	int	y;
+	int	sub;
 
 	y = 0;
 	range[PREV] = 0;
@@ -90,9 +90,9 @@ static int	ft_check_left(t_map *map)
 
 static int	ft_check_right(t_map *map)
 {
-	size_t	range[2];
-	size_t	y;
-	int		sub;
+	int	range[2];
+	int	y;
+	int	sub;
 
 	y = 0;
 	range[PREV] = 0;
@@ -117,9 +117,9 @@ static int	ft_check_right(t_map *map)
 
 static int	ft_check_up(t_map *map)
 {
-	size_t	range[2];
-	size_t	x;
-	int		sub;
+	int	range[2];
+	int	x;
+	int	sub;
 
 	x = 0;
 	range[PREV] = 0;
@@ -144,9 +144,9 @@ static int	ft_check_up(t_map *map)
 
 static int	ft_check_down(t_map *map)
 {
-	size_t	range[2];
-	size_t	x;
-	int		sub;
+	int	range[2];
+	int	x;
+	int	sub;
 
 	x = 0;
 	range[PREV] = 0;
