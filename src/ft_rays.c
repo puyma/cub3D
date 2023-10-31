@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:27:51 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/28 13:31:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:57:33 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,5 @@ void	ft_rays(t_game *game)
 	(void) point_c;
 	(void) point_d;
 	(void) game;
-	exit(0);
+	//exit(0);
 }
