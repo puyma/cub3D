@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:33:58 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:12:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/10/31 10:14:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_start_game(t_game *game)
 	i->address = mlx_get_data_addr(i->img, &(i->bits_per_pixel),
 			&(i->line_length), &(i->endian));
 	mlx_loop_hook(game->mlx, &ft_render, (void *) game);
-	PRINT_MAP(game->map)
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
 }
