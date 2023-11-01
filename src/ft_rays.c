@@ -6,22 +6,21 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:47:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:12:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 /* WIP:
- * https://lodev.org/cgtutor/raycasting.html
- */
+ * https://lodev.org/cgtutor/raycasting.html */
 
 double	posX = 3;
 double	posY = 18;
 double	dirX = -1;
 double	dirY = 0;
 double	planeX = 0;
-double	planeY = 0.66;
+double	planeY = 0.90;
 
 double	time = 0;
 double	oldTime = 0;
@@ -55,8 +54,8 @@ void	ft_raycast_loop(t_game *game, t_imgdata *img)
 		double	sideDistX;
 		double	sideDistY;
 
-		double	deltaDistX = (rayDirX == 0) ? 0.1 : abs((int) (1 / rayDirX));
-		double	deltaDistY = (rayDirY == 0) ? 0.1 : abs((int) (1 / rayDirY));
+		double	deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+		double	deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
 		double	perpWallDist;
 
 		int	stepX;

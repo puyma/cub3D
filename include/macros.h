@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 10:43:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:11:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,6 @@
 // Minimap settings
 
 #define MINIMAP_COLOR	0x00c6c6c6
+
+#define START			0
+#define END				1
