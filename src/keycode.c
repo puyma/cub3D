@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keycode.c                                       :+:      :+:    :+:   */
+/*   keycode.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 10:56:28 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 14:47:07 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ double rotSpeed;
 
 int	ft_keycode(int k, t_game *game)
 {
-	moveSpeed = 0.25;
+	moveSpeed = 0.10;
 	rotSpeed = 0.25;
 	printf("%f, %f\n", posX, posY);
 	if (k == KEY_ESC)
 		return (ft_destroy(game), EXIT_SUCCESS);
 	if (k == KEY_W || k == KEY_UP)
 	{
-		if (game->map->board[(int) (posX + dirX * moveSpeed)][(int) posY] != '1')
+		if (game->map->board[(int) (posX + dirX * moveSpeed)][(int) posY])
 			posX += dirX * moveSpeed;
-		if (game->map->board[(int) posX][(int) (posY + dirY * moveSpeed)] != '1')
+		if (game->map->board[(int) posX][(int) (posY + dirY * moveSpeed)])
 			posY += dirY * moveSpeed;
 	}
 	else if (k == KEY_S || k == KEY_DOWN)
 	{
-      if (game->map->board[(int) (posX - dirX * moveSpeed)][(int) posY] != '1')
+      if (game->map->board[(int) (posX - dirX * moveSpeed)][(int) posY])
 		  posX -= dirX * moveSpeed;
-      if (game->map->board[(int) posX][(int) (posY - dirY * moveSpeed)] != '1')
+      if (game->map->board[(int) posX][(int) (posY - dirY * moveSpeed)])
 		  posY -= dirY * moveSpeed;
 	}
 	else if (k == KEY_A || k == KEY_LEFT)
