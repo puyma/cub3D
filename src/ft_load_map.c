@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 03:29:29 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:07:58 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ static void	ft_set_player(t_game *game)
 	int	y;
 
 	y = 0;
-	printf("h %p\n", game->map);
 	while (y < game->map->height)
 	{
 		x = 0;
@@ -119,8 +118,8 @@ static void	ft_set_player(t_game *game)
 		{
 			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL)
 			{
-				game->player.pos.x = x;
-				game->player.pos.y = y;
+				game->player.pos.x = x * 64;
+				game->player.pos.y = y * 64;
 				ft_set_view_direction(&game->player, game->map->board[x][y]);
 				return ;
 			}
