@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/10/28 11:25:11 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/01 10:44:13 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_FILES	:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/ft_check_map.c \
 				$(SRC_DIR)/ft_colorutils.c \
 				$(SRC_DIR)/ft_destroy.c \
+				$(SRC_DIR)/ft_drawutils.c \
 				$(SRC_DIR)/ft_keycode.c \
 				$(SRC_DIR)/ft_load_map.c \
 				$(SRC_DIR)/ft_load_textures.c \
