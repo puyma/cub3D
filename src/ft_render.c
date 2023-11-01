@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:56:39 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 03:37:00 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_render(t_game *game)
 	ft_add_background(i, game);
 	ft_add_minimap(&game->i_main_frame, game);
 	//ft_add_handheld(&game->i_main_frame, game);
-	ft_raycast_loop(game, i);
+	ft_raycast_loop(game, &game->player, &game->ray, i);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

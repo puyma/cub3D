@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 01:52:08 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/01 04:03:12 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,124 +16,114 @@
  * https://lodev.org/cgtutor/raycasting.html
  */
 
-static void	ft_init_ray(t_game *game)
+static void	ft_init_player(t_player *player)
 {
-	game->player.position.x = 2;
-	game->player.position.y = 2;
-	game->player.direction.x = 1;
-	game->player.direction.y = 0;
-	game->player.plane.x = 0.66;
-	game->player.plane.y = -0.66;
+	player->plane.x = 0;
+	player->plane.y = 0.66;
 }
 
-void	ft_verLine(t_game *game, int x, int drawStart, int drawEnd, int color)
+static void	ft_verLine(t_game *game, int x, t_vector draw, int color)
 {
-	int	y;
+	int	start;
+	int	finish;
 
-	y = drawStart;
-	while (y <= drawEnd)
+	start = draw.x;
+	finish = draw.y;
+	while (start <= finish)
 	{
-		ft_mlx_pixel_put(&game->i_main_frame, x, y, color);
-		++y;
+		ft_mlx_pixel_put(&game->i_main_frame, x, start, color);
+		++start;
 	}
 }
 
-void	ft_raycast_loop(t_game *game, t_imgdata *img)
+void	ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 {
-	int x;
+	int			x;
+	t_vector	draw_start;
+	t_color		color;
+	int			line_height;
 
 	x = 0;
-	ft_init_ray(game);
+	ft_init_player(pl);
 	while (x < WIN_WIDTH)
 	{
-		game->ray.camera_x = 2 * x / (double) WIN_WIDTH - 1;
-		game->ray.dir.x = game->player.direction.x + game->player.plane.x * game->ray.camera_x;
-		game->ray.dir.y = game->player.direction.x + game->player.plane.y + game->ray.camera_x;
-
-		game->ray.map.intx = (int)game->player.position.x;
-		game->ray.map.inty = (int)game->player.position.y;
-
-		game->ray.delta_dist.x = (game->ray.dir.x == 0) ? 0.1 : abs((int) (1 / game->ray.dir.x));
-		game->ray.delta_dist.y = (game->ray.dir.y == 0) ? 0.1 : abs((int) (1 / game->ray.dir.y));
-
-		int	hit = 0;
-		int	side;
-
-		if (game->ray.dir.x < 0)
+		r->camera_x = 2 * x / (double) WIN_WIDTH - 1;
+		r->dir.x = pl->dir.x + pl->plane.x * r->camera_x;
+		r->dir.y = pl->dir.x + pl->plane.y + r->camera_x;
+		r->map.intx = (int)pl->pos.x;
+		r->map.inty = (int)pl->pos.y;
+		if (r->dir.x == 0)
+			r->delta_dist.x = 0.1;
+		else
+			r->delta_dist.x = sqrt(1 + pow(r->dir.y, 2) / pow(r->dir.x, 2));
+		if (r->dir.y == 0)
+			r->delta_dist.y = 0.1;
+		else
+			r->delta_dist.y = sqrt(1 + pow(r->dir.x, 2) / pow(r->dir.y, 2));
+		r->hit = 0;
+		if (r->dir.x < 0)
 		{
-			game->ray.step.intx = -1;
-			game->ray.side_dist.x = (game->player.position.x - game->ray.map.intx) * game->ray.delta_dist.x;
+			r->step.intx = -1;
+			r->side_dist.x = (pl->pos.x - r->map.intx) * r->delta_dist.x;
 		}
 		else
 		{
-			game->ray.step.intx = 1;
-			game->ray.side_dist.x = (game->ray.map.intx + 1.0 - game->player.position.x) *game->ray.delta_dist.y;
+			r->step.intx = 1;
+			r->side_dist.x = (r->map.intx + 1.0 - pl->pos.x) * r->delta_dist.y;
 		}
-		if (game->ray.dir.y < 0)
+		if (r->dir.y < 0)
 		{
-			game->ray.step.inty = -1;
-			game->ray.side_dist.y = (game->player.position.y - game->ray.map.inty) * game->ray.delta_dist.y;
+			r->step.inty = -1;
+			r->side_dist.y = (pl->pos.y - r->map.inty) * r->delta_dist.y;
 		}
 		else
 		{
-			game->ray.step.inty = 1;
-			game->ray.side_dist.y = (game->ray.map.inty + 1.0 - game->player.position.y) * game->ray.delta_dist.y;
+			r->step.inty = 1;
+			r->side_dist.y = (r->map.inty + 1.0 - pl->pos.y) * r->delta_dist.y;
 		}
-
-		// DDA
-		while (hit == 0)
+		while (r->hit == 0)
 		{
-			if (game->ray.side_dist.x < game->ray.side_dist.y)
+			if (r->side_dist.x < r->side_dist.y)
 			{
-				game->ray.side_dist.x += game->ray.delta_dist.x;
-				game->ray.map.intx += game->ray.step.intx;
-				side = 0;
+				r->side_dist.x += r->delta_dist.x;
+				r->map.intx += r->step.intx;
+				r->side = 0;
 			}
 			else
 			{
-				game->ray.side_dist.y += game->ray.delta_dist.y;
-				game->ray.map.inty += game->ray.step.inty;
-				side = 1;
+				r->side_dist.y += r->delta_dist.y;
+				r->map.inty += r->step.inty;
+				r->side = 1;
 			}
-			if (game->map->board[game->ray.map.intx][game->ray.map.inty] != '0')
-				hit = 1;
+			if (game->map->board[r->map.intx][r->map.inty] > 0)
+				r->hit = 1;
 		}
-
-		if (side == 0)
-			game->ray.perp_wall_dist = (game->ray.side_dist.x - game->ray.delta_dist.x);
+		if (r->side == 0)
+			r->perp_wall_dist = (r->side_dist.x - r->delta_dist.x);
 		else
-			game->ray.perp_wall_dist = (game->ray.side_dist.y - game->ray.delta_dist.y);
-
-		int	lineHeight = (int) (WIN_HEIGHT / game->ray.perp_wall_dist);
-
-		int	drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-
-		int drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
-		if (drawEnd >= WIN_HEIGHT)
-			drawEnd = WIN_HEIGHT - 1;
-
-		t_color color;
+			r->perp_wall_dist = (r->side_dist.y - r->delta_dist.y);
+		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
+		draw_start.intx = -line_height / 2 + WIN_HEIGHT / 2;
+		if (draw_start.intx < 0)
+			draw_start.intx = 0;
+		draw_start.inty = line_height / 2 + WIN_HEIGHT / 2;
+		if (draw_start.inty >= WIN_HEIGHT)
+			draw_start.inty = WIN_HEIGHT - 1;
 		color.argb = 0x00171717;
-		if (game->map->board[game->ray.map.intx][game->ray.map.inty] == '1')
+		if (game->map->board[r->map.intx][r->map.inty] == '1')
 			color.argb = 0x00387959;
-		else if (game->map->board[game->ray.map.intx][game->ray.map.inty] == '2')
+		else if (game->map->board[r->map.intx][r->map.inty] == '2')
 			color.argb = 0x000000FF;
-		else if (game->map->board[game->ray.map.intx][game->ray.map.inty] == '3')
+		else if (game->map->board[r->map.intx][r->map.inty] == '3')
 			color.argb = 0x00FFFF00;
-		else if (game->map->board[game->ray.map.intx][game->ray.map.inty] == '4')
+		else if (game->map->board[r->map.intx][r->map.inty] == '4')
 			color.argb = 0x00AA8895;
-		else if (game->map->board[game->ray.map.intx][game->ray.map.inty] == '5')
-			color.argb = 0x00FF7F00;
-
-		if (side == 1) {color.argb = color.argb / 2;}
-
-		ft_verLine(game, x, drawStart, drawEnd, color.argb);
+		else if (game->map->board[r->map.intx][r->map.inty] == '5')
+					color.argb = 0x00FF7F00;
+		if (r->side == 1)
+			color.argb = color.argb / 2;
+		ft_verLine(game, x, draw_start, ft_get_color(&game->color));
 		++x;
 	}
-
-	// time FPS stuff
-
 	(void) img;
 }

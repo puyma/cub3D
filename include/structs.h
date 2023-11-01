@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 01:52:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/01 03:41:31 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_ray
 	double				camera_x;
 	double				perp_wall_dist;
 	int					hit;
+	int					side;
 	t_vector			step;
 	t_vector			dir;
 	t_vector			delta_dist;
@@ -60,8 +61,9 @@ typedef struct s_ray
 
 typedef struct s_player
 {
-	t_vector			position;
-	t_vector			direction;
+	int					hit;
+	t_vector			pos;
+	t_vector			dir;
 	t_vector			plane;
 }						t_player;
 

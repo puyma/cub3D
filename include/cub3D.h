@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:59:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 03:36:44 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
 int						ft_mouse(int x, int y, void *game);
 int						ft_destroy(t_game *game);
-void					ft_raycast_loop(t_game *game, t_imgdata *img);
+void					ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
 
 //						array utils

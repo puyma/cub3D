@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_set_board.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 15:48:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 02:52:59 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 
 static int	ft_check_characters(t_game *game, t_list *map_lst)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	char	*str;
 
 	y = 0;
@@ -70,11 +70,9 @@ static int	ft_check_characters(t_game *game, t_list *map_lst)
 static int	ft_fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
-	int	x;
-	int	y;
-	int	nb_c_allowed;
+	int		x;
+	int		y;
 
-	nb_c_allowed = 0;
 	y = 0;
 	while (map_lst != NULL)
 	{
