@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/01 17:29:55 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/01 17:33:39 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,13 +37,12 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
 				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/destroy.c \
-				$(SRC_DIR)/ft_check_map.c \
-				$(SRC_DIR)/ft_load_textures.c \
-				$(SRC_DIR)/ft_set_board.c \
-				$(SRC_DIR)/ft_set_info.c \
 				$(SRC_DIR)/handheld.c \
 				$(SRC_DIR)/keycode.c \
 				$(SRC_DIR)/map.c \
+				$(SRC_DIR)/map_board.c \
+				$(SRC_DIR)/map_check.c \
+				$(SRC_DIR)/map_info.c \
 				$(SRC_DIR)/map_segments.c \
 				$(SRC_DIR)/minimap.c \
 				$(SRC_DIR)/mouse.c \
@@ -51,6 +50,7 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/read_file.c \
 				$(SRC_DIR)/render.c \
 				$(SRC_DIR)/start.c \
+				$(SRC_DIR)/textures.c \
 				$(SRC_DIR)/utils_arr.c \
 				$(SRC_DIR)/utils_color.c \
 				$(SRC_DIR)/utils_draw.c \
