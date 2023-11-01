@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 17:23:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:14:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_imgdata
 	int					endian;
 	int					width;
 	int					height;
-	char				*path_to_image_file;
+	char				*image_file;
 }						t_imgdata;
 
 typedef struct s_map

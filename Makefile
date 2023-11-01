@@ -6,7 +6,7 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/01 15:33:03 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/01 17:20:17 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,28 +33,30 @@ CPPFLAGS	:=	-MMD -iquote$(INC_DIR)
 CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'
 
-SRC_FILES	:=	$(SRC_DIR)/main.c \
+SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
+				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/ft_arrutils.c \
 				$(SRC_DIR)/ft_check_map.c \
 				$(SRC_DIR)/ft_colorutils.c \
 				$(SRC_DIR)/ft_destroy.c \
 				$(SRC_DIR)/ft_drawutils.c \
-				$(SRC_DIR)/ft_load_map.c \
 				$(SRC_DIR)/ft_load_textures.c \
 				$(SRC_DIR)/ft_lstutils.c \
 				$(SRC_DIR)/ft_mathutils.c \
-				$(SRC_DIR)/ft_read_file.c \
 				$(SRC_DIR)/ft_set_board.c \
 				$(SRC_DIR)/ft_set_info.c \
-				$(SRC_DIR)/ft_start_game.c \
 				$(SRC_DIR)/ft_strutils.c \
 				$(SRC_DIR)/handheld.c \
 				$(SRC_DIR)/keycode.c \
+				$(SRC_DIR)/map.c \
+				$(SRC_DIR)/map_segments.c \
 				$(SRC_DIR)/minimap.c \
 				$(SRC_DIR)/mouse.c \
 				$(SRC_DIR)/raycast.c \
-				$(SRC_DIR)/render.c
+				$(SRC_DIR)/read_file.c \
+				$(SRC_DIR)/render.c \
+				$(SRC_DIR)/start.c
 
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)

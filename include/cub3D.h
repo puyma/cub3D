@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 10:46:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:19:05 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@
 # include "structs.h"
 
 //						map stuff
-t_list					*ft_read_file(char *filename);
+t_list					*read_file(char *filename);
 int						ft_load_map(t_list *file, t_game *game);
 int						ft_set_board(t_list *map_lst, t_game *game);
 int						ft_set_info(t_list *map_lst, t_game *game);
 int						ft_check_map(t_map *map);
+t_list					*ft_extract_map_segment(t_list *file);
+t_list					*ft_extract_info_segment(t_list *file);
 
 //						game/events/graphic stuff
 int						ft_render(t_game *game);
-int						ft_start_game(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);

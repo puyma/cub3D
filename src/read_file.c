@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_file.c                                     :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 15:59:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 17:11:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** Returns a pointer to the allocated t_list.
 */
 
-t_list	*ft_read_file(char *filename)
+t_list	*read_file(char *filename)
 {
 	int		fd;
 	char	*line;
@@ -30,8 +30,7 @@ t_list	*ft_read_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
-				filename, strerror(errno)), NULL);
+		return (NULL);
 	list = NULL;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -45,6 +44,6 @@ t_list	*ft_read_file(char *filename)
 		line = get_next_line(fd);
 	}
 	if (list == NULL)
-		ft_fprintf(stderr, "%s: %s: file is empty\n", EXEC_NAME, filename);
+		errno = 0;
 	return (list);
 }
