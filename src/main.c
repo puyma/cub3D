@@ -6,13 +6,14 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:17:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 15:26:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int		ft_check_args(int argc, char **argv);
+static int	ft_check_args(int argc, char **argv);
+int			ft_start_demo(t_game *game);
 
 int	main(int argc, char **argv)
 {
@@ -36,13 +37,20 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE + 1);
 	if (ft_load_map(file, &game) == EXIT_FAILURE)
 		return (ft_clean(&game), EXIT_FAILURE + 2);
-	if (ft_start_game(&game) == EXIT_FAILURE)
+	if (ft_start_demo(&game) == EXIT_FAILURE)
 		return (ft_clean(&game), EXIT_FAILURE + 3);
 	return (ft_clean(&game), EXIT_SUCCESS);
 }
 
+int	ft_start_demo(t_game *game)
+{
+	(void) game;
+	return (EXIT_SUCCESS);
+}
+
 static int	ft_check_args(int argc, char **argv)
 {
+	return (EXIT_SUCCESS);
 	if (argc != 2)
 		return (EXIT_FAILURE);
 	if (ft_strcmp(argv[1], "-v") == 0)
