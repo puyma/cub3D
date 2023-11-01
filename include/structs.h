@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 17:14:24 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/01 01:52:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,27 @@ typedef struct s_vector
 {
 	double				x;
 	double				y;
+	int					intx;
+	int					inty;
 }						t_vector;
 
 typedef struct s_ray
 {
 	double				camera_x;
-	s_vector			ray_dir;
-	s_vector			delta_dist;
-	
+	double				perp_wall_dist;
+	int					hit;
+	t_vector			step;
+	t_vector			dir;
+	t_vector			delta_dist;
+	t_vector			side_dist;
+	t_vector			map;
 }						t_ray;
 
 typedef struct s_player
 {
 	t_vector			position;
 	t_vector			direction;
+	t_vector			plane;
 }						t_player;
 
 //						mlx pointers
@@ -80,6 +87,7 @@ typedef struct s_game
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
+	t_ray				ray;
 	int					i_load_cueue[N_IMAGES];
 	size_t				tmp_counter;
 	char				*map_filename_ptr;
