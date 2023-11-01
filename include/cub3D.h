@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 10:59:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:46:27 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ int						ft_mouse(int x, int y, void *game);
 int						ft_destroy(t_game *game);
 void					ft_raycast_loop(t_game *game, t_imgdata *img);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
+void					ft_draw_quadrangle_coordinates(t_imgdata *i,
+							int coord_x[2], int coord_y[2], int color);
+void					ft_add_background(t_imgdata *img, t_game *game);
+void					ft_add_minimap(t_imgdata *img, t_game *game);
+void					ft_add_handheld(t_imgdata *img, t_game *game);
 
 //						array utils
 size_t					ft_arrlen(char **array);
