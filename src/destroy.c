@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mathutils.c                                     :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 11:24:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/28 11:24:40 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/10/05 11:57:42 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/10/05 11:57:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
+#include "cub3D.h"
 
-double	ft_round_down(double n)
+int	ft_destroy(t_game *game)
 {
-	if (n > 0)
-		n = round(n) - 1;
-	else
-		n = round(n);
-	return (n);
+	mlx_clear_window(game->mlx, game->mlx_window);
+	mlx_destroy_window(game->mlx, game->mlx_window);
+	return (exit(EXIT_SUCCESS), EXIT_SUCCESS);
 }
