@@ -6,11 +6,11 @@
 #    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/01 17:33:39 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/01 17:35:16 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	demo
+NAME		:=	cub3D
 
 SRC_DIR		:=	src
 INC_DIR		:=	include
