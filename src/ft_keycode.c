@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:34:23 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 10:56:28 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ int	ft_keycode(int k, t_game *game)
 		return (ft_destroy(game), EXIT_SUCCESS);
 	if (k == KEY_W || k == KEY_UP)
 	{
-		if (game->map->board[(int) (posX + dirX * moveSpeed)][(int) posY] != 0)
+		if (game->map->board[(int) (posX + dirX * moveSpeed)][(int) posY] != '1')
 			posX += dirX * moveSpeed;
-		if (game->map->board[(int) posX][(int) (posY + dirY * moveSpeed)] != 0)
+		if (game->map->board[(int) posX][(int) (posY + dirY * moveSpeed)] != '1')
 			posY += dirY * moveSpeed;
 	}
 	else if (k == KEY_S || k == KEY_DOWN)
 	{
-      if (game->map->board[(int) (posX - dirX * moveSpeed)][(int) posY] != 0)
+      if (game->map->board[(int) (posX - dirX * moveSpeed)][(int) posY] != '1')
 		  posX -= dirX * moveSpeed;
-      if (game->map->board[(int) posX][(int) (posY - dirY * moveSpeed)] != 0)
+      if (game->map->board[(int) posX][(int) (posY - dirY * moveSpeed)] != '1')
 		  posY -= dirY * moveSpeed;
 	}
 	else if (k == KEY_A || k == KEY_LEFT)
@@ -55,6 +55,5 @@ int	ft_keycode(int k, t_game *game)
       planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
       planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
 	}
-	printf("dir: %f, %f\n", dirX, dirY);
 	return (EXIT_SUCCESS);
 }
