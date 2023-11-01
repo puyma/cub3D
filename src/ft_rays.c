@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 04:03:12 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/01 04:04:06 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 					color.argb = 0x00FF7F00;
 		if (r->side == 1)
 			color.argb = color.argb / 2;
-		ft_verLine(game, x, draw_start, ft_get_color(&game->color));
+		ft_verLine(game, x, draw_start, color.argb);
 		++x;
 	}
 	(void) img;
