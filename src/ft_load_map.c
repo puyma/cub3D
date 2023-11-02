@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 21:07:58 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 02:48:01 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,10 @@ static void	ft_set_player(t_game *game)
 		{
 			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL)
 			{
-				game->player.pos.x = x * 64;
-				game->player.pos.y = y * 64;
+				game->player.pos.x = x * GRID_SIZE;
+				game->player.pos.y = y * GRID_SIZE;
+				game->player.dir.x = 0;
+				game->player.dir.y = 0;
 				ft_set_view_direction(&game->player, game->map->board[x][y]);
 				return ;
 			}
@@ -131,14 +133,28 @@ static void	ft_set_player(t_game *game)
 
 static void	ft_set_view_direction(t_player *player, char c)
 {
-	player->dir.x = 0;
-	player->dir.y = 0;
 	if (c == 'N')
+	{
 		player->dir.x = -1;
+		player->plane.x = 0;
+		player->plane.y = 0.90;
+	}
 	else if (c == 'S')
+	{
 		player->dir.x = 1;
+		player->plane.x = 0;
+		player->plane.y = -0.90;
+	}
 	else if (c == 'W')
+	{
 		player->dir.y = -1;
+		player->plane.x = -0.90;
+		player->plane.y = 0;
+	}
 	else
+	{
 		player->dir.y = 1;
+		player->plane.x = 0.90;
+		player->plane.y = 0;
+	}
 }

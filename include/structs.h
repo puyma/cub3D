@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 03:41:31 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 03:00:41 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_player
 	t_vector			pos;
 	t_vector			dir;
 	t_vector			plane;
+	double				move_speed;
+	double				rot_speed;
 }						t_player;
 
 //						mlx pointers
