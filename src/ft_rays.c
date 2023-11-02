@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 17:33:28 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:05:11 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		draw_start.inty = line_height / 2 + WIN_HEIGHT / 2;
 		if (draw_start.inty >= WIN_HEIGHT)
 			draw_start.inty = WIN_HEIGHT - 1;
-		if (game->map->board[r->map.inty][r->map.intx] == '1')
+		if (r->hit == 1)
 			color.argb = 0x00FF0000;
 		if (r->side == 1)
 			color.argb = 0x0000FF00;

@@ -3,12 +3,12 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Fri Oct 13 10:52:25 2023                                                     #
 
-NO	src/assets/floor.xpm
-EA	floor.xpm
-WE	floor
+NO	floor
+EA	wall
+WE	player
 F	4,4, 90
 #	comment here
-SO	floor
+SO	path_to_the_south_texture
 C	255,0,0	
 #	comment there
 
