@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 03:01:29 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 03:19:13 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int	ft_keycode(int k, t_game *game)
 		return (ft_destroy(game), EXIT_SUCCESS);
 	if ((k == KEY_W || k == KEY_UP) && pl->hit != 1)
 	{
-		if (game->map->board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)][(int)pl->pos.y] != 1)
+		if (game->map->board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)][(int)pl->pos.y] != '1')
 			pl->pos.x += pl->dir.x * pl->move_speed;
-		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y + pl->dir.y * pl->move_speed)] != 1)
+		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y + pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y += pl->dir.y * pl->move_speed;
 	}
 	else if (k == KEY_S || k == KEY_DOWN)
 	{
-		if (game->map->board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)][(int)pl->pos.y] != 1)
+		if (game->map->board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)][(int)pl->pos.y] != '1')
 			pl->pos.x -= pl->dir.x * pl->move_speed;
-		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y - pl->dir.y * pl->move_speed)] != 1)
+		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y - pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y -= pl->dir.y * pl->move_speed;
 	}
 	else if (k == KEY_A || k == KEY_LEFT)
