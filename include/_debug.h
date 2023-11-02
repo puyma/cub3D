@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   _debug.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 14:35:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/02 05:40:24 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _DEBUG_H
+# define _DEBUG_H
 # define ENDL ft_printf("\n");
 
 # define PRINT_LIST(list) \
@@ -101,3 +103,5 @@ ft_printf("map height: %u", game->map->height); ENDL \
 ft_printf("f color: %p (%d, %d, %d)", game->f_color.argb, game->f_color.red, game->f_color.green, game->f_color.blue); ENDL \
 ft_printf("c color: %p (%d, %d, %d)", game->c_color.argb, game->c_color.red, game->c_color.green, game->c_color.blue); ENDL \
 ft_printf("-- end game info --"); ENDL
+
+#endif

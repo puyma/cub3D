@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
@@ -6,23 +6,26 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/30 20:32:51 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 05:38:51 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# define VERSION		"0.1-alpha"
-# define EXEC_NAME		"cub3D"
-# define MAP_EXT		".cub"
+#ifndef MACROS_H
+# define MACROS_H
 
-# define NORTH			"north.xpm"
-# define SOUTH			"south.xpm"
-# define WEST			"west.xpm"
-# define EAST			"east.xpm"
-# define FLOOR			"floor.xpm"
-# define CEILING		"ceiling.xpm"
+# define VERSION "0.1-alpha"
+# define EXEC_NAME "cub3D"
+# define MAP_EXT ".cub"
+
+# define NORTH	"north.xpm"
+# define SOUTH	"south.xpm"
+# define WEST	"west.xpm"
+# define EAST	"east.xpm"
+# define FLOOR	"floor.xpm"
+# define CEILING	"ceiling.xpm"
 
 # define PIX_SIZE		64
-# define GRID_SIZE		PIX_SIZE
+# define GRID_SIZE		64
 # define WIN_WIDTH		1920
 # define WIN_HEIGHT		1080
 # define WIN_NAME		"cub3D"
@@ -65,3 +68,5 @@
 // Minimap settings
 
 # define MINIMAP_COLOR	0x00c6c6c6
+
+#endif
