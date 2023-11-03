@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 12:05:59 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:05:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_render(t_game *game)
 
 	i = &game->i_main_frame;
 	ft_add_background(i, game);
-	ft_raycast_loop(game, i);
+	ft_raycast_loop(game, &game->player, &game->ray, i);
 	ft_add_minimap(&game->i_main_frame, game);
 	ft_add_handheld(&game->i_main_frame, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
