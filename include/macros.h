@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:38:51 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 20:12:17 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # define PIX_SIZE		64
 # define GRID_SIZE		64
-# define WIN_WIDTH		1920
-# define WIN_HEIGHT		1080
+# define WIN_WIDTH		1080
+# define WIN_HEIGHT		720
 # define WIN_NAME		"cub3D"
 
 // Field Of View

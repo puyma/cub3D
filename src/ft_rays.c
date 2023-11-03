@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 18:05:11 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 19:27:23 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,19 @@
  */
 
 
-static void	ft_ver_line(t_game *game, int x, t_vector draw, int color)
+static void	ft_ver_line(t_game *game, int start, int finish, int color)
 {
-	int	start;
-	int	finish;
-
-	start = draw.intx;
-	finish = draw.inty;
 	while (start <= finish)
 	{
-		ft_mlx_pixel_put(&game->i_main_frame, x, start, color);
+		ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, start, color);
 		++start;
 	}
 }
 
-static void	ft_init_ray(t_ray *r, t_player *pl, int x)
+static void	ft_init_ray(t_ray *r, t_player *pl)
 {
 
-	r->camera_x = 2 * x / (double) WIN_WIDTH - 1;
+	r->camera_x = 2 * r->x / (double) WIN_WIDTH - 1;
 	r->dir.x = pl->dir.x + pl->plane.x * r->camera_x;
 	r->dir.y = pl->dir.y + pl->plane.y * r->camera_x;
 	r->map.intx = (int)(pl->pos.x);
@@ -97,32 +92,32 @@ static void	calculate_hit(t_ray *r, t_map *map)
 
 void	ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 {
-	int			x;
-	t_vector	draw_start;
+	int			start;
+	int			finish;
 	t_color		color;
 	int			line_height;
 
-	x = 0;
-	while (x < WIN_WIDTH)
+	r->x = 0;
+	while (r->x < WIN_WIDTH)
 	{
-		ft_init_ray(r, pl, x);
+		ft_init_ray(r, pl);
 		ft_recalculate_ray(r, pl);
 		calculate_hit(r, game->map);
 		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
-		draw_start.intx = -line_height / 2 + WIN_HEIGHT / 2;
-		if (draw_start.intx < 0)
-			draw_start.intx = 0;
-		draw_start.inty = line_height / 2 + WIN_HEIGHT / 2;
-		if (draw_start.inty >= WIN_HEIGHT)
-			draw_start.inty = WIN_HEIGHT - 1;
+		start = -line_height / 2 + WIN_HEIGHT / 2;
+		if (start < 0)
+			start = 0;
+		finish = line_height / 2 + WIN_HEIGHT / 2;
+		if (finish >= WIN_HEIGHT)
+			finish = WIN_HEIGHT - 1;
 		if (r->hit == 1)
 			color.argb = 0x00FF0000;
 		if (r->side == 1)
 			color.argb = 0x0000FF00;
 		if (r->side == 0)
 			color.argb = 0x000000FF;
-		ft_ver_line(game, x, draw_start, color.argb);
-		++x;
+		ft_ver_line(game, start, finish, color.argb);
+		++r->x;
 	}
 	(void) img;
 }

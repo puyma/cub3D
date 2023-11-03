@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:33:05 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:57:29 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_ray
 	double				perp_wall_dist;
 	int					hit;
 	int					side;
+	int					x;
 	t_vector			step;
 	t_vector			dir;
 	t_vector			delta_dist;
