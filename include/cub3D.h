@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:58:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:33:44 by mpuig-ma         ###   ########.fr       */
 /*   Updated: 2023/11/02 05:39:32 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ int						ft_render(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
-int						ft_mouse(int x, int y, void *game);
+int						ft_mouse(int x, int y, t_game *game);
 int						ft_destroy(t_game *game);
 void					raycast_loop(t_game *game, t_player *pl,
 							t_ray *r, t_imgdata *img);
