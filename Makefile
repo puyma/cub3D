@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+         #
+#    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/01 17:35:16 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/03 12:04:01 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,6 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/utils_lst.c \
 				$(SRC_DIR)/utils_math.c \
 				$(SRC_DIR)/utils_str.c
-
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
 

@@ -1,8 +1,8 @@
 #	Path to north south west and east textures
-NO	floor
-SO	floor
-WE	floor
-EA	floor
+NO	path_to_the_north_texture
+SO	path_to_the_south_texture
+WE	path_to_the_west_texture
+EA	path_to_the_east_texture
 
 #	Floor and ceiling's color
 C	22,22,22

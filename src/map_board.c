@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_board.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 17:31:26 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:59:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 	char	*str;
 	int		x;
 	int		y;
-	int		nb_c_allowed;
 
-	nb_c_allowed = 0;
 	y = 0;
 	while (map_lst != NULL)
 	{

@@ -7,7 +7,7 @@ NO src/assets/floor.xpm
 WE			floor
 F   4,4, 90
 #comment here
-SO string
+SO wall
  	EA floor.xpm
 
 P 255,0,0	
@@ -16,7 +16,7 @@ P 255,0,0
 #	ignored line ?
 000000000
 001111100
-001N00100
 001000100
+00100N100
 001111100
 000000000

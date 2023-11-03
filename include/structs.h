@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 16:14:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:51:20 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,32 @@ typedef struct s_vector
 {
 	double				x;
 	double				y;
+	int					intx;
+	int					inty;
 }						t_vector;
+
+typedef struct s_ray
+{
+	double				camera_x;
+	double				perp_wall_dist;
+	int					hit;
+	int					side;
+	int					x;
+	t_vector			step;
+	t_vector			dir;
+	t_vector			delta_dist;
+	t_vector			side_dist;
+	t_vector			map;
+}						t_ray;
 
 typedef struct s_player
 {
-	t_vector			position;
-	t_vector			direction;
+	int					hit;
+	t_vector			pos;
+	t_vector			dir;
+	t_vector			plane;
+	double				move_speed;
+	double				rot_speed;
 }						t_player;
 
 typedef struct s_game
@@ -66,6 +86,7 @@ typedef struct s_game
 	t_imgdata			i_west;
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
+	t_ray				ray;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
 	int					tmp_info_cardinal_points[N_IMAGES];

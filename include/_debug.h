@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   _debug.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 10:48:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:46:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ENDL ft_printf("\n");
+#ifndef _DEBUG_H
+# define _DEBUG_H
 
-#define PRINT_LIST(list) \
+# define ENDL ft_printf("\n");
+
+# define PRINT_LIST(list) \
 t_list *rlist = list; \
 while (rlist != NULL) \
 { \
@@ -20,7 +23,7 @@ while (rlist != NULL) \
 	rlist = rlist->next; \
 }
 
-#define PRINT_MAP(map) \
+# define PRINT_MAP(map) \
 size_t rx, ry; ry = 0; \
 char rc; \
 while (ry < map->height) \
@@ -40,7 +43,7 @@ while (ry < map->height) \
 	++ry; \
 }
 
-#define PRINT_MAP_ASCII(map) \
+# define PRINT_MAP_ASCII(map) \
 size_t rax, ray; ray = 0; \
 int rac; \
 while (ray < map->height) \
@@ -63,7 +66,7 @@ while (ray < map->height) \
 	++ray; \
 }
 
-#define PRINT_MAP_INVERSE(map) \
+# define PRINT_MAP_INVERSE(map) \
 size_t rrx, rry; rrx = 0; \
 char rrc; \
 while (rrx < map->width) \
@@ -83,7 +86,7 @@ while (rrx < map->width) \
 	++rrx; \
 }
 
-#define PRINT_ARRAY(arr) \
+# define PRINT_ARRAY(arr) \
 int ri = 0; \
 while (arr && arr[ri] != NULL) \
 { \
@@ -92,7 +95,7 @@ while (arr && arr[ri] != NULL) \
 } \
 ENDL
 
-#define PRINT_INFO(game) \
+# define PRINT_INFO(game) \
 ft_printf("-- start game info --"); ENDL \
 ft_printf("mlx: %p", &game->mlx); ENDL \
 ft_printf("mlx_window: %p", &game->mlx_window); ENDL \
@@ -105,3 +108,5 @@ ft_printf("f color: %p (%d, %d, %d)", game->f_color.argb, \
 ft_printf("c color: %p (%d, %d, %d)", game->c_color.argb, \
 		game->c_color.red, game->c_color.green, game->c_color.blue); ENDL \
 ft_printf("-- end game info --"); ENDL
+
+#endif
