@@ -6,13 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 12:04:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:58:37 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_add_minimap(t_imgdata *img, t_game *game)
+void	minimap(t_imgdata *img, t_game *game)
 {
 	static int	x[2];
 	static int	y[2];

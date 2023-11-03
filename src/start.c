@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 17:15:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:49:33 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ static int	load_game(t_game *game)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
-
-/* This function loads the game's images and graphic stuff.
- * This includes initializing mlx, mlx's events,
- * calling mlx_loop, etc. */
 
 static int	start_game(t_game *game)
 {

@@ -6,13 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:05:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 12:10:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:56:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_add_background(t_imgdata *img, t_game *game)
+void	background(t_imgdata *img, t_game *game)
 {
 	static int		range_x[2];
 	static int		range_y[2];
