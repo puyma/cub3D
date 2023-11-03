@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keycode.c                                       :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/06 18:24:04 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/11/03 12:05:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ft_keycode(int k, t_game *game)
+#define START	0
+#define END		1
+
+int	ft_render(t_game *game)
 {
-	if (k == KEY_ESC)
-		return (ft_destroy(game), EXIT_SUCCESS);
-	if (k == KEY_A || k == KEY_S || k == KEY_D || k == KEY_W
-		|| k == KEY_LEFT || k == KEY_DOWN || k == KEY_RIGHT || k == KEY_UP)
-		ft_printf("key: %d\n", k);
-	else if (k == KEY_PAUSE)
-		ft_printf("should toggle pause (%x)\n", k);
+	t_imgdata	*i;
+
+	i = &game->i_main_frame;
+	ft_add_background(i, game);
+	ft_raycast_loop(game, &game->player, &game->ray, i);
+	ft_add_minimap(&game->i_main_frame, game);
+	ft_add_handheld(&game->i_main_frame, game);
+	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	return (EXIT_SUCCESS);
 }

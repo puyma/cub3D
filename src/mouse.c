@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrutils.c                                      :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 11:17:29 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 11:17:36 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/11/01 02:51:18 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-size_t	ft_arrlen(char **arr)
+int	ft_mouse(int x, int y, void *param)
 {
-	size_t	len;
-
-	len = 0;
-	while (arr && arr[len])
-		++len;
-	return (len);
+	(void)param;
+	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
+		return (mlx_mouse_show(), EXIT_SUCCESS);
+	mlx_mouse_hide();
+	ft_printf("mouse %d, %d\n", x, y);
+	return (EXIT_SUCCESS);
 }

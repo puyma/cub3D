@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_board.c                                     :+:      :+:    :+:   */
+/*   map_board.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/19 12:35:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:59:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	ft_homogenize_map(t_map *map);
 
 int	ft_set_board(t_list *map_lst, t_game *game)
 {
-	size_t	i;
+	int	i;
 
 	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
@@ -43,8 +43,8 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 
 static int	ft_check_characters(t_game *game, t_list *map_lst)
 {
-	size_t	x;
-	size_t	y;
+	int		x;
+	int		y;
 	char	*str;
 
 	y = 0;
@@ -70,11 +70,9 @@ static int	ft_check_characters(t_game *game, t_list *map_lst)
 static int	ft_fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
-	size_t	x;
-	size_t	y;
-	size_t	nb_c_allowed;
+	int		x;
+	int		y;
 
-	nb_c_allowed = 0;
 	y = 0;
 	while (map_lst != NULL)
 	{
@@ -94,8 +92,8 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 
 static void	ft_homogenize_map(t_map *map)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < map->height)
