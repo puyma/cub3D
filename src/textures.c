@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_textures.c                                 :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/17 12:38:41 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:15:35 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_load_texture(t_imgdata *img, t_game *game)
 {
 	char	*path;
 
-	path = ft_resolve_texture_path(img->path_to_image_file);
+	path = ft_resolve_texture_path(img->image_file);
 	if (path == NULL)
 		return (EXIT_FAILURE);
 	img->img = mlx_xpm_file_to_image(game->mlx, path,
@@ -51,7 +51,7 @@ static int	ft_load_texture(t_imgdata *img, t_game *game)
 	if (img->img == NULL)
 	{
 		ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
-			img->path_to_image_file, strerror(errno));
+			img->image_file, strerror(errno));
 		return (free(path), EXIT_FAILURE);
 	}
 	img->address = mlx_get_data_addr(img->img,
