@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 11:47:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:30:58 by mpuig-ma         ###   ########.fr       */
 /*   Updated: 2023/11/02 05:39:32 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -51,6 +51,8 @@ int						ft_destroy(t_game *game);
 void					ft_raycast_loop(t_game *game, t_player *pl,
 							t_ray *r, t_imgdata *img);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
+void					ft_ver_line(t_game *game, int start,
+							int finish, int color);
 void					ft_draw_quadrangle_coordinates(t_imgdata *i,
 							int coord_x[2], int coord_y[2], int color);
 void					ft_add_background(t_imgdata *img, t_game *game);

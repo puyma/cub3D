@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:06:36 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:30:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,14 @@ void	ft_draw_quadrangle_coordinates(t_imgdata *i, int coord_x[2],
 		while (x < coord_x[END])
 			ft_mlx_pixel_put(i, x++, y, color);
 		++y;
+	}
+}
+
+void	ft_ver_line(t_game *game, int start, int finish, int color)
+{
+	while (start <= finish)
+	{
+		ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, start, color);
+		++start;
 	}
 }

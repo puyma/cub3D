@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:02:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:30:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 
 /* WIP:
  * https://lodev.org/cgtutor/raycasting.html */
-
-static void	ft_ver_line(t_game *game, int start, int finish, int color)
-{
-	while (start <= finish)
-	{
-		ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, start, color);
-		++start;
-	}
-}
 
 static void	ft_init_ray(t_ray *r, t_player *pl)
 {
