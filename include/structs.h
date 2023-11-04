@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 18:57:29 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:27:43 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_game
 {
 	void				*mlx;
 	void				*mlx_window;
-	size_t				win_width;
-	size_t				win_height;
+	int					win_width;
+	int					win_height;
 	t_map				*map;
 	t_player			player;
 	t_color				f_color;
@@ -94,6 +94,6 @@ typedef struct s_game
 	t_imgdata			i_floor;
 	t_ray				ray;
 	int					i_load_cueue[N_IMAGES];
-	size_t				tmp_counter;
+	int					tmp_counter;
 	char				*map_filename_ptr;
 }						t_game;

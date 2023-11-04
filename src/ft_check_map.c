@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:02:30 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:03:36 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:08:02 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@
 
 /** WIP: refactorization **/
 
-static int	ft_check_up(t_map *map);
-static int	ft_check_down(t_map *map);
-static int	ft_check_left(t_map *map);
-static int	ft_check_right(t_map *map);
-static int	ft_check_range(int **board, int type, size_t pos, int range[2]);
+static int	check_up(t_map *map);
+static int	check_down(t_map *map);
+static int	check_left(t_map *map);
+static int	check_right(t_map *map);
+static int	check_range(int **board, int type, size_t pos, int range[2]);
 
 int	ft_check_map(t_map *map)
 {
-	if (ft_check_left(map) == EXIT_FAILURE)
+	if (check_left(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (ft_check_right(map) == EXIT_FAILURE)
+	if (check_right(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (ft_check_up(map) == EXIT_FAILURE)
+	if (check_up(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (ft_check_down(map) == EXIT_FAILURE)
+	if (check_down(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_range(int **board, int type, size_t pos, int range[2])
+static int	check_range(int **board, int type, size_t pos, int range[2])
 {
 	int	from;
 	int	to;
@@ -61,7 +61,7 @@ static int	ft_check_range(int **board, int type, size_t pos, int range[2])
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_left(t_map *map)
+static int	check_left(t_map *map)
 {
 	int	range[2];
 	int	y;
@@ -78,8 +78,8 @@ static int	ft_check_left(t_map *map)
 		sub = range[CURRENT] - range[PREV];
 		if (y != 0 && (sub > 1 || sub < -1))
 		{
-			if (ft_check_range(map->board, ROW, y, range) == FAIL
-				&& ft_check_range(map->board, ROW, y - 1, range) == FAIL)
+			if (check_range(map->board, ROW, y, range) == FAIL
+				&& check_range(map->board, ROW, y - 1, range) == FAIL)
 				return (ft_fprintf(stderr, "LEFT\n"), FAIL);
 		}
 		++y;
@@ -88,7 +88,7 @@ static int	ft_check_left(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_right(t_map *map)
+static int	check_right(t_map *map)
 {
 	int	range[2];
 	int	y;
@@ -105,8 +105,8 @@ static int	ft_check_right(t_map *map)
 		sub = range[CURRENT] - range[PREV];
 		if (y != 0 && (sub > 1 || sub < -1))
 		{
-			if (ft_check_range(map->board, ROW, y, range) == FAIL
-				&& ft_check_range(map->board, ROW, y - 1, range) == FAIL)
+			if (check_range(map->board, ROW, y, range) == FAIL
+				&& check_range(map->board, ROW, y - 1, range) == FAIL)
 				return (ft_fprintf(stderr, "RIGHT\n"), FAIL);
 		}
 		++y;
@@ -115,7 +115,7 @@ static int	ft_check_right(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_up(t_map *map)
+static int	check_up(t_map *map)
 {
 	int	range[2];
 	int	x;
@@ -132,8 +132,8 @@ static int	ft_check_up(t_map *map)
 		sub = range[CURRENT] - range[PREV];
 		if (x != 0 && (sub > 1 || sub < -1))
 		{
-			if (ft_check_range(map->board, COL, x, range) == FAIL
-				&& ft_check_range(map->board, COL, x - 1, range) == FAIL)
+			if (check_range(map->board, COL, x, range) == FAIL
+				&& check_range(map->board, COL, x - 1, range) == FAIL)
 				return (ft_fprintf(stderr, "UP\n"), FAIL);
 		}
 		++x;
@@ -142,7 +142,7 @@ static int	ft_check_up(t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_check_down(t_map *map)
+static int	check_down(t_map *map)
 {
 	int	range[2];
 	int	x;
@@ -159,8 +159,8 @@ static int	ft_check_down(t_map *map)
 		sub = range[CURRENT] - range[PREV];
 		if (x != 0 && (sub > 1 || sub < -1))
 		{
-			if (ft_check_range(map->board, COL, x, range) == FAIL
-				&& ft_check_range(map->board, COL, x - 1, range) == FAIL)
+			if (check_range(map->board, COL, x, range) == FAIL
+				&& check_range(map->board, COL, x - 1, range) == FAIL)
 				return (ft_fprintf(stderr, "DOWN\n"), FAIL);
 		}
 		++x;

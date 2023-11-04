@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:39:32 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:27:52 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void					ft_raycast_loop(t_game *game, t_player *pl,
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
 
 //						array utils
-size_t					ft_arrlen(char **array);
+int						ft_arrlen(char **array);
 
 //						color utils
 int						ft_set_rgb_color(char **color_values, t_color *color);
@@ -62,8 +62,8 @@ void					ft_replace_isspace(unsigned int position, char *str);
 void					ft_replace_ispunct(unsigned int p, char *str);
 
 //						list utils
-size_t					ft_lstwidth(t_list *list);
-size_t					ft_lstheight(t_list *list);
+int						ft_lstwidth(t_list *list);
+int						ft_lstheight(t_list *list);
 
 //						math utils
 double					ft_round_down(double n);

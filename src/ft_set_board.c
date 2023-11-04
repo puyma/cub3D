@@ -6,15 +6,15 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 02:52:59 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:36:10 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	ft_check_characters(t_game *game, t_list *map_lst);
-static int	ft_fill_map(t_list *map_lst, t_map *map);
-static void	ft_homogenize_map(t_map *map);
+static int	check_characters(t_game *game, t_list *map_lst);
+static int	fill_map(t_list *map_lst, t_map *map);
+static void	homogenize_map(t_map *map);
 
 int	ft_set_board(t_list *map_lst, t_game *game)
 {
@@ -25,23 +25,23 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 		return (EXIT_FAILURE);
 	game->map->width = ft_lstwidth(map_lst);
 	game->map->height = ft_lstheight(map_lst);
-	game->map->board = (int **) ft_calloc(game->map->width, sizeof(int *));
+	game->map->board = (int **)ft_calloc(game->map->width, sizeof(int *));
 	if (game->map->board == NULL)
 		return (free(game->map), EXIT_FAILURE);
 	i = 0;
 	while (i < game->map->width)
 		game->map->board[i++] = ft_calloc(game->map->height, sizeof(int));
-	if (ft_check_characters(game, map_lst) == EXIT_FAILURE)
+	if (check_characters(game, map_lst) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	ft_fill_map(map_lst, game->map);
-	ft_homogenize_map(game->map);
+	fill_map(map_lst, game->map);
+	homogenize_map(game->map);
 	if (ft_check_map(game->map) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
 				EXEC_NAME, game->map_filename_ptr), EXIT_FAILURE);
-	return (ft_fill_map(map_lst, game->map), EXIT_SUCCESS);
+	return (fill_map(map_lst, game->map), EXIT_SUCCESS);
 }
 
-static int	ft_check_characters(t_game *game, t_list *map_lst)
+static int	check_characters(t_game *game, t_list *map_lst)
 {
 	int		x;
 	int		y;
@@ -67,7 +67,7 @@ static int	ft_check_characters(t_game *game, t_list *map_lst)
 	return (EXIT_SUCCESS);
 }
 
-static int	ft_fill_map(t_list *map_lst, t_map *map)
+static int	fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
 	int		x;
@@ -90,7 +90,7 @@ static int	ft_fill_map(t_list *map_lst, t_map *map)
 	return (EXIT_SUCCESS);
 }
 
-static void	ft_homogenize_map(t_map *map)
+static void	homogenize_map(t_map *map)
 {
 	int	x;
 	int	y;

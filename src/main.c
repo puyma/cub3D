@@ -3,34 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/31 13:17:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:29:30 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int		ft_check_args(int argc, char **argv);
+static int		check_args(int argc, char **argv);
+static void		init_game_vars(t_game *game, char *file);
+
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
 	t_list	*file;
 
-	if (ft_check_args(argc, argv) == EXIT_FAILURE)
+	if (check_args(argc, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	game.mlx = NULL;
-	game.mlx_window = NULL;
-	game.win_width = WIN_WIDTH;
-	game.win_height = WIN_HEIGHT;
-	game.map = NULL;
-	game.map_filename_ptr = argv[1];
-	game.i_north.path_to_image_file = NULL;
-	game.i_south.path_to_image_file = NULL;
-	game.i_west.path_to_image_file = NULL;
-	game.i_east.path_to_image_file = NULL;
+	init_game_vars(&game, argv[1]);
 	file = ft_read_file(game.map_filename_ptr);
 	if (file == NULL)
 		return (EXIT_FAILURE + 1);
@@ -41,7 +34,7 @@ int	main(int argc, char **argv)
 	return (ft_clean(&game), EXIT_SUCCESS);
 }
 
-static int	ft_check_args(int argc, char **argv)
+static int	check_args(int argc, char **argv)
 {
 	if (argc != 2)
 		return (EXIT_FAILURE);
@@ -61,6 +54,20 @@ static int	ft_check_args(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
+}
+
+static void	init_game_vars(t_game *game, char *file)
+{
+	game->mlx = NULL;
+	game->mlx_window = NULL;
+	game->win_width = WIN_WIDTH;
+	game->win_height = WIN_HEIGHT;
+	game->map = NULL;
+	game->map_filename_ptr = file;
+	game->i_north.path_to_image_file = NULL;
+	game->i_south.path_to_image_file = NULL;
+	game->i_west.path_to_image_file = NULL;
+	game->i_east.path_to_image_file = NULL;
 }
 
 void	ft_clean(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 19:31:20 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:18:25 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,31 @@ static void		ft_set_view_direction(t_player *player, char c);
 
 int	ft_load_map(t_list *file, t_game *game)
 {
-	int		exit_status;
 	t_list	*map;
 	t_list	*info;
 
-	exit_status = EXIT_SUCCESS;
 	map = ft_extract_map_segment(file);
+	if (!map)
+		return (EXIT_FAILURE);
 	info = ft_extract_info_segment(file);
+	if (!info)
+		return (EXIT_FAILURE);
 	if (ft_set_info(info, game) == EXIT_FAILURE)
-		exit_status = EXIT_FAILURE;
-	if (exit_status == EXIT_SUCCESS && ft_set_board(map, game) == EXIT_FAILURE)
-		exit_status = EXIT_FAILURE;
+	{
+		ft_lstclear(&map, &free);
+		ft_lstclear(&info, &free);
+		return (EXIT_FAILURE);
+	}
+	if (ft_set_board(map, game) == EXIT_FAILURE)
+	{
+		ft_lstclear(&map, &free);
+		ft_lstclear(&info, &free);
+		return (EXIT_FAILURE);
+	}
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
-	if (exit_status == EXIT_SUCCESS)
-		ft_set_player(game);
-	return (exit_status);
+	ft_set_player(game);
+	return (EXIT_SUCCESS);
 }
 
 /*
@@ -64,45 +73,45 @@ int	ft_load_map(t_list *file, t_game *game)
 // prev should not be NULL, map should not start directly with '0' or '1'
 // for this -> check that more than one line
 
-static t_list	*ft_extract_map_segment(t_list *file)
+static t_list	*ft_extract_map_segment(t_list *file_content)
 {
 	char	*line;
 	t_list	*prev;
 
 	prev = NULL;
-	while (file != NULL)
+	while (file_content != NULL)
 	{
-		line = (char *) file->content;
+		line = (char *) file_content->content;
 		while (line && ft_isspace(*line) == 1)
 			++line;
 		if (*line == '0' || *line == '1')
 		{
-			file = prev->next;
+			file_content = prev->next;
 			prev->next = NULL;
 			break ;
 		}
-		prev = file;
-		file = file->next;
+		prev = file_content;
+		file_content = file_content->next;
 	}
-	return (file);
+	return (file_content);
 }
 
-static t_list	*ft_extract_info_segment(t_list *file)
+static t_list	*ft_extract_info_segment(t_list *file_content)
 {
-	t_list	*cpy;
+	t_list	*tmp_list;
 	char	*content;
 	char	*tmp;
 
-	cpy = file;
-	while (cpy != NULL)
+	tmp_list = file_content;
+	while (tmp_list != NULL)
 	{
-		tmp = cpy->content;
+		tmp = tmp_list->content;
 		content = ft_strtrim(tmp, " \t\n");
 		free(tmp);
-		cpy->content = content;
-		cpy = cpy->next;
+		tmp_list->content = content;
+		tmp_list = tmp_list->next;
 	}
-	return (file);
+	return (file_content);
 }
 
 static void	ft_set_player(t_game *game)

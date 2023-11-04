@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsebasti <jsebasti@student.42barcelona.com>+#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/18 11:24:04 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:45:20 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	*ft_read_file(char *filename)
 		if (list == NULL)
 			list = ft_lstnew((void *) trimmed);
 		else
-			ft_lstadd_back(&list, ft_lstnew((void *) trimmed));
+			ft_lstadd_back(&list, ft_lstnew((void *)trimmed));
 		free(line);
 		line = get_next_line(fd);
 	}

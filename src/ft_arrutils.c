@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arrutils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 11:17:29 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/09 11:17:36 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:28:01 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-size_t	ft_arrlen(char **arr)
+int	ft_arrlen(char **arr)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	while (arr && arr[len])
