@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 19:49:14 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:50:10 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		}
 		++r->x;
 	}
+	ft_moves(game);
 	(void) img;
 }
 

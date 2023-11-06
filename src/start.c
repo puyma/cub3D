@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 16:15:16 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:47:47 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ static int	start_game(t_game *game)
 	game->mlx_window = mlx_new_window(game->mlx,
 			game->win_width, game->win_height, EXEC_NAME);
 	mlx_hook(game->mlx_window, ON_DESTROY, 0, &ft_destroy, (void *) game);
-	mlx_hook(game->mlx_window, ON_KEYDOWN, 0, &ft_keycode, (void *) game);
+	mlx_hook(game->mlx_window, ON_KEYDOWN, 0, &ft_keydown, (void *) game);
+	mlx_hook(game->mlx_window, ON_KEYUP, 0, &ft_keyup, (void *) game);
 	mlx_hook(game->mlx_window, ON_MOUSEMOVE, 0, &ft_mouse, (void *) game);
 	img->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->address = mlx_get_data_addr(img->img, &(img->bits_per_pixel),

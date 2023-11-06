@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 12:05:26 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:48:18 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef struct s_player
 	double				rot_speed;
 }						t_player;
 
+typedef struct s_key
+{
+	int					up_w;
+	int					down_s;
+	int					left_a;
+	int					right_d;
+}						t_key;
+
 typedef struct s_game
 {
 	void				*mlx;
@@ -87,6 +95,7 @@ typedef struct s_game
 	t_imgdata			i_east;
 	t_imgdata			i_floor;
 	t_ray				ray;
+	t_key				key;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
 	int					tmp_info_cardinal_points[N_IMAGES];
