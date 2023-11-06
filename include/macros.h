@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 11:50:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 21:02:54 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define KEY_UP			126
 # define KEY_ESC		53
 # define KEY_PAUSE		35
+# define KEY_SHIFT		257
 
 // Event codes (MLX)
 
