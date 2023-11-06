@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 11:54:45 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:54:40 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,22 @@ static void	ft_set_player(t_game *game)
 	int	x;
 	int	y;
 
+	PRINT_INFO(game)
 	y = 0;
 	while (y < game->map->height)
 	{
 		x = 0;
 		while (x < game->map->width)
 		{
-			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL)
+			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL
+					&& game->map->board[x][y] != '\0')
 			{
 				game->player.pos.x = x + 0.5;
 				game->player.pos.y = y + 0.5;
 				game->player.dir.x = 0;
 				game->player.dir.y = 0;
-				ft_set_view_direction(&game->player, game->map->board[x][y]);
+				(void) ft_set_view_direction;
+				//ft_set_view_direction(&game->player, game->map->board[x][y]);
 				return ;
 			}
 			++x;
