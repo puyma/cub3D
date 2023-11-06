@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/02 20:00:17 by jsebasti         ###   ########.fr        #
+#    Updated: 2023/11/03 12:04:01 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,32 +28,35 @@ LDFLAGS		:=	-L$(LIBFT_DIR) -lft
 LDFLAGS		+=	-framework OpenGL -framework AppKit -L$(LIBMLX_DIR) -lmlx
 #LDFLAGS	+=	-lm
 
-CFLAGS		:=	-Wall -Werror -Wextra -O2
+CFLAGS		:=	-Wall -Werror -Wextra
 CPPFLAGS	:=	-MMD -iquote$(INC_DIR)
 CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'
 
-SRC_FILES	:=	$(SRC_DIR)/main.c \
-				$(SRC_DIR)/ft_arrutils.c \
-				$(SRC_DIR)/ft_check_map.c \
-				$(SRC_DIR)/ft_colorutils.c \
-				$(SRC_DIR)/ft_destroy.c \
-				$(SRC_DIR)/ft_keycode.c \
-				$(SRC_DIR)/ft_load_map.c \
-				$(SRC_DIR)/ft_load_textures.c \
-				$(SRC_DIR)/ft_lstutils.c \
-				$(SRC_DIR)/ft_mathutils.c \
-				$(SRC_DIR)/ft_mouse.c \
-				$(SRC_DIR)/ft_rays.c \
-				$(SRC_DIR)/ft_read_file.c \
-				$(SRC_DIR)/ft_render.c \
-				$(SRC_DIR)/ft_set_board.c \
-				$(SRC_DIR)/ft_set_info.c \
-				$(SRC_DIR)/ft_start_game.c \
-				$(SRC_DIR)/ft_strutils.c
-
-INC_FILES	:=	$(INC_DIR)/cub3D.h
-
+SRC_FILES	:=	\
+				$(SRC_DIR)/background.c \
+				$(SRC_DIR)/clean.c \
+				$(SRC_DIR)/destroy.c \
+				$(SRC_DIR)/handheld.c \
+				$(SRC_DIR)/keycode.c \
+				$(SRC_DIR)/map.c \
+				$(SRC_DIR)/map_board.c \
+				$(SRC_DIR)/map_check.c \
+				$(SRC_DIR)/map_info.c \
+				$(SRC_DIR)/map_segments.c \
+				$(SRC_DIR)/minimap.c \
+				$(SRC_DIR)/mouse.c \
+				$(SRC_DIR)/raycast.c \
+				$(SRC_DIR)/read_file.c \
+				$(SRC_DIR)/render.c \
+				$(SRC_DIR)/start.c \
+				$(SRC_DIR)/textures.c \
+				$(SRC_DIR)/utils_arr.c \
+				$(SRC_DIR)/utils_color.c \
+				$(SRC_DIR)/utils_draw.c \
+				$(SRC_DIR)/utils_lst.c \
+				$(SRC_DIR)/utils_math.c \
+				$(SRC_DIR)/utils_str.c
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
 

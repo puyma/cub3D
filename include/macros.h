@@ -6,33 +6,30 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 20:12:17 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:50:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACROS_H
 # define MACROS_H
 
-# define VERSION "0.1-alpha"
-# define EXEC_NAME "cub3D"
-# define MAP_EXT ".cub"
-
-# define NORTH	"north.xpm"
-# define SOUTH	"south.xpm"
-# define WEST	"west.xpm"
-# define EAST	"east.xpm"
-# define FLOOR	"floor.xpm"
-# define CEILING	"ceiling.xpm"
-
+# define VERSION		"0.1-alpha"
+# define EXEC_NAME		"cub3D"
+# define MAP_EXT		".cub"
+# define NORTH			"north.xpm"
+# define SOUTH			"south.xpm"
+# define WEST			"west.xpm"
+# define EAST			"east.xpm"
+# define FLOOR			"floor.xpm"
+# define CEILING		"ceiling.xpm"
 # define PIX_SIZE		64
 # define GRID_SIZE		64
 # define WIN_WIDTH		1080
 # define WIN_HEIGHT		720
 # define WIN_NAME		"cub3D"
-
 // Field Of View
 
-# define FOV			60
+# define FOV				60
 
 # define N_IMAGES		4
 # define IMG_PREFIX		"src/assets/"
@@ -42,7 +39,7 @@
 # define C_COLLECTIBLE	'C'
 # define C_EXIT			'E'
 # define C_PLAYER		'P'
-# define C_ENEMY		'N'
+# define C_ENEMY			'N'
 # define C_ALLOWED		"NSEWFC"
 
 // Key codes (MLX)
@@ -68,5 +65,8 @@
 // Minimap settings
 
 # define MINIMAP_COLOR	0x00c6c6c6
+
+# define START			0
+# define END			1
 
 #endif

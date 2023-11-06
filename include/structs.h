@@ -6,7 +6,11 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/11/03 20:27:43 by jsebasti         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/03 11:51:20 by mpuig-ma         ###   ########.fr       */
+>>>>>>> origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +32,7 @@ typedef struct s_imgdata
 	int					endian;
 	int					width;
 	int					height;
-	char				*path_to_image_file;
+	char				*image_file;
 }						t_imgdata;
 
 typedef struct s_map
@@ -70,12 +74,6 @@ typedef struct s_player
 	double				rot_speed;
 }						t_player;
 
-//						mlx pointers
-//						map && map details
-//						img(s) - #N_IMAGES
-//						color(s)
-//						temporal data storage
-
 typedef struct s_game
 {
 	void				*mlx;
@@ -95,5 +93,10 @@ typedef struct s_game
 	t_ray				ray;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
+<<<<<<< HEAD
+=======
+	int					tmp_info_cardinal_points[N_IMAGES];
+	int					tmp_info_colors;
+>>>>>>> origin/main
 	char				*map_filename_ptr;
 }						t_game;

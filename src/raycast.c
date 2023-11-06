@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rays.c                                          :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 18:35:12 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:30:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 /* WIP:
- * https://lodev.org/cgtutor/raycasting.html
- */
-
-
-static void	ft_ver_line(t_game *game, int start, int finish, int color)
-{
-	while (start <= finish)
-	{
-		ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, start, color);
-		++start;
-	}
-}
+ * https://lodev.org/cgtutor/raycasting.html */
 
 static void	ft_init_ray(t_ray *r, t_player *pl)
 {
-
 	r->camera_x = 2 * r->x / (double) WIN_WIDTH - 1;
 	r->dir.x = pl->dir.x + pl->plane.x * r->camera_x;
 	r->dir.y = pl->dir.y + pl->plane.y * r->camera_x;

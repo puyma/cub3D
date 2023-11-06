@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_file.c                                     :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42barcelona.com>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 19:45:20 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:02:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** Returns a pointer to the allocated t_list.
 */
 
-t_list	*ft_read_file(char *filename)
+t_list	*read_file(char *filename)
 {
 	int		fd;
 	char	*line;
@@ -30,8 +30,7 @@ t_list	*ft_read_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
-				filename, strerror(errno)), NULL);
+		return (NULL);
 	list = NULL;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -40,9 +39,11 @@ t_list	*ft_read_file(char *filename)
 		if (list == NULL)
 			list = ft_lstnew((void *) trimmed);
 		else
-			ft_lstadd_back(&list, ft_lstnew((void *)trimmed));
+			ft_lstadd_back(&list, ft_lstnew((void *) trimmed));
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (list == NULL)
+		errno = 0;
 	return (list);
 }

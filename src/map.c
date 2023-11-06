@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_map.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
+<<<<<<< HEAD:src/ft_load_map.c
 /*   Updated: 2023/11/03 20:18:25 by jsebasti         ###   ########.fr       */
+=======
+/*   Updated: 2023/11/03 11:54:45 by mpuig-ma         ###   ########.fr       */
+>>>>>>> origin/main:src/map.c
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static t_list	*ft_extract_map_segment(t_list *file);
-static t_list	*ft_extract_info_segment(t_list *file);
 static void		ft_set_player(t_game *game);
 static void		ft_set_view_direction(t_player *player, char c);
 
@@ -38,6 +40,15 @@ int	ft_load_map(t_list *file, t_game *game)
 	t_list	*map;
 	t_list	*info;
 
+<<<<<<< HEAD:src/ft_load_map.c
+=======
+	exit_status = EXIT_SUCCESS;
+	game->tmp_info_cardinal_points[0] = 0;
+	game->tmp_info_cardinal_points[1] = 0;
+	game->tmp_info_cardinal_points[2] = 0;
+	game->tmp_info_cardinal_points[3] = 0;
+	game->tmp_info_colors = 0;
+>>>>>>> origin/main:src/map.c
 	map = ft_extract_map_segment(file);
 	if (!map)
 		return (EXIT_FAILURE);
@@ -58,6 +69,7 @@ int	ft_load_map(t_list *file, t_game *game)
 	}
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
+<<<<<<< HEAD:src/ft_load_map.c
 	ft_set_player(game);
 	return (EXIT_SUCCESS);
 }
@@ -114,6 +126,15 @@ static t_list	*ft_extract_info_segment(t_list *file_content)
 	return (file_content);
 }
 
+=======
+	if (exit_status == EXIT_FAILURE)
+		ft_clean(game);
+	else
+		ft_set_player(game);
+	return (exit_status);
+}
+
+>>>>>>> origin/main:src/map.c
 static void	ft_set_player(t_game *game)
 {
 	int	x;

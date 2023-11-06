@@ -6,12 +6,13 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/02 05:40:24 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 11:46:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _DEBUG_H
 # define _DEBUG_H
+
 # define ENDL ft_printf("\n");
 
 # define PRINT_LIST(list) \
@@ -33,7 +34,8 @@ while (ry < map->height) \
 		rc = map->board[rx][ry]; \
 		if (rc == '0') { ft_printf("%c ", rc); } \
 		else if (rc == 0) { ft_printf("  "); } \
-		else if (ft_strchr(C_ALLOWED, rc) != NULL) { ft_printf("%s%c%s ", "\033[1;34m", rc, "\033[0m"); } \
+		else if (ft_strchr(C_ALLOWED, rc) != NULL) \
+		{ ft_printf("%s%c%s ", "\033[1;34m", rc, "\033[0m"); } \
 		else { ft_printf("%s%c%s ", "\033[1;32m", rc, "\033[0m"); } \
 		++rx; \
 	} \
@@ -75,7 +77,8 @@ while (rrx < map->width) \
 		rrc = map->board[rrx][map->height - 1 - rry]; \
 		if (rrc == '0') { ft_printf("%c ", rrc); } \
 		else if (rrc == 0) { ft_printf("  "); } \
-		else if (ft_strchr(C_ALLOWED, rrc) != NULL) { ft_printf("%s%c%s ", "\033[1;34m", rrc, "\033[0m"); } \
+		else if (ft_strchr(C_ALLOWED, rrc) != NULL) \
+		{ ft_printf("%s%c%s ", "\033[1;34m", rrc, "\033[0m"); } \
 		else { ft_printf("%s%c%s ", "\033[1;32m", rrc, "\033[0m"); } \
 		++rry; \
 	} \
@@ -100,8 +103,10 @@ ft_printf("window width: %u", game->win_width); ENDL \
 ft_printf("window height: %u", game->win_height); ENDL \
 ft_printf("map width: %u", game->map->width); ENDL \
 ft_printf("map height: %u", game->map->height); ENDL \
-ft_printf("f color: %p (%d, %d, %d)", game->f_color.argb, game->f_color.red, game->f_color.green, game->f_color.blue); ENDL \
-ft_printf("c color: %p (%d, %d, %d)", game->c_color.argb, game->c_color.red, game->c_color.green, game->c_color.blue); ENDL \
+ft_printf("f color: %p (%d, %d, %d)", game->f_color.argb, \
+		game->f_color.red, game->f_color.green, game->f_color.blue); ENDL \
+ft_printf("c color: %p (%d, %d, %d)", game->c_color.argb, \
+		game->c_color.red, game->c_color.green, game->c_color.blue); ENDL \
 ft_printf("-- end game info --"); ENDL
 
 #endif
