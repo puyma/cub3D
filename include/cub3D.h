@@ -6,9 +6,9 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 13:33:44 by mpuig-ma         ###   ########.fr       */
-/*   Updated: 2023/11/02 05:39:32 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:24:39 by jsebasti         ###   ########.fr       */
 /*                                                                            */
+/* ************************************************************************** */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
@@ -60,7 +60,7 @@ void					minimap(t_imgdata *img, t_game *game);
 void					ft_add_handheld(t_imgdata *img, t_game *game);
 
 //						array utils
-size_t					ft_arrlen(char **array);
+int						ft_arrlen(char **array);
 
 //						color utils
 int						ft_set_rgb_color(char **color_values, t_color *color);
@@ -71,8 +71,8 @@ void					ft_replace_isspace(unsigned int position, char *str);
 void					ft_replace_ispunct(unsigned int p, char *str);
 
 //						list utils
-size_t					ft_lstwidth(t_list *list);
-size_t					ft_lstheight(t_list *list);
+int						ft_lstwidth(t_list *list);
+int						ft_lstheight(t_list *list);
 
 //						math utils
 double					ft_round_down(double n);

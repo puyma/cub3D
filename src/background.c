@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:05:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:56:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:19:32 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	background(t_imgdata *img, t_game *game)
 {
-	static int		range_x[2];
-	static int		range_y[2];
+	static int		range_x[2] = {0, 0};
+	static int		range_y[2] = {0, 0};
 
 	range_x[START] = 0;
 	range_x[END] = game->win_width;

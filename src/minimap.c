@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 16:14:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:20:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	minimap_player(t_imgdata *img, t_game *game);
 
 void	minimap(t_imgdata *img, t_game *game)
 {
-	static int	x[2];
-	static int	y[2];
+	static int	x[2] = {0, 0};
+	static int	y[2] = {0, 0};
 
 	//printf("player is at: %f %f\n", game->player.pos.x, game->player.pos.y);
 
@@ -32,8 +32,8 @@ void	minimap(t_imgdata *img, t_game *game)
 
 static void	minimap_background(t_imgdata *img, t_game *game)
 {
-	static int	x[2];
-	static int	y[2];
+	static int	x[2] = {0, 0};
+	static int	y[2] = {0, 0};
 
 	(void) game;
 	x[START] = PIX_SIZE / 3;
@@ -45,8 +45,8 @@ static void	minimap_background(t_imgdata *img, t_game *game)
 
 static void	minimap_player(t_imgdata *img, t_game *game)
 {
-	int	x[2];
-	int	y[2];
+	int	x[2] = {0, 0};
+	int	y[2] = {0, 0};
 
 	x[START] = game->player.pos.x;
 	x[START] *= PIX_SIZE / 3;

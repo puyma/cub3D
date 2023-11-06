@@ -3,8 +3,8 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Fri Oct 13 10:52:25 2023                                                     #
 
-NO	floor
-EA	wall
+NO	greystone
+EA	floor
 WE	player
 F	4,4, 90
 #	comment here

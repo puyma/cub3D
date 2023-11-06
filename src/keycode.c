@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 13:01:44 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:57:27 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_keycode(int k, t_game *game)
 {
-	static double		old_dir_x;
-	static double		old_plane_x;
-	static t_player		*pl;
+	static double		old_dir_x = 0;
+	static double		old_plane_x = 0;
+	static t_player		*pl = NULL;
 
 	pl = &game->player;
 	pl->move_speed = 0.10;
