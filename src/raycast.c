@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 20:50:10 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 21:45:02 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,21 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 			wallX = pl->pos.y + r->perp_wall_dist * r->dir.y;
 		else
 			wallX = pl->pos.x + r->perp_wall_dist * r->dir.x;
-		wallX -= floor((wallX));
+		wallX -= floor(wallX);
 		
-		int texX = (int) (wallX * PIX_SIZE);
+		int texX = (int) (wallX * (double) PIX_SIZE);
 		if (r->side == 0 && r->dir.x > 0)
 			texX = PIX_SIZE - texX - 1;
 		if (r->side == 1 && r->dir.y < 0)
 			texX = PIX_SIZE - texX - 1;
 		double step = ((double) PIX_SIZE) / line_height;
-		double texPos = (start - WIN_HEIGHT / 2 + line_height) * step;
+		double texPos = (start - WIN_HEIGHT / 2 + line_height / 2) * step;
 		for (int y = start; y < finish; y++)
 		{
 			int texY = (int)texPos & (PIX_SIZE - 1);
 			texPos += step;
 			char *color = game->i_north.address
 				+ (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
-			(void) texX;
-			(void) texY;
 			ft_mlx_pixel_put(&game->i_main_frame,
 					game->ray.x, y, *((unsigned int *) color));
 		}

@@ -3,7 +3,7 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Wed Oct 18 12:12:47 2023                                                     #
 
-NO path_to_the_north_texture
+NO greystone
 SO path_to_the_south_texture
 WE path_to_the_west_texture
 EA path_to_the_east_texture
@@ -35,11 +35,11 @@ C 225,30,0
 11110010100001
 11100000100001
 10100000100001
-11101111100001
+11111111100001
 10000000100001
 10N00000100001
 10000000100001
-11111111100001
+ 1111111100001
   1     100001
   1     100001
         100001
