@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 13:29:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:13:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,6 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 	}
 	(void) img;
 }
-
-/*
-void	ft_mlx_pixel_put(t_imgdata *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->address + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*((unsigned int *) dst) = color;
-}
-*/
 
 static void	ft_init_ray(t_ray *r, t_player *pl)
 {
