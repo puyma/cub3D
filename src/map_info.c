@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 16:15:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:36:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,13 @@ static int	ft_set_info_value_color(char *s, t_game *game)
 	color_values = values + 1;
 	if (color_values == NULL || ft_arrlen(color_values) != 3)
 		return (ft_free_arr(values), EXIT_FAILURE);
-	if (ft_strcmp("F", values[0]) == 0 && ++(game->tmp_info_colors)
-		&& ft_set_rgb_color(color_values, &game->f_color) == EXIT_FAILURE)
+	if (ft_strcmp("F", values[0]) == 0
+		&& ft_set_rgb_color(color_values, &game->f_color) == EXIT_FAILURE
+		&& ++(game->tmp_info_colors))
 		exit_status = EXIT_FAILURE;
-	else if (ft_strcmp("C", values[0]) == 0 && --(game->tmp_info_colors)
-		&& ft_set_rgb_color(color_values, &game->c_color) == EXIT_FAILURE)
+	else if (ft_strcmp("C", values[0]) == 0
+		&& ft_set_rgb_color(color_values, &game->c_color) == EXIT_FAILURE
+		&& --(game->tmp_info_colors))
 		exit_status = EXIT_FAILURE;
 	return (ft_free_arr(values), exit_status);
 }

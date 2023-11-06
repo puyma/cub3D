@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 17:15:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:15:16 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,6 @@ static int	load_game(t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-/* This function loads the game's images and graphic stuff.
- * This includes initializing mlx, mlx's events,
- * calling mlx_loop, etc. */
-
 static int	start_game(t_game *game)
 {
 	t_imgdata	*img;
@@ -83,6 +79,7 @@ static int	start_game(t_game *game)
 	img->address = mlx_get_data_addr(img->img, &(img->bits_per_pixel),
 			&(img->line_length), &(img->endian));
 	mlx_loop_hook(game->mlx, &ft_render, (void *) game);
+	mlx_do_key_autorepeaton(game->mlx);
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
 }

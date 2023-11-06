@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/03 12:04:01 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/03 13:04:44 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LDFLAGS		:=	-L$(LIBFT_DIR) -lft
 LDFLAGS		+=	-framework OpenGL -framework AppKit -L$(LIBMLX_DIR) -lmlx
 #LDFLAGS	+=	-lm
 
-CFLAGS		:=	-Wall -Werror -Wextra
+CFLAGS		:=	-Wall -Werror -Wextra -O3
 CPPFLAGS	:=	-MMD -iquote$(INC_DIR)
 CPPFLAGS	+=	-I$(LIBFT_DIR)/src -I$(LIBMLX_DIR)
 DFLAGS		:=	-g -fsanitize='address,undefined'

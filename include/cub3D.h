@@ -6,7 +6,8 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 12:07:51 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:33:44 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/02 05:39:32 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +34,33 @@
 
 //						map stuff
 t_list					*read_file(char *filename);
+t_list					*ft_extract_map_segment(t_list *file);
+t_list					*ft_extract_info_segment(t_list *file);
 int						ft_load_map(t_list *file, t_game *game);
 int						ft_set_board(t_list *map_lst, t_game *game);
 int						ft_set_info(t_list *map_lst, t_game *game);
 int						ft_check_map(t_map *map);
-t_list					*ft_extract_map_segment(t_list *file);
-t_list					*ft_extract_info_segment(t_list *file);
 
 //						game/events/graphic stuff
 int						ft_render(t_game *game);
 int						ft_load_events(t_game *game);
 int						ft_load_textures(t_game *game);
 int						ft_keycode(int keycode, t_game *game);
-int						ft_mouse(int x, int y, void *game);
+int						ft_mouse(int x, int y, t_game *game);
 int						ft_destroy(t_game *game);
-void					ft_raycast_loop(t_game *game, t_player *pl,
+void					raycast_loop(t_game *game, t_player *pl,
 							t_ray *r, t_imgdata *img);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
 void					ft_ver_line(t_game *game, int start,
 							int finish, int color);
 void					ft_draw_quadrangle_coordinates(t_imgdata *i,
 							int coord_x[2], int coord_y[2], int color);
-void					ft_add_background(t_imgdata *img, t_game *game);
-void					ft_add_minimap(t_imgdata *img, t_game *game);
+void					background(t_imgdata *img, t_game *game);
+void					minimap(t_imgdata *img, t_game *game);
 void					ft_add_handheld(t_imgdata *img, t_game *game);
 
 //						array utils
-int						ft_arrlen(char **array);
+size_t					ft_arrlen(char **array);
 
 //						color utils
 int						ft_set_rgb_color(char **color_values, t_color *color);
@@ -70,8 +71,8 @@ void					ft_replace_isspace(unsigned int position, char *str);
 void					ft_replace_ispunct(unsigned int p, char *str);
 
 //						list utils
-int						ft_lstwidth(t_list *list);
-int						ft_lstheight(t_list *list);
+size_t					ft_lstwidth(t_list *list);
+size_t					ft_lstheight(t_list *list);
 
 //						math utils
 double					ft_round_down(double n);

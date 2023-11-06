@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 13:55:26 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:13:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,59 @@
 
 /* WIP:
  * https://lodev.org/cgtutor/raycasting.html */
+
+static void		ft_init_ray(t_ray *r, t_player *pl);
+static void		ft_recalculate_ray(t_ray *r, t_player *pl);
+static void		calculate_hit(t_ray *r, t_map *map);
+
+void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
+{
+	static int			start = 0;
+	static int			finish = 0;
+	static int			line_height = 0;
+
+	r->x = 0;
+	while (r->x < WIN_WIDTH)
+	{
+		ft_init_ray(r, pl);
+		ft_recalculate_ray(r, pl);
+		calculate_hit(r, game->map);
+		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
+		start = -line_height / 2 + WIN_HEIGHT / 2;
+		if (start < 0)
+			start = 0;
+		finish = line_height / 2 + WIN_HEIGHT / 2;
+		if (finish >= WIN_HEIGHT)
+			finish = WIN_HEIGHT - 1;
+		double wallX;
+		if (r->side == 0)
+			wallX = pl->pos.y + r->perp_wall_dist * r->dir.y;
+		else
+			wallX = pl->pos.x + r->perp_wall_dist * r->dir.x;
+		wallX -= floor((wallX));
+		
+		int texX = (int) (wallX * PIX_SIZE);
+		if (r->side == 0 && r->dir.x > 0)
+			texX = PIX_SIZE - texX - 1;
+		if (r->side == 1 && r->dir.y < 0)
+			texX = PIX_SIZE - texX - 1;
+		double step = ((double) PIX_SIZE) / line_height;
+		double texPos = (start - WIN_HEIGHT / 2 + line_height) * step;
+		for (int y = start; y < finish; y++)
+		{
+			int texY = (int)texPos & (PIX_SIZE - 1);
+			texPos += step;
+			char *color = game->i_north.address
+				+ (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
+			(void) texX;
+			(void) texY;
+			ft_mlx_pixel_put(&game->i_main_frame,
+					game->ray.x, y, *((unsigned int *) color));
+		}
+		++r->x;
+	}
+	(void) img;
+}
 
 static void	ft_init_ray(t_ray *r, t_player *pl)
 {
@@ -76,36 +129,4 @@ static void	calculate_hit(t_ray *r, t_map *map)
 	else
 		r->perp_wall_dist = (r->side_dist.y - r->delta_dist.y);
 	return ;
-}
-
-void	ft_raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
-{
-	int			start;
-	int			finish;
-	t_color		color;
-	int			line_height;
-
-	r->x = 0;
-	while (r->x < WIN_WIDTH)
-	{
-		ft_init_ray(r, pl);
-		ft_recalculate_ray(r, pl);
-		calculate_hit(r, game->map);
-		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
-		start = -line_height / 2 + WIN_HEIGHT / 2;
-		if (start < 0)
-			start = 0;
-		finish = line_height / 2 + WIN_HEIGHT / 2;
-		if (finish >= WIN_HEIGHT)
-			finish = WIN_HEIGHT - 1;
-		if (r->hit == 1)
-			color.argb = 0x00FF0000;
-		if (r->side == 1)
-			color.argb = 0x0000FF00;
-		if (r->side == 0)
-			color.argb = 0x000000FF;
-		ft_ver_line(game, start, finish, color.argb);
-		++r->x;
-	}
-	(void) img;
 }

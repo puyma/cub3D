@@ -1,8 +1,8 @@
 #	Simple map
 
 #	Path to north, south, west and east textures
-NO	floor
-SO	floor
+NO	redbrick
+SO	wall
 WE	floor
 EA	floor
 

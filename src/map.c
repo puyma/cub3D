@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 13:55:03 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:31:29 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,36 +33,29 @@ static void		ft_set_view_direction(t_player *player, char c);
 
 int	ft_load_map(t_list *file, t_game *game)
 {
+	int		exit_status;
 	t_list	*map;
 	t_list	*info;
 
+	exit_status = EXIT_SUCCESS;
 	game->tmp_info_cardinal_points[0] = 0;
 	game->tmp_info_cardinal_points[1] = 0;
 	game->tmp_info_cardinal_points[2] = 0;
 	game->tmp_info_cardinal_points[3] = 0;
 	game->tmp_info_colors = 0;
 	map = ft_extract_map_segment(file);
-	if (!map)
-		return (EXIT_FAILURE);
 	info = ft_extract_info_segment(file);
-	if (!info)
-		return (EXIT_FAILURE);
 	if (ft_set_info(info, game) == EXIT_FAILURE)
-	{
-		ft_lstclear(&map, &free);
-		ft_lstclear(&info, &free);
-		return (EXIT_FAILURE);
-	}
-	if (ft_set_board(map, game) == EXIT_FAILURE)
-	{
-		ft_lstclear(&map, &free);
-		ft_lstclear(&info, &free);
-		return (EXIT_FAILURE);
-	}
+		exit_status = EXIT_FAILURE;
+	if (exit_status == EXIT_SUCCESS && ft_set_board(map, game) == EXIT_FAILURE)
+		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
-	ft_set_player(game);
-	return (EXIT_SUCCESS);
+	if (exit_status == EXIT_FAILURE)
+		ft_clean(game);
+	else
+		ft_set_player(game);
+	return (exit_status);
 }
 
 static void	ft_set_player(t_game *game)
@@ -76,10 +69,11 @@ static void	ft_set_player(t_game *game)
 		x = 0;
 		while (x < game->map->width)
 		{
-			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL && game->map->board[x][y] != '\0')
+			if (ft_strchr("NSEW", game->map->board[x][y]) != NULL
+					&& game->map->board[x][y] != 0)
 			{
-				game->player.pos.x = x;
-				game->player.pos.y = y;
+				game->player.pos.x = x + 0.5;
+				game->player.pos.y = y + 0.5;
 				game->player.dir.x = 0;
 				game->player.dir.y = 0;
 				ft_set_view_direction(&game->player, game->map->board[x][y]);
