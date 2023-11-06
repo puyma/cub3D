@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 14:48:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:31:29 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	ft_set_player(t_game *game)
 	int	x;
 	int	y;
 
-	PRINT_INFO(game)
 	y = 0;
 	while (y < game->map->height)
 	{
