@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 14:13:32 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:34:19 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,30 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		finish = line_height / 2 + WIN_HEIGHT / 2;
 		if (finish >= WIN_HEIGHT)
 			finish = WIN_HEIGHT - 1;
-		if (r->hit == 1)
-			ft_ver_line(game, start, finish, 0x00FF0000);
-		if (r->side == 1)
-			ft_ver_line(game, start, finish, 0x0000FF00);
+		double wallX;
 		if (r->side == 0)
-			ft_ver_line(game, start, finish, 0x000000FF);
+			wallX = pl->pos.x + r->perp_wall_dist * r->dir.y;
+		else
+			wallX = pl->pos.x + r->perp_wall_dist * r->dir.x;
+		wallX -= floor((wallX)); // FORBIDDEN function
+		
+		int texX = (int) (wallX * PIX_SIZE);
+		if (r->side == 0 && r->dir.x > 0)
+			texX = PIX_SIZE - texX - 1;
+		if (r->side == 1 && r->dir.y < 0)
+			texX = PIX_SIZE - texX - 1;
+		double step = ((double) PIX_SIZE) / line_height;
+		double texPos = (start - WIN_HEIGHT / 2 + line_height) * step;
+		for (int y = start; y < finish; y++)
+		{
+			int texY = (int)texPos & (PIX_SIZE - 1);
+			texPos += step;
+			char *color = game->i_north.address + (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
+			(void) texX;
+			(void) texY;
+			ft_mlx_pixel_put(&game->i_main_frame,
+					game->ray.x, y, *((unsigned int *) color));
+		}
 		++r->x;
 	}
 	(void) img;
