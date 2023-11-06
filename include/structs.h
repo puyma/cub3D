@@ -6,11 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/11/03 20:27:43 by jsebasti         ###   ########.fr       */
-=======
-/*   Updated: 2023/11/03 11:51:20 by mpuig-ma         ###   ########.fr       */
->>>>>>> origin/main
+/*   Updated: 2023/11/06 12:05:26 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +89,7 @@ typedef struct s_game
 	t_ray				ray;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
-<<<<<<< HEAD
-=======
 	int					tmp_info_cardinal_points[N_IMAGES];
 	int					tmp_info_colors;
->>>>>>> origin/main
 	char				*map_filename_ptr;
 }						t_game;

@@ -6,11 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-<<<<<<< HEAD:src/ft_set_board.c
-/*   Updated: 2023/11/03 20:36:10 by jsebasti         ###   ########.fr       */
-=======
-/*   Updated: 2023/11/03 11:59:11 by mpuig-ma         ###   ########.fr       */
->>>>>>> origin/main:src/map_board.c
+/*   Updated: 2023/11/06 12:08:15 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

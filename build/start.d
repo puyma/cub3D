@@ -1,5 +1,5 @@
-build/ft_load_textures.o: src/ft_load_textures.c include/cub3D.h \
-  src/libmlx/mlx.h src/libft/src/libft.h src/libft/src/ctype/ft_ctype.h \
+build/start.o: src/start.c include/cub3D.h src/libmlx/mlx.h \
+  src/libft/src/libft.h src/libft/src/ctype/ft_ctype.h \
   src/libft/src/ctype/../libft.h src/libft/src/io/ft_io.h \
   src/libft/src/io/ft_printf.h src/libft/src/io/../stdlib/ft_stdlib.h \
   src/libft/src/io/../stdlib/../string/ft_string.h \

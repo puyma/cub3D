@@ -1,4 +1,4 @@
-build/ft_check_map.o: src/ft_check_map.c include/cub3D.h src/libmlx/mlx.h \
+build/clean.o: src/clean.c include/cub3D.h src/libmlx/mlx.h \
   src/libft/src/libft.h src/libft/src/ctype/ft_ctype.h \
   src/libft/src/ctype/../libft.h src/libft/src/io/ft_io.h \
   src/libft/src/io/ft_printf.h src/libft/src/io/../stdlib/ft_stdlib.h \
