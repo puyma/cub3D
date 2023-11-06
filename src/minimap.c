@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 12:05:19 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:14:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	minimap(t_imgdata *img, t_game *game)
 	static int	x[2];
 	static int	y[2];
 
-	printf("player is at: %f %f\n", game->player.pos.x, game->player.pos.y);
+	//printf("player is at: %f %f\n", game->player.pos.x, game->player.pos.y);
 
 	x[START] = PIX_SIZE / 3;
 	y[START] = x[START];
