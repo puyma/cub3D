@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 21:45:02 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:15:53 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,49 +18,17 @@
 static void		ft_init_ray(t_ray *r, t_player *pl);
 static void		ft_recalculate_ray(t_ray *r, t_player *pl);
 static void		calculate_hit(t_ray *r, t_map *map);
+static void		ft_calculate_textures(t_ray *r, t_game *game, t_player *pl);
 
 void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 {
-	static int			start = 0;
-	static int			finish = 0;
-	static int			line_height = 0;
-
 	r->x = 0;
 	while (r->x < WIN_WIDTH)
 	{
 		ft_init_ray(r, pl);
 		ft_recalculate_ray(r, pl);
 		calculate_hit(r, game->map);
-		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
-		start = -line_height / 2 + WIN_HEIGHT / 2;
-		if (start < 0)
-			start = 0;
-		finish = line_height / 2 + WIN_HEIGHT / 2;
-		if (finish >= WIN_HEIGHT)
-			finish = WIN_HEIGHT - 1;
-		double wallX;
-		if (r->side == 0)
-			wallX = pl->pos.y + r->perp_wall_dist * r->dir.y;
-		else
-			wallX = pl->pos.x + r->perp_wall_dist * r->dir.x;
-		wallX -= floor(wallX);
-		
-		int texX = (int) (wallX * (double) PIX_SIZE);
-		if (r->side == 0 && r->dir.x > 0)
-			texX = PIX_SIZE - texX - 1;
-		if (r->side == 1 && r->dir.y < 0)
-			texX = PIX_SIZE - texX - 1;
-		double step = ((double) PIX_SIZE) / line_height;
-		double texPos = (start - WIN_HEIGHT / 2 + line_height / 2) * step;
-		for (int y = start; y < finish; y++)
-		{
-			int texY = (int)texPos & (PIX_SIZE - 1);
-			texPos += step;
-			char *color = game->i_north.address
-				+ (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
-			ft_mlx_pixel_put(&game->i_main_frame,
-					game->ray.x, y, *((unsigned int *) color));
-		}
+		ft_calculate_textures(r, game, pl);
 		++r->x;
 	}
 	ft_moves(game);
@@ -128,4 +96,25 @@ static void	calculate_hit(t_ray *r, t_map *map)
 	else
 		r->perp_wall_dist = (r->side_dist.y - r->delta_dist.y);
 	return ;
+}
+
+static void	ft_calculate_textures(t_ray *r, t_game *game, t_player *pl)
+{
+	static int			start = 0;
+	static int			finish = 0;
+	static double		wall_x = 0;
+
+	game->line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
+	start = -game->line_height / 2 + WIN_HEIGHT / 2;
+	if (start < 0)
+		start = 0;
+	finish = game->line_height / 2 + WIN_HEIGHT / 2;
+	if (finish >= WIN_HEIGHT)
+		finish = WIN_HEIGHT - 1;
+	if (r->side == 0)
+		wall_x = pl->pos.y + r->perp_wall_dist * r->dir.y;
+	else
+		wall_x = pl->pos.x + r->perp_wall_dist * r->dir.x;
+	wall_x -= floor(wall_x);
+	ft_draw_textures(r, start, finish, game, wall_x);
 }

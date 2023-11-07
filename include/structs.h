@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 21:03:05 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:02:07 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_game
 	void				*mlx_window;
 	int					win_width;
 	int					win_height;
+	int					line_height;
 	t_map				*map;
 	t_player			player;
 	t_color				f_color;

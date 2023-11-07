@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 20:20:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 23:50:35 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ static void	minimap_background(t_imgdata *img, t_game *game)
 
 static void	minimap_player(t_imgdata *img, t_game *game)
 {
-	int	x[2] = {0, 0};
-	int	y[2] = {0, 0};
+	static int	x[2] = {0, 0};
+	static int	y[2] = {0, 0};
 
 	x[START] = game->player.pos.x;
 	x[START] *= PIX_SIZE / 3;
 	x[START] -= PIX_SIZE / 2;
 	y[START] = game->player.pos.y;
 	y[START] *= PIX_SIZE / 3;
-	x[START] -= 2;
 	y[START] -= 2;
 	x[END] = 4;
 	y[END] = 4;

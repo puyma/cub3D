@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 20:47:47 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/06 22:11:22 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int	main(int argc, char **argv)
 	game.mlx = NULL;
 	game.mlx_window = NULL;
 	game.map = NULL;
+	game.key.up_w = 0;
+	game.key.down_s = 0;
+	game.key.left_a = 0;
+	game.key.right_d = 0;
+	game.key.sprint = 0;
 	game.map_filename_ptr = argv[1];
 	if (load_game(&game) == EXIT_FAILURE)
 		return (EXIT_FAILURE + 3);
