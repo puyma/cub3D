@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:02:30 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 12:30:09 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:48:50 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ static int	ft_check_down(t_map *map);
 int			ft_check_left(t_map *map);
 int			ft_check_right(t_map *map);
 int			ft_check_range(int **board, int type, size_t pos, int range[2]);
+static int	ft_check_n_players(t_map *map);
 
 int	ft_check_map(t_map *map)
 {
+	if (ft_check_n_players(map) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	if (ft_check_left(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (ft_check_right(map) == EXIT_FAILURE)
@@ -112,5 +115,32 @@ static int	ft_check_down(t_map *map)
 		++x;
 		range[PREV] = range[CURRENT];
 	}
+	return (EXIT_SUCCESS);
+}
+
+static int	ft_check_n_players(t_map *map)
+{
+	int	x;
+	int	y;
+	int	counter;
+
+	counter = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (ft_strchr("NSEW", map->board[x][y]) != NULL
+				&& map->board[x][y] != 0)
+			{
+				++counter;
+			}
+			++x;
+		}
+		++y;
+	}
+	if (counter != 1)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

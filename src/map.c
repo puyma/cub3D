@@ -6,13 +6,13 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 19:53:05 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:43:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void		ft_set_player(t_game *game);
+static int		ft_set_player(t_game *game);
 static void		ft_set_view_direction(t_player *player, char c);
 
 /*
@@ -54,11 +54,11 @@ int	ft_load_map(t_list *file, t_game *game)
 	if (exit_status == EXIT_FAILURE)
 		ft_clean(game);
 	else
-		ft_set_player(game);
+		exit_status = ft_set_player(game);
 	return (exit_status);
 }
 
-static void	ft_set_player(t_game *game)
+static int	ft_set_player(t_game *game)
 {
 	int	x;
 	int	y;
@@ -77,12 +77,14 @@ static void	ft_set_player(t_game *game)
 				game->player.dir.x = 0;
 				game->player.dir.y = 0;
 				ft_set_view_direction(&game->player, game->map->board[x][y]);
-				return ;
+				return (EXIT_SUCCESS);
 			}
 			++x;
 		}
 		++y;
 	}
+	return (ft_fprintf(stderr, "%s: %s: no player found\n", EXEC_NAME,
+				game->map_filename_ptr), EXIT_FAILURE);
 }
 
 static void	ft_set_view_direction(t_player *player, char c)
