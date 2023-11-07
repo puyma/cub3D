@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 16:13:25 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:23:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,17 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		for (int y = start; y < finish; y++)
 		{
 			int texY = (int)texPos & (PIX_SIZE - 1);
+			//printf("%d %d\n", texX, texY);
 			texPos += step;
-			char *color = game->i_north.address
-				+ (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
+			char	*color;
+			if (r->side == 0 && r->dir.x < 0)
+				color = game->i_north.address + (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
+			else if (r->side == 0 && r->dir.x > 0)
+				color = game->i_south.address + (texY * game->i_south.line_length + texX * (game->i_south.bits_per_pixel / 8));
+			else if (r->side == 1 && r->dir.y > 0)
+				color = game->i_east.address + (texY * game->i_east.line_length + texX * (game->i_east.bits_per_pixel / 8));
+			else
+				color = game->i_west.address + (texY * game->i_west.line_length + texX * (game->i_west.bits_per_pixel / 8));
 			(void) texX;
 			(void) texY;
 			ft_mlx_pixel_put(&game->i_main_frame,
