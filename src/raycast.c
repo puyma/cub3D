@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 22:15:53 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 05:27:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 	while (r->x < WIN_WIDTH)
 	{
 		ft_init_ray(r, pl);
-		ft_recalculate_ray(r, pl);
 		calculate_hit(r, game->map);
 		ft_calculate_textures(r, game, pl);
 		++r->x;
@@ -45,6 +44,7 @@ static void	ft_init_ray(t_ray *r, t_player *pl)
 	r->delta_dist.x = fabs(1 / r->dir.x);
 	r->delta_dist.y = fabs(1 / r->dir.y);
 	r->hit = 0;
+	ft_recalculate_ray(r, pl);
 }
 
 static void	ft_recalculate_ray(t_ray *r, t_player *pl)
