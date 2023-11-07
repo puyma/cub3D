@@ -6,16 +6,15 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 14:03:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:54:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static void	ft_frontal_moves(t_player *pl, t_game *game);
-
-static void	ft_lateral_moves(double old_dir_x, double old_plane_x, 
-								t_player *pl, t_key *key);
+static void	ft_lateral_moves(double old_dir_x, double old_plane_x,
+				t_player *pl, t_key *key);
 
 int	ft_keydown(int k, t_game *game)
 {
@@ -34,7 +33,6 @@ int	ft_keydown(int k, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-
 int	ft_keyup(int k, t_game *game)
 {
 	if (k == KEY_W || k == KEY_UP)
@@ -49,6 +47,7 @@ int	ft_keyup(int k, t_game *game)
 		game->key.sprint = 0;
 	return (EXIT_SUCCESS);
 }
+
 void	ft_moves(t_game *game)
 {
 	static double		old_dir_x = 0;
@@ -78,39 +77,51 @@ static void	ft_frontal_moves(t_player *pl, t_game *game)
 {
 	if (game->key.up_w == 1)
 	{
-		if (game->map->board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)][(int)pl->pos.y] != '1')
+		if (game->map->board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)]
+				[(int)pl->pos.y] != '1')
 			pl->pos.x += pl->dir.x * pl->move_speed;
-		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y + pl->dir.y * pl->move_speed)] != '1')
+		if (game->map->board[(int)pl->pos.x]
+			[(int)(pl->pos.y + pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y += pl->dir.y * pl->move_speed;
 	}
 	if (game->key.down_s == 1)
 	{
-		if (game->map->board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)][(int)pl->pos.y] != '1')
+		if (game->map->board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)]
+				[(int)pl->pos.y] != '1')
 			pl->pos.x -= pl->dir.x * pl->move_speed;
-		if (game->map->board[(int)pl->pos.x][(int)(pl->pos.y - pl->dir.y * pl->move_speed)] != '1')
+		if (game->map->board[(int)pl->pos.x]
+			[(int)(pl->pos.y - pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y -= pl->dir.y * pl->move_speed;
 	}
 }
 
-static void	ft_lateral_moves(double old_dir_x, double old_plane_x, 
+static void	ft_lateral_moves(double old_dir_x, double old_plane_x,
 								t_player *pl, t_key *key)
 {
 	if (key->left_a == 1)
 	{
 		old_dir_x = pl->dir.x;
-		pl->dir.x = pl->dir.x * cos(pl->rot_speed) - pl->dir.y * sin(pl->rot_speed);
-		pl->dir.y = old_dir_x * sin(pl->rot_speed) + pl->dir.y * cos(pl->rot_speed);
+		pl->dir.x = pl->dir.x * cos(pl->rot_speed)
+			- pl->dir.y * sin(pl->rot_speed);
+		pl->dir.y = old_dir_x * sin(pl->rot_speed)
+			+ pl->dir.y * cos(pl->rot_speed);
 		old_plane_x = pl->plane.x;
-		pl->plane.x = pl->plane.x * cos(pl->rot_speed) - pl->plane.y * sin(pl->rot_speed);
-		pl->plane.y = old_plane_x * sin(pl->rot_speed) + pl->plane.y * cos(pl->rot_speed);
+		pl->plane.x = pl->plane.x * cos(pl->rot_speed)
+			- pl->plane.y * sin(pl->rot_speed);
+		pl->plane.y = old_plane_x * sin(pl->rot_speed)
+			+ pl->plane.y * cos(pl->rot_speed);
 	}
 	if (key->right_d == 1)
 	{
 		old_dir_x = pl->dir.x;
-		pl->dir.x = pl->dir.x * cos(-pl->rot_speed) - pl->dir.y * sin(-pl->rot_speed);
-		pl->dir.y = old_dir_x * sin(-pl->rot_speed) + pl->dir.y * cos(-pl->rot_speed);
+		pl->dir.x = pl->dir.x * cos(-pl->rot_speed)
+			- pl->dir.y * sin(-pl->rot_speed);
+		pl->dir.y = old_dir_x * sin(-pl->rot_speed)
+			+ pl->dir.y * cos(-pl->rot_speed);
 		old_plane_x = pl->plane.x;
-		pl->plane.x = pl->plane.x * cos(-pl->rot_speed) - pl->plane.y * sin(-pl->rot_speed);
-		pl->plane.y = old_plane_x * sin(-pl->rot_speed) + pl->plane.y * cos(-pl->rot_speed);
+		pl->plane.x = pl->plane.x * cos(-pl->rot_speed)
+			- pl->plane.y * sin(-pl->rot_speed);
+		pl->plane.y = old_plane_x * sin(-pl->rot_speed)
+			+ pl->plane.y * cos(-pl->rot_speed);
 	}
 }
