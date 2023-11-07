@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 17:43:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:50:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int	ft_set_player(t_game *game)
 		++y;
 	}
 	return (ft_fprintf(stderr, "%s: %s: no player found\n", EXEC_NAME,
-				game->map_filename_ptr), EXIT_FAILURE);
+			game->map_filename_ptr), EXIT_FAILURE);
 }
 
 static void	ft_set_view_direction(t_player *player, char c)
