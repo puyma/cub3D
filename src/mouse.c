@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 12:01:56 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:05:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,16 @@ int	ft_mouse(int x, int y, t_game *game)
 
 	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
 		return (mlx_mouse_show(), EXIT_SUCCESS);
-	//mlx_mouse_hide();
 	x -= WIN_WIDTH / 2;
 	y -= WIN_HEIGHT / 2;
+	(void) game;
+	(void) old;
+	(void) current;
+	(void) half_width;
+	(void) counter;
+	return (EXIT_SUCCESS);
+}
+
 	/*
 	printf("old: %f\n", old);
 	current = x / half_width;
@@ -41,7 +48,3 @@ int	ft_mouse(int x, int y, t_game *game)
 	game->player.dir.x = cos(angle) - sin(angle);
 	game->player.dir.y = cos(angle) + sin(angle);
 	*/
-	(void) game; (void) old; (void) current; (void) half_width;
-	(void) counter;
-	return (EXIT_SUCCESS);
-}
