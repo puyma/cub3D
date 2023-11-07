@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 16:05:30 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:30:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,11 @@
 # define WIN_NAME		"cub3D"
 // Field Of View
 
-# define FOV				60
-
 # define N_IMAGES		4
 # define IMG_PREFIX		"src/assets/"
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
-# define C_COLLECTIBLE	'C'
-# define C_EXIT			'E'
-# define C_PLAYER		'P'
-# define C_ENEMY			'N'
 # define C_ALLOWED		"NSEWFC"
 
 // Key codes (MLX)
