@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 12:23:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:11:53 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,8 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 			int texY = (int)texPos & (PIX_SIZE - 1);
 			//printf("%d %d\n", texX, texY);
 			texPos += step;
-			char	*color;
-			if (r->side == 0 && r->dir.x < 0)
-				color = game->i_north.address + (texY * game->i_north.line_length + texX * (game->i_north.bits_per_pixel / 8));
-			else if (r->side == 0 && r->dir.x > 0)
-				color = game->i_south.address + (texY * game->i_south.line_length + texX * (game->i_south.bits_per_pixel / 8));
-			else if (r->side == 1 && r->dir.y > 0)
-				color = game->i_east.address + (texY * game->i_east.line_length + texX * (game->i_east.bits_per_pixel / 8));
-			else
-				color = game->i_west.address + (texY * game->i_west.line_length + texX * (game->i_west.bits_per_pixel / 8));
-			(void) texX;
-			(void) texY;
-			ft_mlx_pixel_put(&game->i_main_frame,
-					game->ray.x, y, *((unsigned int *) color));
+			ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, y,
+					get_texture_color(game, ));
 		}
 		++r->x;
 	}
@@ -137,4 +126,24 @@ static void	calculate_hit(t_ray *r, t_map *map)
 	else
 		r->perp_wall_dist = (r->side_dist.y - r->delta_dist.y);
 	return ;
+}
+
+static unsigned int	get_texture_color(t_game *game, int tex_x, int tex_y)
+{
+	char		*color;
+	t_imgdata	*i;
+	t_ray		*r;
+
+	r = game->ray;
+	if (r->side == 0 && r->dir.x < 0)
+		i = game->i_north;
+	else if (r->side == 0 && r->dir.x > 0)
+		i = game->i_south;
+	else if (r->side == 1 && r->dir.y > 0)
+		i = game->i_east;
+	else
+		i = game->i_west;
+	color = i.address 
+		+ (texY * i.line_length + texX * (i.bits_per_pixel / 8));
+	return (*(unsigned int *) color);
 }
