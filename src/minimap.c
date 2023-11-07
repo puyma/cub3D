@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 15:25:05 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:35:07 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	minimap_player(t_imgdata *img, t_game *game)
 	x[START] -= PIX_SIZE / 2;
 	y[START] = game->player.pos.y;
 	y[START] *= PIX_SIZE / 3;
-	y[START] -= 2;
+	y[START] -= PIX_SIZE / 2;
 	x[END] = 4;
 	y[END] = 4;
 	ft_draw_quadrangle_coordinates(img, x, y, 0x00FF0000);
