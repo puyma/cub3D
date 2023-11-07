@@ -2,9 +2,9 @@
 
 #	Path to north, south, west and east textures
 NO	redbrick
-SO	wall
-WE	floor
-EA	floor
+SO	wood
+WE	purplestone
+EA	greystone
 
 #	Floor and ceiling's color
 C	22,22,22

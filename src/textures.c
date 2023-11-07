@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:02:59 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:09:57 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,16 @@ static int	ft_load_texture(t_imgdata *img, t_game *game)
 			&img->width, &img->height);
 	if (img->img == NULL)
 	{
-		ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
-			img->image_file, strerror(errno));
+		ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME, path, strerror(errno));
 		return (free(path), EXIT_FAILURE);
 	}
 	img->address = mlx_get_data_addr(img->img,
 			&img->bits_per_pixel, &img->line_length, &img->endian);
+	if (img->width != PIX_SIZE && img->height != PIX_SIZE)
+	{
+		ft_fprintf(stderr, "%s: %s: invalid image size\n", EXEC_NAME, path);
+		return (free(path), EXIT_FAILURE);
+	}
 	return (free(path), EXIT_SUCCESS);
 }
 
