@@ -6,16 +6,16 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 12:48:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:49:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static void	keycode_side_left(t_player *pl, t_game *game,
-		double *old_dir_x, double *old_plane_x);
+				double *old_dir_x, double *old_plane_x);
 static void	keycode_side_right(t_player *pl, t_game *game,
-		double *old_dir_x, double *old_plane_x);
+				double *old_dir_x, double *old_plane_x);
 static void	keycode_up(t_player *pl, t_game *game);
 static void	keycode_down(t_player *pl, t_game *game);
 
