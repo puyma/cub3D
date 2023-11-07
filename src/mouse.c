@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:45:49 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:57:49 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	ft_mouse(int x, int y, t_game *game)
 {
-	const static double	half_width = WIN_WIDTH / 2;
-	static double		old_mouse_dir = 0;
-	static double		current_mouse_dir = 0;
-	static double		diff = 0;
+	double			half_width;
+	static double	old_mouse_dir = 0;
+	static double	current_mouse_dir = 0;
+	static double	diff = 0;
 
-	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
-		return (mlx_mouse_show(), EXIT_SUCCESS);
-	x -= WIN_WIDTH / 2;
+	half_width = game->win_width / 2;
+	if (x < 0 || y < 0 || x > game->win_width || y > game->win_height)
+		return (EXIT_SUCCESS);
+	x -= half_width;
 	(void)y;
 	old_mouse_dir = current_mouse_dir;
 	current_mouse_dir = x / half_width;

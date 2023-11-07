@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:46:05 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:26:59 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* WIP:
  * https://lodev.org/cgtutor/raycasting.html */
 
-static void		ft_init_ray(t_ray *r, t_player *pl);
+static void		ft_init_ray(t_ray *r, t_player *pl, t_game *game);
 static void		ft_recalculate_ray(t_ray *r, t_player *pl);
 static void		calculate_hit(t_ray *r, t_map *map);
 static unsigned	get_texture_color(t_game *game, int tex_x, int tex_y);
@@ -27,18 +27,18 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 	static int			line_height = 0;
 
 	r->x = 0;
-	while (r->x < WIN_WIDTH)
+	while (r->x < game->win_width)
 	{
-		ft_init_ray(r, pl);
+		ft_init_ray(r, pl, game);
 		ft_recalculate_ray(r, pl);
 		calculate_hit(r, game->map);
-		line_height = (int)(WIN_HEIGHT / r->perp_wall_dist);
-		start = -line_height / 2 + WIN_HEIGHT / 2;
+		line_height = (int)(game->win_height / r->perp_wall_dist);
+		start = -line_height / 2 + game->win_height / 2;
 		if (start < 0)
 			start = 0;
-		finish = line_height / 2 + WIN_HEIGHT / 2;
-		if (finish >= WIN_HEIGHT)
-			finish = WIN_HEIGHT - 1;
+		finish = line_height / 2 + game->win_height / 2;
+		if (finish >= game->win_height)
+			finish = game->win_height - 1;
 		double wallX;
 		if (r->side == 0)
 			wallX = pl->pos.y + r->perp_wall_dist * r->dir.y;
@@ -52,7 +52,7 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		if (r->side == 1 && r->dir.y < 0)
 			tex_x = PIX_SIZE - tex_x - 1;
 		double step = ((double) PIX_SIZE) / line_height;
-		double texPos = (start - WIN_HEIGHT / 2 + line_height / 2) * step;
+		double texPos = (start - game->win_height / 2 + line_height / 2) * step;
 		for (int y = start; y < finish; y++)
 		{
 			int tex_y = (int)texPos & (PIX_SIZE - 1);
@@ -67,9 +67,9 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 	(void) img;
 }
 
-static void	ft_init_ray(t_ray *r, t_player *pl)
+static void	ft_init_ray(t_ray *r, t_player *pl, t_game *game)
 {
-	r->camera_x = 2 * r->x / (double) WIN_WIDTH - 1;
+	r->camera_x = 2 * r->x / (double) game->win_width - 1;
 	r->dir.x = pl->dir.x + pl->plane.x * r->camera_x;
 	r->dir.y = pl->dir.y + pl->plane.y * r->camera_x;
 	r->map.intx = (int)(pl->pos.x);

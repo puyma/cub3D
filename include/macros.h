@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:55:14 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:30:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define ON_KEYUP		3
 # define ON_MOUSEMOVE	6
 # define ON_DESTROY		17
+# define ON_RESIZE		9
 
 // Minimap settings
 

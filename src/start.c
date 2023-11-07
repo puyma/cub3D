@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:14:29 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:30:27 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ static int	start_game(t_game *game)
 	mlx_hook(game->mlx_window, ON_KEYDOWN, 0, &ft_keydown, (void *) game);
 	mlx_hook(game->mlx_window, ON_KEYUP, 0, &ft_keyup, (void *) game);
 	mlx_hook(game->mlx_window, ON_MOUSEMOVE, 0, &ft_mouse, (void *) game);
-	img->img = mlx_new_image(game->mlx, WIN_WIDTH, WIN_HEIGHT);
+	mlx_hook(game->mlx_window, ON_RESIZE, 0, &ft_resize_win, (void *)game);
+	img->img = mlx_new_image(game->mlx, game->win_width, game->win_height);
 	img->address = mlx_get_data_addr(img->img, &(img->bits_per_pixel),
 			&(img->line_length), &(img->endian));
 	mlx_loop_hook(game->mlx, &ft_render, (void *) game);

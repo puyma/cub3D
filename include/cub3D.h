@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 18:46:14 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:28:26 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ void					ft_draw_quadrangle_coordinates_minimap(t_imgdata *i,
 							int color, t_map *map);
 void					background(t_imgdata *img, t_game *game);
 void					minimap(t_imgdata *img, t_game *game);
-void					ft_add_handheld(t_imgdata *img, t_game *game);
+int						ft_resize_win(t_game *game);
 void					ft_draw_textures(t_ray *r, int y, int finish, 
 							t_game *game, double wall_x);
 void					ft_moves(t_game *game);
