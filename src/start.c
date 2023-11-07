@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 22:11:22 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:14:29 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int	start_game(t_game *game)
 	img->address = mlx_get_data_addr(img->img, &(img->bits_per_pixel),
 			&(img->line_length), &(img->endian));
 	mlx_loop_hook(game->mlx, &ft_render, (void *) game);
+	mlx_mouse_hide();
 	mlx_do_key_autorepeaton(game->mlx);
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);

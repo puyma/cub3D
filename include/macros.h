@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 21:02:54 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:55:14 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,16 @@
 # define CEILING		"ceiling.xpm"
 # define PIX_SIZE		64
 # define GRID_SIZE		64
-# define WIN_WIDTH		1080
-# define WIN_HEIGHT		720
+# define WIN_HEIGHT		1160
+# define WIN_WIDTH		2450
 # define WIN_NAME		"cub3D"
 // Field Of View
-
-# define FOV				60
 
 # define N_IMAGES		4
 # define IMG_PREFIX		"src/assets/"
 
 # define C_EMPTY_SPACE	'0'
 # define C_WALL			'1'
-# define C_COLLECTIBLE	'C'
-# define C_EXIT			'E'
-# define C_PLAYER		'P'
-# define C_ENEMY			'N'
 # define C_ALLOWED		"NSEWFC"
 
 // Key codes (MLX)

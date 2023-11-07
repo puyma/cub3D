@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 22:39:52 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:46:14 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -65,6 +65,8 @@ void					ft_add_handheld(t_imgdata *img, t_game *game);
 void					ft_draw_textures(t_ray *r, int y, int finish, 
 							t_game *game, double wall_x);
 void					ft_moves(t_game *game);
+void 					ft_right(t_player *pl);
+void 					ft_left(t_player *pl);
 
 //						array utils
 int						ft_arrlen(char **array);
