@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:05:05 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 16:36:24 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:28:42 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	ft_set_rgb_color(char **color_values, t_color *color)
 		|| ft_set_single_color(color_values[1], &color->green) == EXIT_FAILURE
 		|| ft_set_single_color(color_values[2], &color->blue) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	color->argb = (*(int *)(unsigned char [4]){color->blue, color->green,
-			color->red, color->alpha});
+	color->argb = (*(int *)(unsigned char [3]){color->blue, color->green,
+			color->red});
 	return (EXIT_SUCCESS);
 }
 

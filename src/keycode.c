@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 21:28:51 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:03:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ft_moves(t_game *game)
 
 	pl = &game->player;
 	key = &game->key;
-	pl->move_speed = 0.05;
-	pl->rot_speed = 0.05;
+	pl->move_speed = 0.06;
+	pl->rot_speed = 0.06;
 	if (game->key.sprint == 1)
 	{
 		pl->move_speed = 0.09;
@@ -67,8 +67,8 @@ void	ft_moves(t_game *game)
 	}
 	if (game->key.sprint == 0)
 	{
-		pl->move_speed = 0.05;
-		pl->rot_speed = 0.05;
+		pl->move_speed = 0.06;
+		pl->rot_speed = 0.06;
 	}
 	ft_frontal_moves(pl, game);
 	ft_lateral_moves(old_dir_x, old_plane_x, pl, key);

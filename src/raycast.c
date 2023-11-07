@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 13:22:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:53:49 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		if (r->side == 1 && r->dir.y < 0)
 			tex_x = PIX_SIZE - tex_x - 1;
 		double step = ((double) PIX_SIZE) / line_height;
-		double texPos = (start - WIN_HEIGHT / 2 + line_height) * step;
+		double texPos = (start - WIN_HEIGHT / 2 + line_height / 2) * step;
 		for (int y = start; y < finish; y++)
 		{
 			int tex_y = (int)texPos & (PIX_SIZE - 1);
@@ -63,6 +63,7 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		}
 		++r->x;
 	}
+	ft_moves(game);
 	(void) img;
 }
 
