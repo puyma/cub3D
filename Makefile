@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/03 13:04:44 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/07 12:28:51 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/map.c \
 				$(SRC_DIR)/map_board.c \
 				$(SRC_DIR)/map_check.c \
+				$(SRC_DIR)/map_check_sides.c \
 				$(SRC_DIR)/map_info.c \
 				$(SRC_DIR)/map_segments.c \
 				$(SRC_DIR)/minimap.c \
