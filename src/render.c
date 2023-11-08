@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:27:25 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:20:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_render(t_game *game)
 	background(i, game);
 	raycast_loop(game, &game->player, &game->ray, i);
 	minimap(&game->i_main_frame, game);
-	// ft_add_handheld(&game->i_main_frame, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	return (EXIT_SUCCESS);
 }
