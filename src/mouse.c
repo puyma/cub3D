@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 15:44:06 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:13:15 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,26 @@ int	ft_mouse(int x, int y, t_game *game)
 	static double	old_mouse_dir = 0;
 	static double	current_mouse_dir = 0;
 	static double	diff = 0;
+	static int		moved = 0;
 
 	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
 	{
 		ft_move_mouse(game, x, y);
+		moved = 1;
 		return (EXIT_SUCCESS);
 	}
-	x -= half_width;
 	old_mouse_dir = current_mouse_dir;
+	x -= half_width;
+	if (moved == 1)
+		return (EXIT_SUCCESS, moved = 0);
 	current_mouse_dir = x / half_width;
 	diff = current_mouse_dir - old_mouse_dir;
 	if (diff < 0)
-		ft_left(&game->player);
+		game->key.mouse = -1;
 	else if (diff > 0)
-		ft_right(&game->player);
+		game->key.mouse = 1;
+	else
+		game->key.mouse = 0;
 	return (EXIT_SUCCESS);
 }
 
