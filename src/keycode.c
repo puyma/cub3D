@@ -6,15 +6,14 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 15:54:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/07 21:16:21 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static void	ft_frontal_moves(t_player *pl, t_game *game);
-static void	ft_lateral_moves(double old_dir_x, double old_plane_x,
-				t_player *pl, t_key *key);
+static void	ft_lateral_moves(t_player *pl, t_game *game);
 
 int	ft_keydown(int k, t_game *game)
 {
@@ -50,27 +49,19 @@ int	ft_keyup(int k, t_game *game)
 
 void	ft_moves(t_game *game)
 {
-	static double		old_dir_x = 0;
-	static double		old_plane_x = 0;
 	static t_player		*pl = NULL;
 	static t_key		*key = NULL;
 
 	pl = &game->player;
 	key = &game->key;
 	pl->move_speed = 0.06;
-	pl->rot_speed = 0.06;
+	pl->rot_speed = 0.04;
 	if (game->key.sprint == 1)
-	{
 		pl->move_speed = 0.09;
-		pl->rot_speed = 0.09;
-	}
 	if (game->key.sprint == 0)
-	{
 		pl->move_speed = 0.06;
-		pl->rot_speed = 0.06;
-	}
 	ft_frontal_moves(pl, game);
-	ft_lateral_moves(old_dir_x, old_plane_x, pl, key);
+	ft_lateral_moves(pl, game);
 }
 
 static void	ft_frontal_moves(t_player *pl, t_game *game)
@@ -95,33 +86,10 @@ static void	ft_frontal_moves(t_player *pl, t_game *game)
 	}
 }
 
-static void	ft_lateral_moves(double old_dir_x, double old_plane_x,
-								t_player *pl, t_key *key)
+static void	ft_lateral_moves(t_player *pl, t_game *game)
 {
-	if (key->left_a == 1)
-	{
-		old_dir_x = pl->dir.x;
-		pl->dir.x = pl->dir.x * cos(pl->rot_speed)
-			- pl->dir.y * sin(pl->rot_speed);
-		pl->dir.y = old_dir_x * sin(pl->rot_speed)
-			+ pl->dir.y * cos(pl->rot_speed);
-		old_plane_x = pl->plane.x;
-		pl->plane.x = pl->plane.x * cos(pl->rot_speed)
-			- pl->plane.y * sin(pl->rot_speed);
-		pl->plane.y = old_plane_x * sin(pl->rot_speed)
-			+ pl->plane.y * cos(pl->rot_speed);
-	}
-	if (key->right_d == 1)
-	{
-		old_dir_x = pl->dir.x;
-		pl->dir.x = pl->dir.x * cos(-pl->rot_speed)
-			- pl->dir.y * sin(-pl->rot_speed);
-		pl->dir.y = old_dir_x * sin(-pl->rot_speed)
-			+ pl->dir.y * cos(-pl->rot_speed);
-		old_plane_x = pl->plane.x;
-		pl->plane.x = pl->plane.x * cos(-pl->rot_speed)
-			- pl->plane.y * sin(-pl->rot_speed);
-		pl->plane.y = old_plane_x * sin(-pl->rot_speed)
-			+ pl->plane.y * cos(-pl->rot_speed);
-	}
+	if (game->key.left_a == 1)
+		ft_left(pl);
+	if (game->key.right_d == 1)
+		ft_right(pl);
 }

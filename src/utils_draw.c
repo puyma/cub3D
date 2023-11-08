@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 23:55:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:52:32 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_draw_textures(t_ray *r, int start, int finish,
 
 	tex.intx = (int) (wall_x * (double) PIX_SIZE);
 	tex.y = ((double) PIX_SIZE) / game->line_height;
-	tex.x = (start - WIN_HEIGHT / 2 + game->line_height / 2) * tex.y;
+	tex.x = (start - game->win_height / 2 + game->line_height / 2) * tex.y;
 	if (r->side == 0 && r->dir.x > 0)
 		tex.intx = PIX_SIZE - tex.intx - 1;
 	if (r->side == 1 && r->dir.y < 0)

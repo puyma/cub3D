@@ -4,13 +4,16 @@
 # Fri Oct 13 10:52:25 2023                                                     #
 
 NO	greystone
-EA	floor
-WE	player
+EA	wood
+WE	pillar
+SO	barrel
 F	4,4, 90
 #	comment here
-SO	path_to_the_south_texture
 C	255,0,0	
 #	comment there
+
+
+
 
 #	MAP
 1111111
@@ -18,3 +21,6 @@ C	255,0,0
 1000011
 1000N1
 111111
+
+
+

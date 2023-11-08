@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/07 12:28:51 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/07 20:24:37 by jsebasti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
 				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/destroy.c \
-				$(SRC_DIR)/handheld.c \
+				$(SRC_DIR)/resize_win.c \
 				$(SRC_DIR)/keycode.c \
 				$(SRC_DIR)/map.c \
 				$(SRC_DIR)/map_board.c \

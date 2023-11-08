@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/06 22:02:07 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:24:57 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_key
 	int					left_a;
 	int					right_d;
 	int					sprint;
+	int					mouse_right;
+	int					mouse_left;
 }						t_key;
 
 typedef struct s_game
@@ -98,6 +100,7 @@ typedef struct s_game
 	t_imgdata			i_floor;
 	t_ray				ray;
 	t_key				key;
+	int					resize;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
 	int					tmp_info_cardinal_points[N_IMAGES];
