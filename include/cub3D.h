@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:28:26 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:48:53 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -62,8 +62,7 @@ void					ft_draw_quadrangle_coordinates_minimap(t_imgdata *i,
 void					background(t_imgdata *img, t_game *game);
 void					minimap(t_imgdata *img, t_game *game);
 int						ft_resize_win(t_game *game);
-void					ft_draw_textures(t_ray *r, int y, int finish, 
-							t_game *game, double wall_x);
+void					ft_textures_size(t_game *game, t_player *pl, t_ray *r);
 void					ft_moves(t_game *game);
 void 					ft_right(t_player *pl);
 void 					ft_left(t_player *pl);
@@ -73,6 +72,7 @@ int						ft_arrlen(char **array);
 
 //						color utils
 int						ft_set_rgb_color(char **color_values, t_color *color);
+unsigned int			get_texture_color(t_game *game, int tex_x, int tex_y);
 
 //						string utils
 int						ft_endswith(char *filename, char *ext);

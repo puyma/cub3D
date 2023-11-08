@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:26:59 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:57:09 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,49 +18,16 @@
 static void		ft_init_ray(t_ray *r, t_player *pl, t_game *game);
 static void		ft_recalculate_ray(t_ray *r, t_player *pl);
 static void		calculate_hit(t_ray *r, t_map *map);
-static unsigned	get_texture_color(t_game *game, int tex_x, int tex_y);
 
 void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 {
-	static int			start = 0;
-	static int			finish = 0;
-	static int			line_height = 0;
-
 	r->x = 0;
 	while (r->x < game->win_width)
 	{
 		ft_init_ray(r, pl, game);
 		ft_recalculate_ray(r, pl);
 		calculate_hit(r, game->map);
-		line_height = (int)(game->win_height / r->perp_wall_dist);
-		start = -line_height / 2 + game->win_height / 2;
-		if (start < 0)
-			start = 0;
-		finish = line_height / 2 + game->win_height / 2;
-		if (finish >= game->win_height)
-			finish = game->win_height - 1;
-		double wallX;
-		if (r->side == 0)
-			wallX = pl->pos.y + r->perp_wall_dist * r->dir.y;
-		else
-			wallX = pl->pos.x + r->perp_wall_dist * r->dir.x;
-		wallX -= floor((wallX));
-		
-		int tex_x = (int) (wallX * PIX_SIZE);
-		if (r->side == 0 && r->dir.x > 0)
-			tex_x = PIX_SIZE - tex_x - 1;
-		if (r->side == 1 && r->dir.y < 0)
-			tex_x = PIX_SIZE - tex_x - 1;
-		double step = ((double) PIX_SIZE) / line_height;
-		double texPos = (start - game->win_height / 2 + line_height / 2) * step;
-		for (int y = start; y < finish; y++)
-		{
-			int tex_y = (int)texPos & (PIX_SIZE - 1);
-			//printf("%d %d\n", tex_x, tex_y);
-			texPos += step;
-			ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, y,
-					get_texture_color(game, tex_x, tex_y));
-		}
+		ft_textures_size(game, pl, r);
 		++r->x;
 	}
 	ft_moves(game);
@@ -130,7 +97,7 @@ static void	calculate_hit(t_ray *r, t_map *map)
 	return ;
 }
 
-static unsigned int	get_texture_color(t_game *game, int tex_x, int tex_y)
+unsigned int	get_texture_color(t_game *game, int tex_x, int tex_y)
 {
 	char		*color;
 	t_imgdata	*i;
