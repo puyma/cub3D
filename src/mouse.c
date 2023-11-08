@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:57:49 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:46:16 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_mouse(int x, int y, t_game *game)
 	if (x < 0 || y < 0 || x > game->win_width || y > game->win_height)
 		return (EXIT_SUCCESS);
 	x -= half_width;
-	(void)y;
 	old_mouse_dir = current_mouse_dir;
 	current_mouse_dir = x / half_width;
 	diff = current_mouse_dir - old_mouse_dir;
