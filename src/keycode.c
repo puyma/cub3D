@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 21:16:21 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:56:41 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ static void	ft_frontal_moves(t_player *pl, t_game *game)
 
 static void	ft_lateral_moves(t_player *pl, t_game *game)
 {
-	if (game->key.left_a == 1)
+	if (game->key.left_a == 1 || game->key.mouse == -1)
 		ft_left(pl);
-	if (game->key.right_d == 1)
+	if (game->key.right_d == 1 || game->key.mouse == 1)
 		ft_right(pl);
 }
