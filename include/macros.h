@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:30:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:58:24 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define CEILING		"ceiling.xpm"
 # define PIX_SIZE		64
 # define GRID_SIZE		64
-# define WIN_HEIGHT		1160
-# define WIN_WIDTH		2450
+# define WIN_HEIGHT		720
+# define WIN_WIDTH		1080
 # define WIN_NAME		"cub3D"
 // Field Of View
 
