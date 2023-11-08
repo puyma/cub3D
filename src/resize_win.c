@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:06:05 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 20:28:19 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:21:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_resize_win(t_game *game)
 		mlx_clear_window(game->mlx, game->mlx_window);
 		mlx_destroy_window(game->mlx, game->mlx_window);
 		game->mlx_window = mlx_new_window(game->mlx,
-			game->win_width, game->win_height, EXEC_NAME);
+				game->win_width, game->win_height, EXEC_NAME);
 		game->resize = 1;
 	}
 	else if (game->resize == 1)
@@ -31,7 +31,7 @@ int	ft_resize_win(t_game *game)
 		mlx_clear_window(game->mlx, game->mlx_window);
 		mlx_destroy_window(game->mlx, game->mlx_window);
 		game->mlx_window = mlx_new_window(game->mlx,
-			game->win_width, game->win_height, EXEC_NAME);
+				game->win_width, game->win_height, EXEC_NAME);
 		game->resize = 0;
 	}
 	return (EXIT_SUCCESS);
