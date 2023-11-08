@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 11:18:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:02:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,31 @@ void	ft_ver_line(t_game *game, int start, int finish, int color)
 	{
 		ft_mlx_pixel_put(&game->i_main_frame, game->ray.x, start, color);
 		++start;
+	}
+}
+
+void	ft_draw_textures(t_ray *r, int start, int finish,
+			t_game *game, double wall_x)
+{
+	t_vector	tex;
+	static char	*color = NULL;
+
+	tex.intx = (int) (wall_x * (double) PIX_SIZE);
+	tex.y = ((double) PIX_SIZE) / game->line_height;
+	tex.x = (start - game->win_height / 2 + game->line_height / 2) * tex.y;
+	if (r->side == 0 && r->dir.x > 0)
+		tex.intx = PIX_SIZE - tex.intx - 1;
+	if (r->side == 1 && r->dir.y < 0)
+		tex.intx = PIX_SIZE - tex.intx - 1;
+	while (start < finish)
+	{
+		tex.inty = (int)tex.x & (PIX_SIZE - 1);
+		tex.x += tex.y;
+		color = \
+			game->i_north.address + (tex.inty * game->i_north.line_length \
+				+ tex.intx * (game->i_north.bits_per_pixel / 8));
+		ft_mlx_pixel_put(&game->i_main_frame,
+				game->ray.x, start, *((unsigned int *) color));
+		start++;
 	}
 }
