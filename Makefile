@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/09 17:26:50 by jsebasti         ###   ########.fr        #
+#    Updated: 2023/11/09 18:27:25 by jsebasti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,8 +81,6 @@ $(LIBFT) $(LIBMLX)::
 clean:
 	@rm -rf $(BUILD_DIR)
 	@echo "$(BUILD_DIR) deleted"
-	@make fclean -C $(LIBFT_DIR) --no-print-directory
-	@make clean -C $(LIBMLX_DIR) --no-print-directory
 
 fclean: clean
 	rm -f $(NAME)
