@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 17:20:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:17:53 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ typedef struct s_map
 
 typedef struct s_minimap
 {
+	int					color;
+	int					square_size;
+	int					width;
+	int					height;
 	int					board[4][3];
 }						t_minimap;
 
