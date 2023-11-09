@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 15:48:53 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:57:28 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -66,6 +66,7 @@ void					ft_textures_size(t_game *game, t_player *pl, t_ray *r);
 void					ft_moves(t_game *game);
 void 					ft_right(t_player *pl);
 void 					ft_left(t_player *pl);
+int						minimap_init(t_game *game);
 
 //						array utils
 int						ft_arrlen(char **array);

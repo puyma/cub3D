@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:51 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:18:19 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@
 # define ON_MOUSEMOVE	6
 # define ON_DESTROY		17
 # define ON_RESIZE		9
-
-// Minimap settings
-
-# define MINIMAP_COLOR	0x00c6c6c6
 
 # define START			0
 # define END			1

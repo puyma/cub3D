@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 15:48:29 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:56:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static int	start_game(t_game *game)
 	t_imgdata	*img;
 
 	img = &game->i_main_frame;
+	minimap_init(game);
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (EXIT_FAILURE);
