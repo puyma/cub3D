@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 18:09:47 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:54:46 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_key
 	int					right_d;
 	int					sprint;
 	int					mouse;
+	int					pause;
 }						t_key;
 
 typedef struct s_game

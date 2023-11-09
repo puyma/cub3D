@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 18:18:31 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:19:37 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ int	ft_keydown(int k, t_game *game)
 		game->key.right_d = 1;
 	if (k == KEY_SHIFT)
 		game->key.sprint = 1;
+	if (k == KEY_PAUSE && game->key.pause == 1)
+	{
+		game->key.pause = 0;
+		mlx_mouse_hide();
+		return (EXIT_SUCCESS);
+	}
+	if (k == KEY_PAUSE && game->key.pause == 0)
+	{
+		game->key.pause = 1;
+		mlx_mouse_show();
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -54,16 +65,20 @@ void	ft_moves(t_game *game)
 
 	pl = &game->player;
 	key = &game->key;
-	if (game->key.mouse != 0)
-		pl->rot_speed = 0.12;
-	else
-		pl->rot_speed = 0.06;
-	if (game->key.sprint == 1)
-		pl->move_speed = 0.1;
-	else
-		pl->move_speed = 0.06;
-	ft_frontal_moves(pl, game);
-	ft_lateral_moves(pl, game);
+
+	if (key->pause == 0)
+	{
+		if (game->key.mouse != 0)
+			pl->rot_speed = 0.12;
+		else
+			pl->rot_speed = 0.06;
+		if (game->key.sprint == 1)
+			pl->move_speed = 0.1;
+		else
+			pl->move_speed = 0.06;
+		ft_frontal_moves(pl, game);
+		ft_lateral_moves(pl, game);
+	}
 }
 
 static void	ft_frontal_moves(t_player *pl, t_game *game)
