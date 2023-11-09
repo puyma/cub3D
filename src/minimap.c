@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 16:39:40 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:46:37 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	minimap_background(t_imgdata *img, t_game *game);
 static void	minimap_fill_board(t_imgdata *img, t_game *game);
-static void	minimap_content(t_imgdata *img, t_game *game);
+static void	minimap_walls(t_imgdata *img, t_game *game);
+static void	minimap_player(t_imgdata *img, t_game *game);
 
 void	minimap(t_imgdata *img, t_game *game)
 {
@@ -27,7 +28,8 @@ void	minimap(t_imgdata *img, t_game *game)
 	y[END] = PIX_SIZE * 3;
 	minimap_background(img, game);
 	minimap_fill_board(img, game);
-	minimap_content(img, game);
+	minimap_walls(img, game);
+	minimap_player(img, game);
 }
 
 static void	minimap_background(t_imgdata *img, t_game *game)
@@ -57,7 +59,7 @@ static void	minimap_fill_board(t_imgdata *img, t_game *game)
 	game->minimap.board[2][1] = '0';
 	game->minimap.board[2][2] = '1';
 	
-	game->minimap.board[3][0] = 'P';
+	game->minimap.board[3][0] = '1';
 	game->minimap.board[3][1] = '1';
 	game->minimap.board[3][2] = '1';
 
@@ -65,7 +67,7 @@ static void	minimap_fill_board(t_imgdata *img, t_game *game)
 }
 
 #define SQUARE_SIZE 16
-static void	minimap_content(t_imgdata *img, t_game *game)
+static void	minimap_walls(t_imgdata *img, t_game *game)
 {
 	int xstart = PIX_SIZE / 3;
 	int ystart = xstart;
@@ -81,14 +83,12 @@ static void	minimap_content(t_imgdata *img, t_game *game)
 		y = 0;
 		while (y < 3)
 		{
-		int start[2] = {(x * SQUARE_SIZE) + xstart,
-			(x * SQUARE_SIZE) + SQUARE_SIZE + xstart};
-		int end[2] = {(y * SQUARE_SIZE) + ystart,
-			(y * SQUARE_SIZE) + SQUARE_SIZE + ystart};
-		if (game->minimap.board[x][y] == '1')
-			ft_draw_quadrangle_coordinates(img, start, end, 0x2222CC);
-		else if (game->minimap.board[x][y] == 'P')
-			ft_draw_quadrangle_coordinates(img, start, end, 0xFF0000);
+			int start[2] = {(x * SQUARE_SIZE) + xstart,
+				(x * SQUARE_SIZE) + SQUARE_SIZE + xstart};
+			int end[2] = {(y * SQUARE_SIZE) + ystart,
+				(y * SQUARE_SIZE) + SQUARE_SIZE + ystart};
+			if (game->minimap.board[x][y] == '1')
+				ft_draw_quadrangle_coordinates(img, start, end, 0x2222CC);
 			++y;
 		}
 		++x;
@@ -96,4 +96,20 @@ static void	minimap_content(t_imgdata *img, t_game *game)
 
 	(void) img;
 	(void) game;
+}
+
+static void	minimap_player(t_imgdata *img, t_game *game)
+{
+	int x = (int) game->player.pos.x;
+	x *= SQUARE_SIZE;
+	x += PIX_SIZE / 3;
+	int y = (int) game->player.pos.y;
+	y *= SQUARE_SIZE;
+	y += PIX_SIZE / 3;
+	printf("player: %d, %d\n", x, y);
+	(void) img;
+
+	int x_coord[2] = {x, x + SQUARE_SIZE};
+	int y_coord[2] = {y, y + SQUARE_SIZE};
+	ft_draw_quadrangle_coordinates(img, x_coord, y_coord, 0xFF0000);
 }
