@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 17:58:15 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:23:34 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # include "mlx.h"		// all the graphic related shit
 # include "libft.h"
 
-# include "_debug.h"
 # include "macros.h"
 # include "structs.h"
 

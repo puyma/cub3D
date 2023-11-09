@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:19:37 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:22:57 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_moves(t_game *game)
 
 	pl = &game->player;
 	key = &game->key;
-
 	if (key->pause == 0)
 	{
 		if (game->key.mouse != 0)
