@@ -6,9 +6,11 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:17:53 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:10:30 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "macros.h"
 
 typedef struct s_color
 {
@@ -18,6 +20,14 @@ typedef struct s_color
 	unsigned char		alpha;
 	int					argb;
 }						t_color;
+
+typedef struct s_vector
+{
+	double				x;
+	double				y;
+	int					intx;
+	int					inty;
+}						t_vector;
 
 typedef struct s_imgdata
 {
@@ -44,16 +54,10 @@ typedef struct s_minimap
 	int					square_size;
 	int					width;
 	int					height;
-	int					board[4][3];
+	int					trans_x;
+	int					trans_y;
+	t_imgdata			i;
 }						t_minimap;
-
-typedef struct s_vector
-{
-	double				x;
-	double				y;
-	int					intx;
-	int					inty;
-}						t_vector;
 
 typedef struct s_ray
 {

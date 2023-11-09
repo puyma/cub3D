@@ -1,15 +1,8 @@
 #	Path to north south west and east textures
-<<<<<<< HEAD
 NO	redbrick
 SO	redbrick
 WE	redbrick
 EA	redbrick
-=======
-NO	wood
-SO	greystone
-WE	barrel
-EA	eagle
->>>>>>> jsebasti
 
 #	Floor and ceiling's color
 C	22,22,22
