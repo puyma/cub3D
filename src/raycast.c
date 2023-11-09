@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 15:57:09 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:57:44 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		ft_init_ray(t_ray *r, t_player *pl, t_game *game);
 static void		ft_recalculate_ray(t_ray *r, t_player *pl);
 static void		calculate_hit(t_ray *r, t_map *map);
 
-void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
+void	raycast_loop(t_game *game, t_player *pl, t_ray *r)
 {
 	r->x = 0;
 	while (r->x < game->win_width)
@@ -31,7 +31,6 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r, t_imgdata *img)
 		++r->x;
 	}
 	ft_moves(game);
-	(void) img;
 }
 
 static void	ft_init_ray(t_ray *r, t_player *pl, t_game *game)
@@ -112,7 +111,7 @@ unsigned int	get_texture_color(t_game *game, int tex_x, int tex_y)
 		i = &game->i_east;
 	else
 		i = &game->i_west;
-	color = i->address 
+	color = i->address
 		+ (tex_y * i->line_length + tex_x * (i->bits_per_pixel / 8));
 	return (*(unsigned int *) color);
 }

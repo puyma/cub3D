@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:02:32 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:09:47 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_ray
 	int					hit;
 	int					side;
 	int					x;
+	double				wall_x;
 	t_vector			step;
 	t_vector			dir;
 	t_vector			delta_dist;
@@ -99,7 +100,7 @@ typedef struct s_game
 	t_imgdata			i_floor;
 	t_ray				ray;
 	t_key				key;
-	int					resize;
+	int					mouse;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
 	int					tmp_info_cardinal_points[N_IMAGES];

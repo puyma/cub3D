@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:08:03 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:06:16 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/08 18:20:19 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,14 @@ int	ft_mouse(int x, int y, t_game *game)
 	static double	old_mouse_dir = 0;
 	static double	current_mouse_dir = 0;
 	static double	diff = 0;
-	static int		moved = 0;
 
 	if (x < 0 || y < 0 || x > WIN_WIDTH || y > WIN_HEIGHT)
 	{
 		ft_move_mouse(game, x, y);
-		moved = 1;
 		return (EXIT_SUCCESS);
 	}
 	old_mouse_dir = current_mouse_dir;
 	x -= half_width;
-	if (moved == 1)
-		return (EXIT_SUCCESS, moved = 0);
 	current_mouse_dir = x / half_width;
 	diff = current_mouse_dir - old_mouse_dir;
 	if (diff < 0)
@@ -43,7 +39,7 @@ int	ft_mouse(int x, int y, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-void ft_left(t_player *pl)
+void	ft_left(t_player *pl)
 {
 	static double	old_dir_x = 0;
 	static double	old_plane_x = 0;
@@ -60,7 +56,7 @@ void ft_left(t_player *pl)
 		+ pl->plane.y * cos(pl->rot_speed);
 }
 
-void ft_right(t_player *pl)
+void	ft_right(t_player *pl)
 {
 	static double	old_dir_x = 0;
 	static double	old_plane_x = 0;
