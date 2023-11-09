@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:18:52 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:31:42 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	load_game(t_game *game);
 static int	start_game(t_game *game);
+static void	start_vars(t_game *game);
 
 int	main(int argc, char **argv)
 {
@@ -29,15 +30,7 @@ int	main(int argc, char **argv)
 	if (ft_endswith(argv[1], MAP_EXT) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s\n", EXEC_NAME,
 				"Invalid file extension"), EXIT_FAILURE + 2);
-	game.mlx = NULL;
-	game.mlx_window = NULL;
-	game.map = NULL;
-	game.key.up_w = 0;
-	game.key.down_s = 0;
-	game.key.left_a = 0;
-	game.key.right_d = 0;
-	game.key.sprint = 0;
-	game.key.pause = 0;
+	start_vars(&game);
 	game.map_filename_ptr = argv[1];
 	if (load_game(&game) == EXIT_FAILURE)
 		return (EXIT_FAILURE + 3);
@@ -90,4 +83,17 @@ static int	start_game(t_game *game)
 	mlx_do_key_autorepeaton(game->mlx);
 	mlx_loop(game->mlx);
 	return (EXIT_SUCCESS);
+}
+
+static void	start_vars(t_game *game)
+{
+	game->mlx = NULL;
+	game->mlx_window = NULL;
+	game->map = NULL;
+	game->key.up_w = 0;
+	game->key.down_s = 0;
+	game->key.left_a = 0;
+	game->key.right_d = 0;
+	game->key.sprint = 0;
+	game->key.pause = 0;
 }
