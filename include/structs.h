@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:11:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:20:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ typedef struct s_map
 	int					height;
 	int					**board;
 }						t_map;
+
+typedef struct s_minimap
+{
+	int					board[4][3];
+}						t_minimap;
 
 typedef struct s_vector
 {
@@ -88,6 +93,7 @@ typedef struct s_game
 	int					win_height;
 	int					line_height;
 	t_map				*map;
+	t_minimap			minimap;
 	t_player			player;
 	t_color				f_color;
 	t_color				c_color;
