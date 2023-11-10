@@ -26,19 +26,3 @@ void	draw_quadrangle(t_imgdata *img, t_quadrangle *quad, int color)
 		++y;
 	}
 }
-
-void	ft_draw_quadrangle_coordinates(t_imgdata *i, int coord_x[2],
-		int coord_y[2], int color)
-{
-	static int	x;
-	static int	y;
-
-	y = coord_y[START];
-	while (y < coord_y[END])
-	{
-		x = coord_x[START];
-		while (x < coord_x[END])
-			ft_mlx_pixel_put(i, x++, y, color);
-		++y;
-	}
-}
