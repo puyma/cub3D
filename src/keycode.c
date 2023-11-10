@@ -50,10 +50,8 @@ int	ft_keyup(int k, t_game *game)
 void	ft_moves(t_game *game)
 {
 	static t_player		*pl = NULL;
-	static t_key		*key = NULL;
 
 	pl = &game->player;
-	key = &game->key;
 	pl->move_speed = 0.06;
 	pl->rot_speed = 0.04;
 	if (game->key.sprint == 1)
