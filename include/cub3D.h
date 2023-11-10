@@ -55,13 +55,11 @@ void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
 void					ft_ver_line(t_game *game, int start,
 							int finish, int color);
 void					background(t_imgdata *img, t_game *game);
-void					minimap(t_imgdata *img, t_game *game);
 int						ft_resize_win(t_game *game);
 void					ft_textures_size(t_game *game, t_player *pl, t_ray *r);
 void					ft_moves(t_game *game);
 void 					ft_right(t_player *pl);
 void 					ft_left(t_player *pl);
-int						minimap_init(t_game *game);
 void					draw_quadrangle(t_imgdata *img,
 							t_quadrangle *quad, int color);
 

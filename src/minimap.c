@@ -12,23 +12,11 @@
 
 #include "cub3D.h"
 
-static void	minimap_background(t_imgdata *img);
+void		minimap_background(t_imgdata *img);
+void		minimap_content(t_imgdata *img, t_game *game);
 static void	minimap_player(t_imgdata *img);
 
-int	minimap_init(t_game *game)
-{
-	(void) game;
-	return (EXIT_SUCCESS);
-}
-
-void	minimap(t_imgdata *img, t_game *game)
-{
-	(void) game;
-	minimap_background(img);
-	minimap_player(img);
-}
-
-static void	minimap_background(t_imgdata *img)
+void	minimap_background(t_imgdata *img)
 {
 	static t_quadrangle	quad;
 
@@ -37,6 +25,12 @@ static void	minimap_background(t_imgdata *img)
 	quad.range_x[END] = quad.range_x[START] + (MINIMAP_WIDTH * MINIMAP_SQUARE);
 	quad.range_y[END] = quad.range_y[START] + (MINIMAP_HEIGHT * MINIMAP_SQUARE);
 	draw_quadrangle(img, &quad, MINIMAP_COLOR);
+}
+
+void	minimap_content(t_imgdata *img, t_game *game)
+{
+	(void) game;
+	minimap_player(img);
 }
 
 static void	minimap_player(t_imgdata *img)

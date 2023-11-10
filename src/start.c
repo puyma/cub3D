@@ -70,7 +70,6 @@ static int	start_game(t_game *game)
 	t_imgdata	*img;
 
 	img = &game->i_main_frame;
-	minimap_init(game);
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		return (EXIT_FAILURE);

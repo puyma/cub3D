@@ -12,8 +12,8 @@
 
 #include "cub3D.h"
 
-#define START	0
-#define END		1
+void	minimap_background(t_imgdata *img);
+void	minimap_content(t_imgdata *img, t_game *game);
 
 int	ft_render(t_game *game)
 {
@@ -22,7 +22,8 @@ int	ft_render(t_game *game)
 	i = &game->i_main_frame;
 	background(i, game);
 	raycast_loop(game, &game->player, &game->ray, i);
-	minimap(&game->i_main_frame, game);
+	minimap_background(i);
+	minimap_content(&game->i_main_frame, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);
 	game->key.mouse = 0;
 	return (EXIT_SUCCESS);
