@@ -55,6 +55,7 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/utils_arr.c \
 				$(SRC_DIR)/utils_color.c \
 				$(SRC_DIR)/utils_draw.c \
+				$(SRC_DIR)/utils_draw_quadrangle.c \
 				$(SRC_DIR)/utils_lst.c \
 				$(SRC_DIR)/utils_math.c \
 				$(SRC_DIR)/utils_str.c
