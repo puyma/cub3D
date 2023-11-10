@@ -48,17 +48,6 @@ typedef struct s_map
 	int					**board;
 }						t_map;
 
-typedef struct s_minimap
-{
-	int					color;
-	int					square_size;
-	int					width;
-	int					height;
-	int					trans_x;
-	int					trans_y;
-	t_imgdata			i;
-}						t_minimap;
-
 typedef struct s_ray
 {
 	double				camera_x;
@@ -93,6 +82,17 @@ typedef struct s_key
 	int					mouse;
 }						t_key;
 
+typedef struct s_minimap
+{
+	int					color;
+}						t_minimap;
+
+typedef struct s_quadrangle
+{
+	int					range_x[2];
+	int					range_y[2];
+}						t_quadrangle;
+
 typedef struct s_game
 {
 	void				*mlx;
@@ -101,7 +101,6 @@ typedef struct s_game
 	int					win_height;
 	int					line_height;
 	t_map				*map;
-	t_minimap			minimap;
 	t_player			player;
 	t_color				f_color;
 	t_color				c_color;
