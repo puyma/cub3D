@@ -23,24 +23,6 @@ void	ft_mlx_pixel_put(t_imgdata *img, int x, int y, int color)
 	*((unsigned int *) dst) = color;
 }
 
-/** WIP: use an already (always de same) t_imgdata to write to **/
-
-void	ft_draw_quadrangle_coordinates(t_imgdata *i, int coord_x[2],
-		int coord_y[2], int color)
-{
-	static int	x;
-	static int	y;
-
-	y = coord_y[START];
-	while (y < coord_y[END])
-	{
-		x = coord_x[START];
-		while (x < coord_x[END])
-			ft_mlx_pixel_put(i, x++, y, color);
-		++y;
-	}
-}
-
 void	ft_ver_line(t_game *game, int start, int finish, int color)
 {
 	while (start <= finish)
@@ -77,6 +59,7 @@ static void	ft_draw_textures(t_ray *r, int start, int finish,
 	t_vector	tex;
 	static char	*color = NULL;
 
+	(void) color;
 	tex.intx = (int) (wall_x * (double) PIX_SIZE);
 	tex.y = ((double) PIX_SIZE) / game->line_height;
 	tex.x = (start - game->win_height / 2 + game->line_height / 2) * tex.y;

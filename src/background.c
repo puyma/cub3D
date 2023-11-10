@@ -14,15 +14,14 @@
 
 void	background(t_imgdata *img, t_game *game)
 {
-	static int		range_x[2] = {0, 0};
-	static int		range_y[2] = {0, 0};
+	static t_quadrangle	quad;
 
-	range_x[START] = 0;
-	range_x[END] = game->win_width;
-	range_y[START] = 0;
-	range_y[END] = game->win_height / 2;
-	ft_draw_quadrangle_coordinates(img, range_x, range_y, game->c_color.argb);
-	range_y[START] = range_y[END];
-	range_y[END] = game->win_height;
-	ft_draw_quadrangle_coordinates(img, range_x, range_y, game->f_color.argb);
+	quad.range_x[START] = 0;
+	quad.range_x[END] = game->win_width;
+	quad.range_y[START] = 0;
+	quad.range_y[END] = game->win_height / 2;
+	draw_quadrangle(img, &quad, game->c_color.argb);
+	quad.range_y[START] = quad.range_y[END];
+	quad.range_y[END] = game->win_height;
+	draw_quadrangle(img, &quad, game->f_color.argb);
 }
