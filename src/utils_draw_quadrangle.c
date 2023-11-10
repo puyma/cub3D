@@ -26,3 +26,10 @@ void	draw_quadrangle(t_imgdata *img, t_quadrangle *quad, int color)
 		++y;
 	}
 }
+
+void	draw_circle(t_imgdata *img, t_quadrangle *quad, int color)
+{
+	(void) img;
+	(void) quad;
+	(void) color;
+}

@@ -12,104 +12,42 @@
 
 #include "cub3D.h"
 
-static void	minimap_background(t_imgdata *img, t_game *game);
-static void	minimap_fill_board(t_imgdata *img, t_game *game);
-static void	minimap_walls(t_imgdata *img, t_game *game);
-static void	minimap_player(t_imgdata *img, t_game *game);
+static void	minimap_background(t_imgdata *img);
+static void	minimap_player(t_imgdata *img);
+
+int	minimap_init(t_game *game)
+{
+	(void) game;
+	return (EXIT_SUCCESS);
+}
 
 void	minimap(t_imgdata *img, t_game *game)
 {
-	static int	x[2] = {0, 0};
-	static int	y[2] = {0, 0};
-
-	x[START] = PIX_SIZE / 3;
-	y[START] = x[START];
-	x[END] = PIX_SIZE * 3;
-	y[END] = PIX_SIZE * 3;
-	minimap_background(img, game);
-	minimap_fill_board(img, game);
-	minimap_walls(img, game);
-	minimap_player(img, game);
-}
-
-static void	minimap_background(t_imgdata *img, t_game *game)
-{
-	static int	x[2] = {0, 0};
-	static int	y[2] = {0, 0};
-
 	(void) game;
-	x[START] = PIX_SIZE / 3;
-	y[START] = x[START];
-	x[END] = PIX_SIZE * 4;
-	y[END] = PIX_SIZE * 3;
-	ft_draw_quadrangle_coordinates(img, x, y, MINIMAP_COLOR);
+	minimap_background(img);
+	minimap_player(img);
 }
 
-static void	minimap_fill_board(t_imgdata *img, t_game *game)
+static void	minimap_background(t_imgdata *img)
 {
-	game->minimap.board[0][0] = '1';
-	game->minimap.board[0][1] = '1';
-	game->minimap.board[0][2] = '1';
-	
-	game->minimap.board[1][0] = '0';
-	game->minimap.board[1][1] = '1';
-	game->minimap.board[1][2] = '0';
-	
-	game->minimap.board[2][0] = '1';
-	game->minimap.board[2][1] = '0';
-	game->minimap.board[2][2] = '1';
-	
-	game->minimap.board[3][0] = '1';
-	game->minimap.board[3][1] = '1';
-	game->minimap.board[3][2] = '1';
+	static t_quadrangle	quad;
 
-	(void) img;
+	quad.range_x[START] = MINIMAP_TRANS_X;
+	quad.range_y[START] = MINIMAP_TRANS_Y;
+	quad.range_x[END] = quad.range_x[START] + (MINIMAP_WIDTH * MINIMAP_SQUARE);
+	quad.range_y[END] = quad.range_y[START] + (MINIMAP_HEIGHT * MINIMAP_SQUARE);
+	draw_quadrangle(img, &quad, MINIMAP_COLOR);
 }
 
-#define SQUARE_SIZE 16
-static void	minimap_walls(t_imgdata *img, t_game *game)
+static void	minimap_player(t_imgdata *img)
 {
-	int xstart = PIX_SIZE / 3;
-	int ystart = xstart;
-	int	x;
-	int	y;
+	static t_quadrangle	quad;
 
-	(void) xstart;
-	(void) ystart;
-	printf("xstart %d, ystart %d\n", xstart, ystart);
-	x = 0;
-	while (x < 4)
-	{
-		y = 0;
-		while (y < 3)
-		{
-			int start[2] = {(x * SQUARE_SIZE) + xstart,
-				(x * SQUARE_SIZE) + SQUARE_SIZE + xstart};
-			int end[2] = {(y * SQUARE_SIZE) + ystart,
-				(y * SQUARE_SIZE) + SQUARE_SIZE + ystart};
-			if (game->minimap.board[x][y] == '1')
-				ft_draw_quadrangle_coordinates(img, start, end, 0x2222CC);
-			++y;
-		}
-		++x;
-	}
-
-	(void) img;
-	(void) game;
-}
-
-static void	minimap_player(t_imgdata *img, t_game *game)
-{
-	int x = (int) game->player.pos.x;
-	x *= SQUARE_SIZE;
-	x += PIX_SIZE / 3;
-	int y = (int) game->player.pos.y;
-	y *= SQUARE_SIZE;
-	y += PIX_SIZE / 3;
-	printf("player: %d, %d\n", x, y);
-	(void) img;
-
-	int x_coord[2] = {x, x + SQUARE_SIZE};
-	int y_coord[2] = {y, y + SQUARE_SIZE};
-	ft_draw_quadrangle_coordinates(img, x_coord, y_coord, 0xFF0000);
+	quad.range_x[START] = (MINIMAP_WIDTH * MINIMAP_SQUARE) / 2;
+	quad.range_x[START] += MINIMAP_TRANS_X - 2;
+	quad.range_y[START] = (MINIMAP_HEIGHT * MINIMAP_SQUARE) / 2;
+	quad.range_y[START] += MINIMAP_TRANS_Y - 2;
+	quad.range_x[END] = quad.range_x[START] + 4;
+	quad.range_y[END] = quad.range_y[START] + 4;
+	draw_quadrangle(img, &quad, 0xFF0000);
 }
