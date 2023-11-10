@@ -58,11 +58,14 @@
 # define ON_DESTROY		17
 # define ON_RESIZE		9
 
-# define MINIMAP_WIDTH	16
-# define MINIMAP_HEIGHT	12
-# define MINIMAP_COLOR	0xC6C6C6
+# define MINIMAP_COLOR		0xC6C6C6
+# define MINIMAP_WIDTH		16
+# define MINIMAP_HEIGHT		12
+# define MINIMAP_TRANS_X	21
+# define MINIMAP_TRANS_Y	21
+# define MINIMAP_SQUARE		16
 
 # define START			0
 # define END			1
 
-#endif
+#endif /* macros.h */
