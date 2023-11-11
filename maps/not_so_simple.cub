@@ -4,10 +4,10 @@
 # Wed Oct 18 09:32:56 2023                                                     #
 
 #	Path to north, south, west and east textures
-NO	floor
-SO	floor
-WE	floor
-EA	floor
+NO	greystone
+SO	greystone
+WE	greystone
+EA	greystone
 
 #	Floor and ceiling's color
 F	0.0.0

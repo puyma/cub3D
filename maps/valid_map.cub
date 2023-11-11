@@ -3,12 +3,12 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Wed Oct 18 09:36:04 2023                                                     #
 
-NO src/assets/floor.xpm
-WE			floor
+NO src/assets/barrel.xpm
+WE			barrel
 F   4,4, 90
 #comment here
-SO wall
- 	EA floor.xpm
+SO pillar
+ 	EA barrel.xpm
 
 P 255,0,0	
 # comment there
