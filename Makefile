@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/07 20:24:37 by jsebasti         ###   ########.fr        #
+#    Updated: 2023/11/09 18:27:25 by jsebasti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
 				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/destroy.c \
-				$(SRC_DIR)/resize_win.c \
 				$(SRC_DIR)/keycode.c \
 				$(SRC_DIR)/map.c \
 				$(SRC_DIR)/map_board.c \
@@ -81,14 +80,13 @@ $(LIBFT) $(LIBMLX)::
 	make -C $(dir $@)
 
 clean:
-	rm -rf $(BUILD_DIR)
-	#make fclean -C $(LIBFT_DIR)
-	#make clean -C $(LIBMLX_DIR)
+	@rm -rf $(BUILD_DIR)
+	@echo "$(BUILD_DIR) deleted"
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean
-	$(MAKE)
+	@$(MAKE) --no-print-directory
 
 -include $(DEP_FILES)

@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/08 16:13:01 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:33:56 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_render(t_game *game)
 
 	i = &game->i_main_frame;
 	background(i, game);
-	raycast_loop(game, &game->player, &game->ray, i);
+	raycast_loop(game, &game->player, &game->ray);
 	minimap_background(i);
 	minimap_content(&game->i_main_frame, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, i->img, 0, 0);

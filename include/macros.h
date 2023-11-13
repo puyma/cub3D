@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:16:10 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 17:41:26 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:27:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define CEILING		"ceiling.xpm"
 # define PIX_SIZE		64
 # define GRID_SIZE		64
-# define WIN_HEIGHT		1080
-# define WIN_WIDTH		1440
+# define WIN_WIDTH		1080
+# define WIN_HEIGHT		720
 # define WIN_NAME		"cub3D"
 // Field Of View
 
@@ -47,7 +47,7 @@
 # define KEY_RIGHT		124
 # define KEY_UP			126
 # define KEY_ESC		53
-# define KEY_PAUSE		35
+# define KEY_PAUSE		49
 # define KEY_SHIFT		257
 
 // Event codes (MLX)
