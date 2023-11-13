@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 10:28:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:26:32 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_map
 	int					width;
 	int					height;
 	int					**board;
+	char				*filename;
 }						t_map;
 
 typedef struct s_ray

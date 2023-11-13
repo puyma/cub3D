@@ -6,14 +6,15 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 10:32:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:47:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int		ft_set_player(t_game *game);
+static void		ft_set_player(t_game *game);
 static void		ft_set_view_direction(t_player *player, char c);
+static int		ft_check_n_players(t_map *map);
 
 /*
 ** The map must be composed of only 6 possible characters: 
@@ -51,14 +52,12 @@ int	ft_load_map(t_list *file, t_game *game)
 		exit_status = EXIT_FAILURE;
 	ft_lstclear(&map, &free);
 	ft_lstclear(&info, &free);
-	if (exit_status == EXIT_FAILURE)
-		ft_clean(game);
-	else
-		exit_status = ft_set_player(game);
-	return (exit_status);
+	if (exit_status == EXIT_FAILURE || ft_check_n_players(game->map) == 1)
+		return (ft_clean(game), EXIT_FAILURE);
+	return (ft_set_player(game), exit_status);
 }
 
-static int	ft_set_player(t_game *game)
+static void	ft_set_player(t_game *game)
 {
 	int	x;
 	int	y;
@@ -77,14 +76,12 @@ static int	ft_set_player(t_game *game)
 				game->player.dir.x = 0;
 				game->player.dir.y = 0;
 				ft_set_view_direction(&game->player, game->map->board[x][y]);
-				return (EXIT_SUCCESS);
+				return ;
 			}
 			++x;
 		}
 		++y;
 	}
-	return (ft_fprintf(stderr, "%s: %s: no player found\n", EXEC_NAME,
-			game->map_filename_ptr), EXIT_FAILURE);
 }
 
 static void	ft_set_view_direction(t_player *player, char c)
@@ -114,3 +111,32 @@ static void	ft_set_view_direction(t_player *player, char c)
 		player->plane.y = 0;
 	}
 }
+
+static int	ft_check_n_players(t_map *map)
+{
+	int	x;
+	int	y;
+	int	counter;
+
+	counter = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (ft_strchr("NSEW", map->board[x][y]) != NULL
+				&& map->board[x][y] != 0)
+			{
+				++counter;
+			}
+			++x;
+		}
+		++y;
+	}
+	if (counter != 1)
+		return (ft_fprintf(stderr, "%s: %s: no player found\n", EXEC_NAME,
+			map->filename), EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+

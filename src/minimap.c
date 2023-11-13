@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 12:04:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/09 16:46:37 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:22:57 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	minimap_background(t_imgdata *img)
 void	minimap_content(t_imgdata *img, t_game *game)
 {
 	(void) game;
+
 	minimap_player(img);
 }
 
