@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 16:02:31 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:28:07 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ static int	ft_check_n_players(t_map *map)
 	}
 	if (counter != 1)
 		return (ft_fprintf(stderr, "%s: %s: no player found\n", EXEC_NAME,
-			map->filename), EXIT_FAILURE);
+				map->filename), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
-

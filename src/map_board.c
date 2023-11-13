@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:01:08 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 15:50:06 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:31:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	check_characters(t_game *game, t_list *map_lst);
 static int	fill_map(t_list *map_lst, t_map *map);
 static void	homogenize_map(t_map *map);
-#include "_debug.h"
+
 int	ft_set_board(t_list *map_lst, t_game *game)
 {
 	int	i;
@@ -35,9 +35,7 @@ int	ft_set_board(t_list *map_lst, t_game *game)
 		return (EXIT_FAILURE);
 	game->map->filename = game->map_filename_ptr;
 	fill_map(map_lst, game->map);
-	//homogenize_map(game->map);
-	(void) homogenize_map;
-	PRINT_MAP(game->map)
+	homogenize_map(game->map);
 	if (ft_check_map(game->map) == EXIT_FAILURE)
 		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
 				EXEC_NAME, game->map_filename_ptr), EXIT_FAILURE);

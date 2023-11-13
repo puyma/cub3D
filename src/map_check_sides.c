@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:28:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 15:37:35 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:31:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_check_left(t_map *map)
 	int	y;
 	int	sub;
 
-	printf("ft_check_left\n");
 	y = 0;
 	range[PREV] = 0;
 	while (y < map->height)
@@ -40,7 +39,7 @@ int	ft_check_left(t_map *map)
 		{
 			if (ft_check_range(map->board, ROW, y, range) == FAIL
 				&& ft_check_range(map->board, ROW, y - 1, range) == FAIL)
-				return (ft_fprintf(stderr, "LEFT\n"), FAIL);
+				return (EXIT_FAILURE);
 		}
 		++y;
 		range[PREV] = range[CURRENT];
@@ -54,7 +53,6 @@ int	ft_check_right(t_map *map)
 	int	y;
 	int	sub;
 
-	printf("ft_check_right\n");
 	y = 0;
 	range[PREV] = 0;
 	while (y < map->height)
@@ -68,7 +66,7 @@ int	ft_check_right(t_map *map)
 		{
 			if (ft_check_range(map->board, ROW, y, range) == FAIL
 				&& ft_check_range(map->board, ROW, y - 1, range) == FAIL)
-				return (ft_fprintf(stderr, "RIGHT\n"), FAIL);
+				return (EXIT_FAILURE);
 		}
 		++y;
 		range[PREV] = range[CURRENT];
