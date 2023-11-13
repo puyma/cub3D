@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:50:47 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 11:47:39 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:02:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_load_map(t_list *file, t_game *game)
 	game->tmp_info_cardinal_points[1] = 0;
 	game->tmp_info_cardinal_points[2] = 0;
 	game->tmp_info_cardinal_points[3] = 0;
-	game->tmp_info_colors = 0;
+	game->tmp_info_colors = 2;
 	map = ft_extract_map_segment(file);
 	info = ft_extract_info_segment(file);
 	if (ft_set_info(info, game) == EXIT_FAILURE)
