@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:00:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 16:02:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:24:59 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,18 @@ static int	ft_set_info_value_color(char *s, t_game *game)
 
 static int	ft_check_info(t_game *game)
 {
-	if (game->tmp_info_colors != 0)
-	{
-		ft_fprintf(stderr, "%s: %s: error setting colors\n",
-			EXEC_NAME, game->map_filename_ptr);
-		return (EXIT_FAILURE);
-	}
 	if (game->tmp_info_cardinal_points[0] != 1
 		|| game->tmp_info_cardinal_points[1] != 1
 		|| game->tmp_info_cardinal_points[2] != 1
 		|| game->tmp_info_cardinal_points[3] != 1)
 	{
-		ft_fprintf(stderr, "%s: %s: error setting images\n",
+		ft_fprintf(stderr, "%s: %s: invalid map\n",
+			EXEC_NAME, game->map_filename_ptr);
+		return (EXIT_FAILURE);
+	}
+	if (game->tmp_info_colors != 0)
+	{
+		ft_fprintf(stderr, "%s: %s: invalid map\n",
 			EXEC_NAME, game->map_filename_ptr);
 		return (EXIT_FAILURE);
 	}
