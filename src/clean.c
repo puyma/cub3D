@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:01:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 17:01:42 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:35:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_clean(t_game *game)
 		free(game->mlx);
 	if (game->mlx_window != NULL)
 		mlx_destroy_window(game->mlx, game->mlx_window);
+	(void) counter;
+	/*
 	if (game->map != NULL)
 	{
 		counter = game->map->width;
@@ -36,4 +38,5 @@ void	ft_clean(t_game *game)
 		free(game->map->board);
 		free(game->map);
 	}
+	*/
 }

@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/07 12:09:57 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:16:19 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_load_texture(t_imgdata *imgdata, t_game *game);
 static char	*ft_resolve_texture_path(char *value);
 static void	ft_free_loaded_images(t_game *game, size_t iterator);
 
-int	ft_load_textures(t_game *game)
+int	load_textures(t_game *game)
 {
 	int	exit_status;
 

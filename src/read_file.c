@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42barcelona.com>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:40:00 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/03 12:02:31 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:26:09 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_list	*read_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		return (ft_fprintf(stderr, "%s: %s: %s\n", EXEC_NAME,
+				filename, strerror(errno)), NULL);
 	list = NULL;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -44,6 +45,7 @@ t_list	*read_file(char *filename)
 		line = get_next_line(fd);
 	}
 	if (list == NULL)
-		errno = 0;
+		return (ft_fprintf(stderr, "%s: %s: File is empty\n",
+				EXEC_NAME, filename), NULL);
 	return (list);
 }

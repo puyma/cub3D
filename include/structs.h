@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 11:26:32 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:13:00 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_game
 	int					win_width;
 	int					win_height;
 	int					line_height;
-	t_map				*map;
+	t_map				map;
 	t_player			player;
 	t_color				f_color;
 	t_color				c_color;
@@ -112,7 +112,6 @@ typedef struct s_game
 	t_imgdata			i_south;
 	t_imgdata			i_west;
 	t_imgdata			i_east;
-	t_imgdata			i_floor;
 	t_ray				ray;
 	t_key				key;
 	int					mouse;

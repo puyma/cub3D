@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:51:33 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 10:31:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:37:48 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,19 @@ static void	ft_frontal_moves(t_player *pl, t_game *game)
 {
 	if (game->key.up_w == 1)
 	{
-		if (game->map->board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)]
+		if (game->map.board[(int)(pl->pos.x + pl->dir.x * pl->move_speed)]
 				[(int)pl->pos.y] != '1')
 			pl->pos.x += (pl->dir.x * pl->move_speed);
-		if (game->map->board[(int)pl->pos.x]
+		if (game->map.board[(int)pl->pos.x]
 			[(int)(pl->pos.y + pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y += (pl->dir.y * pl->move_speed);
 	}
 	if (game->key.down_s == 1)
 	{
-		if (game->map->board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)]
+		if (game->map.board[(int)(pl->pos.x - pl->dir.x * pl->move_speed)]
 				[(int)pl->pos.y] != '1')
 			pl->pos.x -= (pl->dir.x * pl->move_speed);
-		if (game->map->board[(int)pl->pos.x]
+		if (game->map.board[(int)pl->pos.x]
 			[(int)(pl->pos.y - pl->dir.y * pl->move_speed)] != '1')
 			pl->pos.y -= (pl->dir.y * pl->move_speed);
 	}

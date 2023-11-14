@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/09 18:27:25 by jsebasti         ###   ########.fr        #
+#    Updated: 2023/11/14 17:15:51 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,15 +37,13 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
 				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/destroy.c \
+				$(SRC_DIR)/dump_info.c \
+				$(SRC_DIR)/dump_map.c \
 				$(SRC_DIR)/keycode.c \
 				$(SRC_DIR)/map.c \
-				$(SRC_DIR)/map_board.c \
-				$(SRC_DIR)/map_check.c \
-				$(SRC_DIR)/map_check_sides.c \
-				$(SRC_DIR)/map_info.c \
-				$(SRC_DIR)/map_segments.c \
 				$(SRC_DIR)/minimap.c \
 				$(SRC_DIR)/mouse.c \
+				$(SRC_DIR)/parse_map.c \
 				$(SRC_DIR)/raycast.c \
 				$(SRC_DIR)/read_file.c \
 				$(SRC_DIR)/render.c \
@@ -56,8 +54,9 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/utils_draw.c \
 				$(SRC_DIR)/utils_draw_quadrangle.c \
 				$(SRC_DIR)/utils_lst.c \
-				$(SRC_DIR)/utils_math.c \
-				$(SRC_DIR)/utils_str.c
+				$(SRC_DIR)/utils_str.c \
+				$(SRC_DIR)/validate.c \
+				$(SRC_DIR)/window.c
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
 

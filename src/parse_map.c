@@ -1,16 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_segments.c                                     :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 17:17:21 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/01 17:18:06 by mpuig-ma         ###   ########.fr       */
+/*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
+/*   Updated: 2023/11/14 17:15:20 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "_debug.h"
+
+int				validate_map(t_list *map_lst);
+int				validate_info(t_list *info_lst);
+int				dump_info(t_list *info_lst, t_game *game);
+int				dump_map(t_list *map_lst, t_map *map);
+static t_list	*ft_extract_map_segment(t_list *file);
+static t_list	*ft_extract_info_segment(t_list *file);
+
+int	parse_map(t_game *game, t_map *map, char *filename)
+{
+	t_list	*file;
+	t_list	*map_segment;
+	t_list	*info_segment;
+
+	map->filename = filename;
+	file = read_file(map->filename);
+	if (file == NULL)
+		return (EXIT_FAILURE);
+	map_segment = ft_extract_map_segment(file);
+	info_segment = ft_extract_info_segment(file);
+	if (validate_info(info_segment) == EXIT_FAILURE
+		|| validate_map(map_segment) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	dump_info(info_segment, game);
+	dump_map(map_segment, map);
+	ft_lstclear(&map_segment, &free);
+	ft_lstclear(&info_segment, &free);
+	return (EXIT_SUCCESS);
+}
 
 /* DESCRIPTION
 ** Both ft_extract_segment() functions will return a pointer to the first node 
@@ -45,7 +75,7 @@ t_list	*ft_extract_map_segment(t_list *file)
 	return (file);
 }
 
-t_list	*ft_extract_info_segment(t_list *file)
+static t_list	*ft_extract_info_segment(t_list *file)
 {
 	t_list	*cpy;
 	char	*content;

@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 10:33:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:42:14 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	raycast_loop(t_game *game, t_player *pl, t_ray *r)
 	{
 		ft_init_ray(r, pl, game);
 		ft_recalculate_ray(r, pl);
-		calculate_hit(r, game->map);
+		calculate_hit(r, &game->map);
 		ft_textures_size(game, pl, r);
 		++r->x;
 	}
