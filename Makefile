@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/14 17:24:26 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/14 17:30:24 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/utils_draw_quadrangle.c \
 				$(SRC_DIR)/utils_lst.c \
 				$(SRC_DIR)/utils_str.c \
-				$(SRC_DIR)/validate.c \
+				$(SRC_DIR)/validate_map.c \
+				$(SRC_DIR)/validate_info.c \
 				$(SRC_DIR)/window.c
 OBJ_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEP_FILES	=	$(SRC_FILES:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.d)
