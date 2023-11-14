@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/14 17:15:51 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/14 17:24:26 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ SRC_FILES	:=	\
 				$(SRC_DIR)/dump_info.c \
 				$(SRC_DIR)/dump_map.c \
 				$(SRC_DIR)/keycode.c \
-				$(SRC_DIR)/map.c \
 				$(SRC_DIR)/minimap.c \
 				$(SRC_DIR)/mouse.c \
 				$(SRC_DIR)/parse_map.c \

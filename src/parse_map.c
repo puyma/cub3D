@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 17:15:20 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:20:47 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int				validate_map(t_list *map_lst);
 int				validate_info(t_list *info_lst);
 int				dump_info(t_list *info_lst, t_game *game);
-int				dump_map(t_list *map_lst, t_map *map);
+int				dump_map(t_list *map_lst, t_map *map, t_game *game);
 static t_list	*ft_extract_map_segment(t_list *file);
 static t_list	*ft_extract_info_segment(t_list *file);
 
@@ -36,7 +36,7 @@ int	parse_map(t_game *game, t_map *map, char *filename)
 		|| validate_map(map_segment) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	dump_info(info_segment, game);
-	dump_map(map_segment, map);
+	dump_map(map_segment, map, game);
 	ft_lstclear(&map_segment, &free);
 	ft_lstclear(&info_segment, &free);
 	return (EXIT_SUCCESS);
