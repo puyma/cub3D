@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 12:45:12 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:27:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static int	load_texture(t_imgdata *imgdata, t_game *game);
 static char	*ft_resolve_texture_path(char *value);
-static void	ft_free_loaded_images(t_game *game, size_t iterator);
+void		ft_free_loaded_images(t_game *game, size_t iterator);
 
 int	load_textures(t_game *game)
 {
-	int	exit_status;
-
-	exit_status = EXIT_SUCCESS;
-	exit_status = load_texture(&(game->i_north), game);
-	exit_status = load_texture(&(game->i_south), game);
-	exit_status = load_texture(&(game->i_west), game);
-	exit_status = load_texture(&(game->i_east), game);
-	if (exit_status == EXIT_FAILURE)
-		ft_free_loaded_images(game, game->tmp_counter - 1);
-	return (exit_status);
+	if (load_texture(&(game->i_north), game))
+		return (EXIT_FAILURE);
+	if (load_texture(&(game->i_south), game))
+		return (EXIT_FAILURE);
+	if (load_texture(&(game->i_west), game))
+		return (EXIT_FAILURE);
+	if (load_texture(&(game->i_east), game))
+		return (EXIT_FAILURE);
+	//ft_free_loaded_images(game, game->tmp_counter - 1);
+	return (EXIT_SUCCESS);
 }
 
 static int	load_texture(t_imgdata *img, t_game *game)
@@ -75,7 +75,7 @@ static char	*ft_resolve_texture_path(char *value)
 	return (str);
 }
 
-static void	ft_free_loaded_images(t_game *game, size_t iterator)
+void	ft_free_loaded_images(t_game *game, size_t iterator)
 {
 	while (iterator-- > 0)
 	{
