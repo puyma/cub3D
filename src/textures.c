@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 15:27:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:10:50 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	load_texture(t_imgdata *imgdata, t_game *game);
 static char	*ft_resolve_texture_path(char *value);
-void		ft_free_loaded_images(t_game *game, size_t iterator);
 
 int	load_textures(t_game *game)
 {
@@ -26,7 +25,6 @@ int	load_textures(t_game *game)
 		return (EXIT_FAILURE);
 	if (load_texture(&(game->i_east), game))
 		return (EXIT_FAILURE);
-	//ft_free_loaded_images(game, game->tmp_counter - 1);
 	return (EXIT_SUCCESS);
 }
 
@@ -73,19 +71,4 @@ static char	*ft_resolve_texture_path(char *value)
 			ft_strlcat(str, ".xpm", dst_len);
 	}
 	return (str);
-}
-
-void	ft_free_loaded_images(t_game *game, size_t iterator)
-{
-	while (iterator-- > 0)
-	{
-		if (game->i_load_cueue[iterator] == 'N')
-			mlx_destroy_image(game->mlx, game->i_north.img);
-		else if (game->i_load_cueue[iterator] == 'S')
-			mlx_destroy_image(game->mlx, game->i_south.img);
-		else if (game->i_load_cueue[iterator] == 'W')
-			mlx_destroy_image(game->mlx, game->i_west.img);
-		else if (game->i_load_cueue[iterator] == 'E')
-			mlx_destroy_image(game->mlx, game->i_east.img);
-	}
 }
