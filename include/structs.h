@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 16:13:00 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:56:49 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,6 @@ typedef struct s_key
 	int					pause;
 }						t_key;
 
-typedef struct s_minimap
-{
-	int					color;
-}						t_minimap;
-
 typedef struct s_quadrangle
 {
 	int					range_x[2];
@@ -114,10 +109,6 @@ typedef struct s_game
 	t_imgdata			i_east;
 	t_ray				ray;
 	t_key				key;
-	int					mouse;
 	int					i_load_cueue[N_IMAGES];
 	int					tmp_counter;
-	int					tmp_info_cardinal_points[N_IMAGES];
-	int					tmp_info_colors;
-	char				*map_filename_ptr;
 }						t_game;
