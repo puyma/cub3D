@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 17:24:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:01:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	dump_map(t_list *map_lst, t_map *map, t_game *game)
 
 	map->width = ft_lstwidth(map_lst);
 	map->height = ft_lstheight(map_lst);
+	if (map->width < 3 || map->height <= 3)
+		exit(EXIT_FAILURE);
 	map->board = (int **)ft_calloc(map->width, sizeof(int *));
 	if (map->board == NULL)
 		return (EXIT_FAILURE);

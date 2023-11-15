@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 13:08:01 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:00:02 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,15 @@ int	validate_line(char *str, int position, int lst_size)
 {
 	if (validate_characters(str) == EXIT_FAILURE)
 	{
-		ft_fprintf(stderr, "%s: line %d: invalid character\n",
-			EXEC_NAME, position + 1);
-		return (EXIT_FAILURE);
+		ft_fprintf(stderr, "%s: invalid map\n", EXEC_NAME);
+		exit(EXIT_FAILURE);
 	}
 	if (validate_line_content(str, position, lst_size) == EXIT_FAILURE)
 	{
-		ft_fprintf(stderr, "%s: line %d: invalid map\n",
-			EXEC_NAME, position + 1);
-		return (EXIT_FAILURE);
+		ft_fprintf(stderr, "%s: invalid map\n", EXEC_NAME);
+		exit(EXIT_FAILURE);
 	}
+	(void) position;
 	return (EXIT_SUCCESS);
 }
 
@@ -68,11 +67,11 @@ int	validate_line_content(char *line, int position, int lst_size)
 		if (*start != '0' && *start != '1'
 			&& ft_strchr("NSEW", *start) == NULL)
 		{
-			ft_fprintf(stderr, "%s: line %d: invalid map\n",
-				EXEC_NAME, position + 1);
-			return (EXIT_FAILURE);
+			ft_fprintf(stderr, "%s: invalid map\n", EXEC_NAME);
+			exit(EXIT_FAILURE);
 		}
 	}
+	(void) position;
 	(void) lst_size;
 	return (EXIT_SUCCESS);
 }
