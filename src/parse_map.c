@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 15:42:48 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:51:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int	parse_map(t_game *game, t_map *map, char *filename)
 		return (EXIT_FAILURE);
 	dump_info(info_segment, game);
 	dump_map(map_segment, map, game);
-	ft_lstclear(&map_segment, &free);
-	ft_lstclear(&info_segment, &free);
-	return (EXIT_SUCCESS);
+	return (ft_lstclear(&map_segment, &free), ft_lstclear(&info_segment, &free),
+		EXIT_SUCCESS);
 }
 
 /* DESCRIPTION
