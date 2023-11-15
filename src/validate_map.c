@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 12:02:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:08:01 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	validate_characters(char *line);
 
 //check theres only one player (at least)
 //check theres one line for each NO SO EA WE F C
-//check map characters
 
 int	validate_map(t_list *map_lst)
 {
@@ -77,6 +76,12 @@ int	validate_line_content(char *line, int position, int lst_size)
 	(void) lst_size;
 	return (EXIT_SUCCESS);
 }
+
+/*
+ * validate_characters
+ * check map characters
+ *
+ */
 
 int	validate_characters(char *line)
 {
