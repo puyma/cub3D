@@ -6,12 +6,35 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 18:04:28 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:20:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include "_debug.h"
+
+static int	is_allowed(char **allowed, char *str);
+static int	is_repeated(char **allowed, t_list *info_lst);
+
+int	validate_info(t_list *info_lst)
+{
+	const char	*allowed[] = {"NO ", "SO ", "EA ", "WE ", "F ", "C ", NULL};
+	char		*str;
+	t_list		*lst_cpy;
+
+	lst_cpy = info_lst;
+	while (info_lst != NULL)
+	{
+		str = info_lst->content;
+		ft_striteri(str, &ft_replace_isspace);
+		if (str != NULL && *str != '#' && *str != '\0' && ft_isspace(*str) == 0
+			&& is_allowed((char **) allowed, str) == EXIT_FAILURE)
+			exit(EXIT_FAILURE + 4);
+		info_lst = info_lst->next;
+	}
+	if (is_repeated((char **) allowed, lst_cpy) == EXIT_FAILURE)
+		exit(EXIT_FAILURE + 5);
+	return (EXIT_SUCCESS);
+}
 
 int	is_allowed(char **allowed, char *str)
 {
@@ -24,35 +47,24 @@ int	is_allowed(char **allowed, char *str)
 	return (EXIT_FAILURE);
 }
 
-int	one_of_each(char **allowed, t_list *info_lst)
+int	is_repeated(char **allowed, t_list *info_lst)
 {
-	int	counter;
+	int		counter;
+	t_list	*lst;
 
 	while (*allowed != NULL)
 	{
 		counter = 0;
-		(void) info_lst;
-		// check for repeated
+		lst = info_lst;
+		while (lst != NULL)
+		{
+			if (ft_strncmp(*allowed, lst->content, ft_strlen(*allowed)) == 0)
+				++counter;
+			lst = lst->next;
+		}
+		if (counter > 1)
+			return (EXIT_FAILURE);
 		++allowed;
 	}
-	return (EXIT_FAILURE);
-}
-
-int	validate_info(t_list *info_lst)
-{
-	const char	*allowed[] = {"NO ", "SO ", "EA ", "WE ", "F ", "C ", NULL};
-	char		*str;
-
-	while (info_lst != NULL)
-	{
-		str = info_lst->content;
-		ft_striteri(str, &ft_replace_isspace);
-		if (str != NULL && *str != '#' && *str != '\0' && ft_isspace(*str) == 0
-			&& is_allowed((char **) allowed, str) == EXIT_FAILURE)
-			exit(EXIT_FAILURE + 4);
-		info_lst = info_lst->next;
-	}
-	if (one_of_each((char **) allowed, info_lst) == EXIT_FAILURE)
-		exit(EXIT_FAILURE + 5);
 	return (EXIT_SUCCESS);
 }
