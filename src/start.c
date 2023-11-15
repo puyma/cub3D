@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 12:46:06 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:04:43 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	main(int argc, char **argv)
 static void	check_arguments(int argc, char **argv)
 {
 	if (argc != 2)
-		exit(EXIT_FAILURE);
+	{
+		ft_fprintf(stderr, "usage: ./%s map_file.cub\n", EXEC_NAME);
+		exit(EXIT_SUCCESS);
+	}
 	if (ft_strcmp(argv[1], "-v") == 0)
 	{
 		ft_printf("%s: %s\n",
