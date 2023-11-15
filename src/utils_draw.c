@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:37:20 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/13 10:35:29 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:55:12 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	ft_draw_textures(t_ray *r, int start, int finish,
 			t_game *game)
 {
 	t_vector	tex;
-	static char	*color = NULL;
 
 	tex.intx = (int)(r->wall_x * (double) PIX_SIZE);
 	tex.y = ((double)PIX_SIZE) / game->line_height;
@@ -69,9 +68,6 @@ static void	ft_draw_textures(t_ray *r, int start, int finish,
 	{
 		tex.inty = (int)tex.x & (PIX_SIZE - 1);
 		tex.x += tex.y;
-		color = \
-			game->i_north.address + (tex.inty * game->i_north.line_length \
-				+ tex.intx * (game->i_north.bits_per_pixel / 8));
 		ft_mlx_pixel_put(&game->i_main_frame,
 			game->ray.x, start, get_texture_color(game, tex.intx, tex.inty));
 		start++;
