@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 16:17:33 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:46:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&game, sizeof(t_game));
 	check_arguments(argc, argv);
-	return (parse_map(&game, &game.map, argv[1]));
 	if (parse_map(&game, &game.map, argv[1]) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	if (load_window(&game) == EXIT_FAILURE
 		|| load_textures(&game) == EXIT_FAILURE)
 	{
 		mlx_destroy_font(game.mlx);
 		exit(EXIT_FAILURE);
 	}
-	exit(EXIT_SUCCESS);
 	mlx_loop(game.mlx);
+	exit(EXIT_SUCCESS);
 }
 
 static void	check_arguments(int argc, char **argv)
