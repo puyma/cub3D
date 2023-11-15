@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 10:20:34 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:59:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	validate_info(t_list *info_lst)
 	return (EXIT_SUCCESS);
 }
 
-int	is_allowed(char **allowed, char *str)
+static int	is_allowed(char **allowed, char *str)
 {
 	while (*allowed != NULL)
 	{
@@ -47,7 +47,7 @@ int	is_allowed(char **allowed, char *str)
 	return (EXIT_FAILURE);
 }
 
-int	is_repeated(char **allowed, t_list *info_lst)
+static int	is_repeated(char **allowed, t_list *info_lst)
 {
 	int		counter;
 	t_list	*lst;
