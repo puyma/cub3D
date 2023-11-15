@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 17:56:20 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:11:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	parse_map(t_game *game, t_map *map, char *filename)
 				EXEC_NAME), EXIT_FAILURE);
 	if (validate_info(info_segment) == EXIT_FAILURE
 		|| validate_map(map_segment) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		return (ft_lstclear(&map_segment, &free),
+			ft_lstclear(&info_segment, &free),EXIT_FAILURE);
 	dump_info(info_segment, game);
 	dump_map(map_segment, map, game);
 	return (ft_lstclear(&map_segment, &free), ft_lstclear(&info_segment, &free),
