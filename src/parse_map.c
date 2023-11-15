@@ -6,17 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 17:20:47 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:42:48 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "_debug.h"
 
-int				validate_map(t_list *map_lst);
-int				validate_info(t_list *info_lst);
-int				dump_info(t_list *info_lst, t_game *game);
-int				dump_map(t_list *map_lst, t_map *map, t_game *game);
 static t_list	*ft_extract_map_segment(t_list *file);
 static t_list	*ft_extract_info_segment(t_list *file);
 
@@ -31,7 +27,13 @@ int	parse_map(t_game *game, t_map *map, char *filename)
 	if (file == NULL)
 		return (EXIT_FAILURE);
 	map_segment = ft_extract_map_segment(file);
+	if (map_segment == NULL)
+		return (ft_fprintf(stderr, "%s: %s: no map found\n",
+				EXEC_NAME, filename), EXIT_FAILURE);
 	info_segment = ft_extract_info_segment(file);
+	if (info_segment == NULL || map_segment == info_segment)
+		return (ft_fprintf(stderr, "%s: %s: invalid map\n",
+				EXEC_NAME, filename), EXIT_FAILURE);
 	if (validate_info(info_segment) == EXIT_FAILURE
 		|| validate_map(map_segment) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -52,7 +54,7 @@ int	parse_map(t_game *game, t_map *map, char *filename)
 // prev should not be NULL, map should not start directly with '0' or '1'
 // for this -> check that more than one line
 
-t_list	*ft_extract_map_segment(t_list *file)
+static t_list	*ft_extract_map_segment(t_list *file)
 {
 	char	*line;
 	t_list	*prev;
@@ -65,8 +67,11 @@ t_list	*ft_extract_map_segment(t_list *file)
 			++line;
 		if (*line == '0' || *line == '1')
 		{
-			file = prev->next;
-			prev->next = NULL;
+			if (prev != NULL)
+			{
+				file = prev->next;
+				prev->next = NULL;
+			}
 			break ;
 		}
 		prev = file;

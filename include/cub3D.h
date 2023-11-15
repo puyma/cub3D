@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 17:14:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:42:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # include "structs.h"
 
 //						map stuff
+int				validate_map(t_list *map_lst);
+int				validate_info(t_list *info_lst);
+int				dump_info(t_list *info_lst, t_game *game);
+int				dump_map(t_list *map_lst, t_map *map, t_game *game);
 
 //						graphic stuff
 int						ft_render(t_game *game);
