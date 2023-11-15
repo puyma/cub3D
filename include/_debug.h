@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 10:36:31 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:42:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,22 @@ while (arr && arr[ri] != NULL) \
 ENDL
 
 # define PRINT_INFO(game) \
+t_game *g = &game; \
 ft_printf("-- start game info --"); ENDL \
-ft_printf("mlx: %p", &game->mlx); ENDL \
-ft_printf("mlx_window: %p", &game->mlx_window); ENDL \
-ft_printf("window width: %u", game->win_width); ENDL \
-ft_printf("window height: %u", game->win_height); ENDL \
-ft_printf("map width: %u", game->map->width); ENDL \
-ft_printf("map height: %u", game->map->height); ENDL \
-ft_printf("f color: %p (%d, %d, %d)", game->f_color.argb, \
-		game->f_color.red, game->f_color.green, game->f_color.blue); ENDL \
-ft_printf("c color: %p (%d, %d, %d)", game->c_color.argb, \
-		game->c_color.red, game->c_color.green, game->c_color.blue); ENDL \
+ft_printf("mlx: %p", &g->mlx); ENDL \
+ft_printf("mlx_window: %p", &g->mlx_window); ENDL \
+ft_printf("window width: %u", g->win_width); ENDL \
+ft_printf("window height: %u", g->win_height); ENDL \
+ft_printf("map width: %u", g->map.width); ENDL \
+ft_printf("map height: %u", g->map.height); ENDL \
+ft_printf("f color: %p (%d, %d, %d)", g->f_color.argb, \
+		g->f_color.red, g->f_color.green, g->f_color.blue); ENDL \
+ft_printf("c color: %p (%d, %d, %d)", g->c_color.argb, \
+		g->c_color.red, g->c_color.green, g->c_color.blue); ENDL \
+ft_printf("i_n: %s: %p\n", g->i_north.image_file, &g->i_north.img); \
+ft_printf("i_s: %s: %p\n", g->i_south.image_file, &g->i_south.img); \
+ft_printf("i_e: %s: %p\n", g->i_east.image_file, &g->i_east.img); \
+ft_printf("i_w: %s: %p\n", g->i_west.image_file, &g->i_west.img); \
 ft_printf("-- end game info --"); ENDL
 
 #endif
