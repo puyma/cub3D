@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:29:53 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/10/13 11:25:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:59:32 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_replace_isspace(unsigned int p, char *str)
 
 void	ft_replace_ispunct(unsigned int p, char *str)
 {
-	if (ft_ispunct(*str) != 0)
+	if (*str == ',')
 		*str = ' ';
 	(void) p;
 }
