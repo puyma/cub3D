@@ -6,11 +6,12 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:28:06 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 17:00:15 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:08:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "_debug.h"
 
 static void	dump_info_image(char *id, t_list *info_lst, t_imgdata *img);
 static void	dump_info_color(char *id, t_list *info_lst, t_color *color);
@@ -54,11 +55,18 @@ static void	dump_info_color(char *id, t_list *info_lst, t_color *color)
 	char	**values;
 
 	color_info = extract_info(id, info_lst);
+	if (color_info == NULL)
+	{
+		ft_fprintf(stderr, "%s: color %snot found\n", EXEC_NAME, id);
+		exit(EXIT_FAILURE);
+	}
 	ft_striteri(color_info, &ft_replace_ispunct);
 	values = ft_split(color_info, 040);
-	if (ft_arrlen(values) != 4)
-		exit(EXIT_FAILURE + 2);
-	ft_set_rgb_color(values + 1, color);
+	if (ft_arrlen(values) != 4 || ft_set_rgb_color(values + 1, color))
+	{
+		ft_fprintf(stderr, "%s: found invalid color\n", EXEC_NAME);
+		exit(EXIT_FAILURE);
+	}
 	ft_free_arr(values);
 }
 
@@ -76,5 +84,5 @@ static char	*extract_info(char *id, t_list *info_lst)
 			return (info_str);
 		info_lst = info_lst->next;
 	}
-	return (info_str);
+	return (NULL);
 }
