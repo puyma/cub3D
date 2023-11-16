@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 16:57:47 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:10:37 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int						load_textures(t_game *game);
 int						ft_render(t_game *game);
 void					raycast_loop(t_game *game, t_player *pl, t_ray *r);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
-void					ft_ver_line(t_game *game, int start,
-							int finish, int color);
+void					ft_ver_line(t_game *game, int start, int finish,
+							int color);
 void					background(t_imgdata *img, t_game *game);
 void					ft_textures_size(t_game *game, t_player *pl, t_ray *r);
-void					draw_quadrangle(t_imgdata *img,
-							t_quadrangle *quad, int color);
+void					draw_quadrangle(t_imgdata *img, t_quadrangle *quad,
+							int color);
 
 //						events stuff
 int						ft_keyup(int k, t_game *game);
@@ -82,6 +82,6 @@ void					ft_replace_isspace(unsigned int position, char *str);
 void					ft_replace_ispunct(unsigned int p, char *str);
 
 //
-void			clean(t_game *game);
+void					clean(t_game *game);
 
 #endif /* cub3D.h */
