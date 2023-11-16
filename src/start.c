@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:07:45 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:31:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ void	clean(t_game *game)
 {
 	int	iterator;
 
-	if (game->map.map_segment != NULL)
+	printf("%p\n%p\n", game->map.map_segment, game->map.info_segment);
+	if (game->map.map_segment != NULL
+		&& game->map.map_segment != game->map.info_segment)
 		ft_lstclear(&game->map.map_segment, &free);
 	if (game->map.info_segment != NULL)
 		ft_lstclear(&game->map.info_segment, &free);

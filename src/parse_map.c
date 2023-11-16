@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:06:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:32:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ static int	read_map(t_map *map)
 		return (EXIT_FAILURE);
 	map->map_segment = extract_map_segment(file);
 	if (map->map_segment == NULL)
+	{
+		ft_lstclear(&file, &free);
 		return (EXIT_FAILURE);
+	}
 	map->info_segment = extract_info_segment(file);
 	if (map->info_segment == NULL || map->map_segment == map->info_segment)
 		return (EXIT_FAILURE);
