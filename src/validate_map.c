@@ -6,18 +6,19 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 18:19:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:30:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	validate_line(char *str, int position, int size);
-int	validate_line_content(char *line, int position, int lst_size);
-int	validate_characters(char *line);
+static int	validate_line(char *str, int position, int size);
+static int	validate_line_content(char *line, int position, int lst_size);
+static int	validate_characters(char *line);
+static int	check_player(t_list *map_lst);
 
-//check theres only one player (at least)
-//check theres one line for each NO SO EA WE F C
+// WIP:
+// check no characters outside of map "block"
 
 int	validate_map(t_map *map)
 {
@@ -37,6 +38,8 @@ int	validate_map(t_map *map)
 		++position;
 		map_lst = map_lst->next;
 	}
+	if (check_player(map->map_segment))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -79,19 +82,35 @@ int	validate_line_content(char *line, int position, int lst_size)
 
 int	validate_characters(char *line)
 {
-	int	counter;
-
-	counter = 0;
 	while (*line != '\0')
 	{
 		if (*line != '1' && *line != '0')
 		{
 			if (ft_strchr("NSEW", *line) == NULL)
 				return (EXIT_FAILURE);
-			else
-				++counter;
 		}
 		++line;
+	}
+	return (EXIT_SUCCESS);
+}
+
+//check theres only one player (at least)
+static int	check_player(t_list *map_lst)
+{
+	char	*str;
+	int		counter;
+
+	counter = 0;
+	while (map_lst != NULL)
+	{
+		str = map_lst->content;
+		while (*str != '\0')
+		{
+			if (ft_strchr("NSEW", *str) != NULL)
+				++counter;
+			++str;
+		}
+		map_lst = map_lst->next;
 	}
 	if (counter != 1)
 		return (EXIT_FAILURE);

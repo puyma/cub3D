@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 18:16:25 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:28:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static int	is_allowed(char **allowed, char *str)
 	return (EXIT_FAILURE);
 }
 
+//check theres one line for each NO SO EA WE F C
 static int	check_repeated(char **values, t_list *src_list)
 {
 	t_list	*lst;
