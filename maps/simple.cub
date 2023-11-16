@@ -1,15 +1,13 @@
 #	Simple map
-
 #	Path to north, south, west and east textures
 NO	redbrick
 SO	redbrick
 WE	redbrick
 EA	greystone
-
 #	Floor and ceiling's color
 C	22,22,22
 F	32,32,32
-
+F	32,32,32
 #	MAP
 11111111
 10010001

@@ -6,12 +6,11 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:28:06 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 12:50:40 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:55:33 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include "_debug.h"
 
 static void	dump_info_image(char *id, t_list *info_lst, t_imgdata *img);
 static void	dump_info_color(char *id, t_list *info_lst, t_color *color);
@@ -57,8 +56,7 @@ static void	dump_info_color(char *id, t_list *info_lst, t_color *color)
 		return ;
 	ft_striteri(color_info, &ft_replace_ispunct);
 	values = ft_split(color_info, 040);
-	if (ft_arrlen(values) == 4)
-	   ft_set_rgb_color(values + 1, color);
+	ft_set_rgb_color(values + 1, color);
 	ft_free_arr(values);
 }
 

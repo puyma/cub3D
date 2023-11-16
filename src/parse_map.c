@@ -6,17 +6,15 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 13:35:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:06:07 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-#include "_debug.h"
 
 static int		read_map(t_map *map);
 static t_list	*extract_map_segment(t_list *file);
 static t_list	*extract_info_segment(t_list *file);
-void			clean(t_game *game);
 
 int	parse_map(t_game *game, t_map *map, char *filename)
 {

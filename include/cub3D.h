@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 12:02:10 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:57:47 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 # include "macros.h"
 # include "structs.h"
+
+# include "_debug.h"
 
 //						map stuff
 int						parse_map(t_game *game, t_map *map, char *filename);
@@ -63,8 +65,9 @@ void					ft_left(t_player *pl);
 int						ft_arrlen(char **array);
 
 //						color utils
-int						ft_set_rgb_color(char **color_values, t_color *color);
+void					ft_set_rgb_color(char **color_values, t_color *color);
 unsigned int			get_texture_color(t_game *game, int tex_x, int tex_y);
+int						check_rgb_color(char *str);
 
 //						file utils
 t_list					*read_file(char *filename);
@@ -79,6 +82,6 @@ void					ft_replace_isspace(unsigned int position, char *str);
 void					ft_replace_ispunct(unsigned int p, char *str);
 
 //
-void					ft_clean(t_game *game);
+void			clean(t_game *game);
 
 #endif /* cub3D.h */

@@ -6,34 +6,38 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 12:48:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:04:39 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static int	is_allowed(char **allowed, char *str);
-static int	is_repeated(char **allowed, t_list *info_lst);
+static int	check_repeated(char **allowed, t_list *info_lst);
+static int	validate_colors(char **cc, t_list *info_lst);
+static int	validate_images(char **ii, t_list *info_lst);
 
 int	validate_info(t_map *map)
 {
-	const char	*allowed[] = {"NO ", "SO ", "EA ", "WE ", "F ", "C ", NULL};
-	char		*str;
-	t_list		*lst_cpy;
-	t_list		*info_lst;
+	const char	*cc[] = {"F ", "C ", NULL};
+	const char	*ii[] = {"NO ", "SO ", "EA ", "WE ", NULL};
+	t_list		*tmp;
 
-	info_lst = map->info_segment;
-	lst_cpy = info_lst;
-	while (info_lst != NULL)
+	tmp = map->info_segment;
+	while (tmp != NULL)
 	{
-		str = info_lst->content;
-		ft_striteri(str, &ft_replace_isspace);
-		if (str != NULL && *str != '#' && *str != '\0' && ft_isspace(*str) == 0
-			&& is_allowed((char **) allowed, str) == EXIT_FAILURE)
+		ft_striteri(tmp->content, &ft_replace_isspace);
+		if (is_allowed((char **) cc, tmp->content) == EXIT_FAILURE
+			&& is_allowed((char **) ii, tmp->content) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
-		info_lst = info_lst->next;
+		tmp = tmp->next;
 	}
-	if (is_repeated((char **) allowed, lst_cpy) == EXIT_FAILURE)
+	if (check_repeated((char **) cc, map->info_segment)
+		|| check_repeated((char **) ii, map->info_segment))
+		return (EXIT_FAILURE);
+	if (validate_colors((char **) cc, map->info_segment))
+		return (EXIT_FAILURE);
+	if (validate_images((char **) ii, map->info_segment))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -42,31 +46,82 @@ static int	is_allowed(char **allowed, char *str)
 {
 	while (*allowed != NULL)
 	{
-		if (ft_strncmp(*allowed, str, ft_strlen(*allowed)) == 0)
+		if (*str == '#' || *str == '\0'
+			|| ft_strncmp(*allowed, str, ft_strlen(*allowed)) == 0)
 			return (EXIT_SUCCESS);
 		++allowed;
 	}
 	return (EXIT_FAILURE);
 }
 
-static int	is_repeated(char **allowed, t_list *info_lst)
+static int	check_repeated(char **values, t_list *src_list)
 {
-	int		counter;
 	t_list	*lst;
+	char	*str;
+	int		counter;
 
-	while (*allowed != NULL)
+	while (*values != NULL)
 	{
+		lst = src_list;
 		counter = 0;
-		lst = info_lst;
 		while (lst != NULL)
 		{
-			if (ft_strncmp(*allowed, lst->content, ft_strlen(*allowed)) == 0)
+			str = lst->content;
+			if (ft_strncmp(*values, str, ft_strlen(*values)) == 0)
 				++counter;
 			lst = lst->next;
 		}
-		if (counter > 1)
+		if (counter != 1)
 			return (EXIT_FAILURE);
-		++allowed;
+		++values;
+	}
+	return (EXIT_SUCCESS);
+}
+
+/* 
+ * call check_rgb_color for each color
+ *
+ */
+
+static int	validate_colors(char **cc, t_list *src_list)
+{
+	t_list	*lst;
+
+	while (*cc != NULL)
+	{
+		lst = src_list;
+		while (lst != NULL)
+		{
+			if (ft_strncmp(*cc, lst->content, ft_strlen(*cc)) == 0)
+			{
+				ft_striteri(lst->content, &ft_replace_ispunct);
+				if (check_rgb_color(lst->content) == EXIT_FAILURE)
+					return (EXIT_FAILURE);
+			}
+			lst = lst->next;
+		}
+		++cc;
+	}
+	return (EXIT_SUCCESS);
+}
+
+/* 
+ * resolve image path here
+ *
+ */
+
+static int	validate_images(char **ii, t_list *src_list)
+{
+	t_list	*lst;
+
+	while (*ii != NULL)
+	{
+		lst = src_list;
+		while (lst != NULL)
+		{
+			lst = lst->next;
+		}
+		++ii;
 	}
 	return (EXIT_SUCCESS);
 }
