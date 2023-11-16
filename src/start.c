@@ -6,15 +6,14 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 13:04:43 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:26:22 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int			load_window(t_game *game);
-int			parse_map(t_game *game, t_map *map, char *filename);
 static void	check_arguments(int argc, char **argv);
+void		clean(t_game *game);
 
 int	main(int argc, char **argv)
 {
@@ -22,16 +21,13 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&game, sizeof(t_game));
 	check_arguments(argc, argv);
-	if (parse_map(&game, &game.map, argv[1]) == EXIT_FAILURE)
-		exit(EXIT_FAILURE);
+	if (parse_map(&game, &game.map, argv[1]))
+		return (clean(&game), EXIT_FAILURE);
 	if (load_window(&game) == EXIT_FAILURE
 		|| load_textures(&game) == EXIT_FAILURE)
-	{
-		mlx_destroy_font(game.mlx);
-		exit(EXIT_FAILURE);
-	}
+		return (clean(&game), EXIT_FAILURE);
 	mlx_loop(game.mlx);
-	exit(EXIT_SUCCESS);
+	return (clean(&game), EXIT_SUCCESS);
 }
 
 static void	check_arguments(int argc, char **argv)
@@ -59,4 +55,27 @@ static void	check_arguments(int argc, char **argv)
 			EXEC_NAME, "Invalid file extension");
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	clean(t_game *game)
+{
+	int	iterator;
+
+	if (game->map.map_segment != NULL)
+		free(game->map.map_segment);
+	if (game->map.info_segment != NULL)
+		free(game->map.info_segment);
+	if (game->map.board != NULL)
+	{
+		iterator = 0;
+		while (iterator < game->map.width)
+			free(game->map.board[iterator++]);
+		free(game->map.board);
+	if (game->mlx != NULL)
+	{
+		mlx_destroy_font(game->mlx);
+		free(game->mlx);
+	}
+	if (game->mlx_window != NULL)
+		free(game->mlx_window);}
 }

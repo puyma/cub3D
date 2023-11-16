@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 12:56:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:45:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_imgdata
 	int					endian;
 	int					width;
 	int					height;
-	char				*image_file;
+	char				image_file[_POSIX_PATH_MAX];
 }						t_imgdata;
 
 typedef struct s_map
@@ -47,6 +47,8 @@ typedef struct s_map
 	int					height;
 	int					**board;
 	char				*filename;
+	t_list				*info_segment;
+	t_list				*map_segment;
 }						t_map;
 
 typedef struct s_ray

@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 15:42:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:02:10 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@
 # include "structs.h"
 
 //						map stuff
-int				validate_map(t_list *map_lst);
-int				validate_info(t_list *info_lst);
-int				dump_info(t_list *info_lst, t_game *game);
-int				dump_map(t_list *map_lst, t_map *map, t_game *game);
+int						parse_map(t_game *game, t_map *map, char *filename);
+int						validate_map(t_map *map);
+int						validate_info(t_map *map);
+void					dump_info(t_map *map, t_game *game);
+void					dump_map(t_map *map, t_game *game);
 
 //						graphic stuff
-int						ft_render(t_game *game);
+int						load_window(t_game *game);
 int						load_textures(t_game *game);
+int						ft_render(t_game *game);
 void					raycast_loop(t_game *game, t_player *pl, t_ray *r);
 void					ft_mlx_pixel_put(t_imgdata *i, int x, int y, int color);
 void					ft_ver_line(t_game *game, int start,

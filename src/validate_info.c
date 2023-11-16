@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 15:59:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:48:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static int	is_allowed(char **allowed, char *str);
 static int	is_repeated(char **allowed, t_list *info_lst);
 
-int	validate_info(t_list *info_lst)
+int	validate_info(t_map *map)
 {
 	const char	*allowed[] = {"NO ", "SO ", "EA ", "WE ", "F ", "C ", NULL};
 	char		*str;
 	t_list		*lst_cpy;
+	t_list		*info_lst;
 
+	info_lst = map->info_segment;
 	lst_cpy = info_lst;
 	while (info_lst != NULL)
 	{
@@ -28,11 +30,11 @@ int	validate_info(t_list *info_lst)
 		ft_striteri(str, &ft_replace_isspace);
 		if (str != NULL && *str != '#' && *str != '\0' && ft_isspace(*str) == 0
 			&& is_allowed((char **) allowed, str) == EXIT_FAILURE)
-			exit(EXIT_FAILURE + 4);
+			return (EXIT_FAILURE);
 		info_lst = info_lst->next;
 	}
 	if (is_repeated((char **) allowed, lst_cpy) == EXIT_FAILURE)
-		exit(EXIT_FAILURE + 5);
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
