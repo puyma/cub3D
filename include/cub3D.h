@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:10:37 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:05:14 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void					background(t_imgdata *img, t_game *game);
 void					ft_textures_size(t_game *game, t_player *pl, t_ray *r);
 void					draw_quadrangle(t_imgdata *img, t_quadrangle *quad,
 							int color);
+int						check_texture(char *str);
 
 //						events stuff
 int						ft_keyup(int k, t_game *game);

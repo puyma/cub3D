@@ -6,14 +6,13 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:31:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:36:36 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static void	check_arguments(int argc, char **argv);
-void		clean(t_game *game);
 
 int	main(int argc, char **argv)
 {
@@ -55,30 +54,4 @@ static void	check_arguments(int argc, char **argv)
 			EXEC_NAME, "Invalid file extension");
 		exit(EXIT_FAILURE);
 	}
-}
-
-void	clean(t_game *game)
-{
-	int	iterator;
-
-	printf("%p\n%p\n", game->map.map_segment, game->map.info_segment);
-	if (game->map.map_segment != NULL
-		&& game->map.map_segment != game->map.info_segment)
-		ft_lstclear(&game->map.map_segment, &free);
-	if (game->map.info_segment != NULL)
-		ft_lstclear(&game->map.info_segment, &free);
-	if (game->map.board != NULL)
-	{
-		iterator = 0;
-		while (iterator < game->map.width)
-			free(game->map.board[iterator++]);
-		free(game->map.board);
-	}
-	if (game->mlx != NULL)
-	{
-		mlx_destroy_font(game->mlx);
-		free(game->mlx);
-	}
-	if (game->mlx_window != NULL)
-		free(game->mlx_window);
 }

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 13:28:05 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:19:04 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,21 @@ int	validate_line_content(char *line, int position, int lst_size)
 
 int	validate_characters(char *line)
 {
+	int	counter;
+
+	counter = 0;
 	while (*line != '\0')
 	{
-		if (*line != '1' && *line != '0'
-			&& ft_strchr("NSEW", *line) == NULL)
-			return (EXIT_FAILURE);
+		if (*line != '1' && *line != '0')
+		{
+			if (ft_strchr("NSEW", *line) == NULL)
+				return (EXIT_FAILURE);
+			else
+				++counter;
+		}
 		++line;
 	}
+	if (counter != 1)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

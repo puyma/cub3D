@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:17:25 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 12:45:03 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:35:40 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,4 @@ typedef struct s_game
 	t_ray				ray;
 	t_key				key;
 	int					i_load_cueue[N_IMAGES];
-	int					tmp_counter;
 }						t_game;

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:04:39 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:16:25 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ static int	validate_images(char **ii, t_list *src_list)
 		lst = src_list;
 		while (lst != NULL)
 		{
+			if (ft_strncmp(*ii, lst->content, ft_strlen(*ii)) == 0)
+			{
+				if (check_texture(lst->content) == EXIT_FAILURE)
+					return (EXIT_FAILURE);
+			}
 			lst = lst->next;
 		}
 		++ii;

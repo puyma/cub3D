@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 09:50:46 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 16:10:50 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:11:21 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,26 @@ static char	*ft_resolve_texture_path(char *value)
 			ft_strlcat(str, ".xpm", dst_len);
 	}
 	return (str);
+}
+
+int	check_texture(char *str)
+{
+	int		exit_status;
+	int		tmp_fd;
+	char	**values;
+	char	*path;
+
+	exit_status = EXIT_SUCCESS;
+	values = ft_split(str, 040);
+	if (ft_arrlen(values) != 2)
+		return (ft_free_arr(values), EXIT_FAILURE);
+	path = ft_resolve_texture_path(values[1]);
+	ft_free_arr(values);
+	tmp_fd = open(path, O_RDONLY);
+	free(path);
+	if (tmp_fd == -1)
+		exit_status = EXIT_FAILURE;
+	else
+		close(tmp_fd);
+	return (exit_status);
 }
