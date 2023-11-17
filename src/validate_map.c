@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/17 12:07:24 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/17 12:16:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static int	check_player(t_list *map_lst);
 
 // WIP:
 // check no characters outside of map "block"
+//
+// WIP:
+// remove empty lines at the end of the file
 
 int	validate_map(t_map *map)
 {

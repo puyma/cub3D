@@ -6,13 +6,14 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:32:39 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:10:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static int		read_map(t_map *map);
+static void		remove_empty_lines(t_map *map);
 static t_list	*extract_map_segment(t_list *file);
 static t_list	*extract_info_segment(t_list *file);
 
@@ -47,7 +48,21 @@ static int	read_map(t_map *map)
 	map->info_segment = extract_info_segment(file);
 	if (map->info_segment == NULL || map->map_segment == map->info_segment)
 		return (EXIT_FAILURE);
+	remove_empty_lines(map);
 	return (EXIT_SUCCESS);
+}
+
+static void	remove_empty_lines(t_map *map)
+{
+	char	*str;
+	t_list	*last;
+
+	last = ft_lstlast(map->map_segment);
+	while (isspace_str(last->content))
+	{
+		ft_lstclear_last(map->map_segment);
+		last = ft_lstlast(map->map_segment);
+	}
 }
 
 /* 
