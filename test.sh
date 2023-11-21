@@ -3,6 +3,9 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Tue Nov 21 15:13:11 2023                                                     #
 
+lflag=0
+OPT=
+
 function quit_tester
 {
 	kill -s KILL "$pid"
@@ -25,6 +28,14 @@ function execute
 
 stty -echoctl
 trap 'quit_tester' SIGINT
+
+while getopts l OPT
+do
+	case $OPT in
+		l) lflag=1;;
+		?|*) exit 1;;
+	esac
+done
 
 for FILE in maps/invalid_*
 do
