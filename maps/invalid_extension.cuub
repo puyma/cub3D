@@ -3,10 +3,10 @@
 # mpuig-ma <mpuig-ma@student.42barcelona.com>                                  #
 # Wed Oct 18 09:37:27 2023                                                     #
 
-NO string
-SO string
-EA string
-WE string
+NO redbrick
+SO redbrick
+WE redbrick
+EA redbrick
 
 F  0,0,0
 C  0,0,0

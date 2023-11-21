@@ -1,7 +1,7 @@
-NO floor
- 	EA floor
-WE floor
-SO floor
+NO redbrick
+ 	EA redbrick
+WE greystone
+SO greystone
 F   0,0,0
 C 0,0,0
 000000000

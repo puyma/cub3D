@@ -1,10 +1,10 @@
 
-NO    ./textures/wolfenstein/blue_stone.xpm
+NO    ./src/assets/bluestone.xpm
 
-EA ./textures/wolfenstein/blue_stone.xpm
-WE ./textures/wolfenstein/blue_stone.xpm
+EA ./src/assets/bluestone.xpm
+WE ./src/assets/bluestone.xpm
 
-SO ./textures/wolfenstein/blue_stone.xpm
+SO ./src/assets/bluestone.xpm
 
 F 98,105,109
 C 80,130,200

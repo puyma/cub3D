@@ -1,7 +1,7 @@
-NO textures/test/north.xpm
-SO textures/test/south.xpm
-WE textures/test/west.xpm
-EA textures/test/east.xpm
+NO	greystone
+EA	greystone
+WE	pillar
+SO	greystone
 
 F 20,20,20
 C 200,200,200
@@ -9,3 +9,4 @@ C 200,200,200
 111111111111111111111
 1000000000000000000E1
 111111111111111111111
+
