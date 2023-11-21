@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 12:12:24 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 17:36:36 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:36:14 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	main(int argc, char **argv)
 		return (clean(&game), EXIT_FAILURE);
 	if (load_window(&game) == EXIT_FAILURE
 		|| load_textures(&game) == EXIT_FAILURE)
+	{
+		ft_fprintf(stderr, "%s: %s: error loading window/textures\n",
+			EXEC_NAME, argv[1]);
 		return (clean(&game), EXIT_FAILURE);
+	}
 	mlx_loop(game.mlx);
 	return (clean(&game), EXIT_SUCCESS);
 }

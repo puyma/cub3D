@@ -6,13 +6,12 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 17:38:27 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:52:54 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	fill_map(t_list *map_lst, t_map *map);
 static void	set_player(t_map *map, t_player *player);
 static void	set_view_direction(t_player *player, char c);
 
@@ -24,7 +23,7 @@ int	dump_map(t_map *map, t_game *game)
 	map->height = ft_lstheight(map->map_segment);
 	map->board = (int **)ft_calloc(map->width, sizeof(int *));
 	if (map->board == NULL)
-		return 1; //return ;
+		return (1);
 	i = 0;
 	while (i < map->width)
 		map->board[i++] = ft_calloc(map->height, sizeof(int));
@@ -33,7 +32,7 @@ int	dump_map(t_map *map, t_game *game)
 	return (0);
 }
 
-static void	fill_map(t_list *map_lst, t_map *map)
+void	fill_map(t_list *map_lst, t_map *map)
 {
 	char	*str;
 	int		x;
@@ -48,6 +47,30 @@ static void	fill_map(t_list *map_lst, t_map *map)
 		{
 			if (ft_strchr("NSEW10", str[x]) != NULL)
 				map->board[x][y] = str[x];
+			++x;
+		}
+		++y;
+		map_lst = map_lst->next;
+	}
+}
+
+void	fill_map_zero(t_list *map_lst, t_map *map)
+{
+	char	*str;
+	int		x;
+	int		y;
+
+	y = 0;
+	while (map_lst != NULL)
+	{
+		x = 0;
+		str = map_lst->content;
+		while (x < map->width && str[x] != '\0')
+		{
+			if (ft_strchr("NSEW10", str[x]) != NULL)
+				map->board[x][y] = str[x];
+			if (str[x] == ' ')
+				map->board[x][y] = '0';
 			++x;
 		}
 		++y;

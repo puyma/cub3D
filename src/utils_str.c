@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:29:53 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 11:38:11 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:34:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@ int	ft_isspace_str(char *str)
 	while (str && *str != '\0')
 	{
 		if (ft_isspace(*str) == 0)
+			return (EXIT_FAILURE);
+		++str;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	ft_strischar(char *str, int c)
+{
+	while (str && *str != '\0')
+	{
+		if (*str != c)
 			return (EXIT_FAILURE);
 		++str;
 	}

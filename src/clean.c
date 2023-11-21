@@ -6,13 +6,13 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:36:39 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 18:02:45 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:31:51 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	free_images(t_game *game);
+void	free_images(t_game *game);
 
 void	clean(t_game *game)
 {
@@ -40,16 +40,16 @@ void	clean(t_game *game)
 	free_images(game);
 }
 
-static void	free_images(t_game *game)
+void	free_images(t_game *game)
 {
 	if (game->i_north.img != NULL)
 		free(game->i_north.img);
 	if (game->i_south.img != NULL)
-		free(game->i_north.img);
+		free(game->i_south.img);
 	if (game->i_east.img != NULL)
-		free(game->i_north.img);
+		free(game->i_east.img);
 	if (game->i_west.img != NULL)
-		free(game->i_north.img);
+		free(game->i_west.img);
 	if (game->i_main_frame.img != NULL)
-		free(game->i_north.img);
+		free(game->i_main_frame.img);
 }
