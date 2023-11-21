@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 21:34:18 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 21:54:58 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@
 int						parse_map(t_game *game, t_map *map, char *filename);
 int						validate_map(t_map *map, t_player *player);
 int						validate_info(t_map *map);
-int						validate_walls(t_map *map, t_player *player);
+int						validate_walls(t_map *map);
 void					dump_info(t_map *map, t_game *game);
 int						dump_map(t_map *map, t_game *game);
 void					fill_map(t_list *map_lst, t_map *map);
 void					fill_map_zero(t_list *map_lst, t_map *map);
+int						check_player(t_list *map_lst);
+int						check_player_edge(t_map *map, t_player *player);
 
 //						graphic stuff
 int						load_window(t_game *game);

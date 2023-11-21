@@ -6,7 +6,7 @@
 #    By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 12:12:03 by mpuig-ma          #+#    #+#              #
-#    Updated: 2023/11/21 16:19:55 by mpuig-ma         ###   ########.fr        #
+#    Updated: 2023/11/21 21:54:32 by mpuig-ma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ DFLAGS		:=	-g -fsanitize='address,undefined'
 
 SRC_FILES	:=	\
 				$(SRC_DIR)/background.c \
+				$(SRC_DIR)/check_player.c \
 				$(SRC_DIR)/clean.c \
 				$(SRC_DIR)/destroy.c \
 				$(SRC_DIR)/dump_info.c \
