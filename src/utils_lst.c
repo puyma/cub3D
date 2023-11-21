@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:12:37 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 15:50:07 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:26:03 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,22 @@ int	ft_lstwidth(t_list *list)
 		list = list->next;
 	}
 	return (len);
+}
+
+void	ft_lstclear_last(t_list *list)
+{
+	t_list	*prev;
+
+	prev = NULL;
+	while (list != NULL && list->next != NULL)
+	{
+		prev = list;
+		list = list->next;
+	}
+	if (prev != NULL)
+	{
+		prev->next = NULL;
+		free(list->content);
+		free(list);
+	}
 }

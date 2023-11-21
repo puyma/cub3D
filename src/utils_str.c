@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:29:53 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/15 15:59:32 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:38:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,18 @@ int	ft_endswith(char *filename, char *ext)
 	ext_len = ft_strlen(ext);
 	if (ft_strncmp((filename + path_length - ext_len), ext, ext_len) != 0)
 		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+int	ft_isspace_str(char *str)
+{
+	if (str == NULL)
+		return (EXIT_FAILURE);
+	while (str && *str != '\0')
+	{
+		if (ft_isspace(*str) == 0)
+			return (EXIT_FAILURE);
+		++str;
+	}
 	return (EXIT_SUCCESS);
 }

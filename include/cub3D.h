@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 18:05:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:30:06 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ t_list					*read_file(char *filename);
 //						list utils
 int						ft_lstwidth(t_list *list);
 int						ft_lstheight(t_list *list);
+int						ft_isspace_str(char *str);
+void					ft_lstclear_last(t_list *list);
 
 //						string utils
 int						ft_endswith(char *filename, char *ext);

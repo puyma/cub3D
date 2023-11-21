@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/17 13:10:45 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:28:55 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,22 @@ static int	read_map(t_map *map)
 	if (map->info_segment == NULL || map->map_segment == map->info_segment)
 		return (EXIT_FAILURE);
 	remove_empty_lines(map);
+	PRINT_LIST(map->map_segment)
 	return (EXIT_SUCCESS);
 }
 
 static void	remove_empty_lines(t_map *map)
 {
-	char	*str;
 	t_list	*last;
 
 	last = ft_lstlast(map->map_segment);
-	while (isspace_str(last->content))
+	while (last != NULL)
 	{
-		ft_lstclear_last(map->map_segment);
+		if (*((char *) last->content) == '\0'
+			|| ft_isspace_str(last->content) == EXIT_SUCCESS)
+			ft_lstclear_last(map->map_segment);
+		else
+			break ;
 		last = ft_lstlast(map->map_segment);
 	}
 }
