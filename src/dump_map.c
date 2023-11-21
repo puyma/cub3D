@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 13:03:49 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:48:26 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	fill_map(t_list *map_lst, t_map *map);
 static void	set_player(t_map *map, t_player *player);
 static void	set_view_direction(t_player *player, char c);
 
-void	dump_map(t_map *map, t_game *game)
+int	dump_map(t_map *map, t_game *game)
 {
 	int	i;
 
@@ -24,12 +24,13 @@ void	dump_map(t_map *map, t_game *game)
 	map->height = ft_lstheight(map->map_segment);
 	map->board = (int **)ft_calloc(map->width, sizeof(int *));
 	if (map->board == NULL)
-		return ;
+		return 1; //return ;
 	i = 0;
 	while (i < map->width)
 		map->board[i++] = ft_calloc(map->height, sizeof(int));
 	fill_map(map->map_segment, map);
 	set_player(map, &game->player);
+	return (0);
 }
 
 static void	fill_map(t_list *map_lst, t_map *map)

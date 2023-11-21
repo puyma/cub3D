@@ -6,13 +6,13 @@
 function quit_tester
 {
 	kill -s KILL "$pid"
-	printf "Ciao...\n"
+	printf "Ciao\n"
 	exit 1
 }
 
 function execute
 {
-	./cub3D "$1" 2>/dev/null 1>/dev/null &
+	./cub3D "$1" 1>/dev/null 2>/dev/null &
 	pid=$!
 	wait $pid
 	if [ $? -eq 0 ]

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:12:42 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 12:28:55 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:56:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@ static t_list	*extract_info_segment(t_list *file);
 int	parse_map(t_game *game, t_map *map, char *filename)
 {
 	map->filename = filename;
-	if (read_map(map) || validate_info(map) || validate_map(map))
+	if (read_map(map) || validate_info(map)
+		|| dump_map(map, game) || validate_map(map))
 	{
 		ft_fprintf(stderr, "%s: %s: invalid map\n", EXEC_NAME, filename);
 		return (EXIT_FAILURE);
 	}
 	dump_info(map, game);
-	dump_map(map, game);
-	if (map->board == NULL)
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -49,7 +47,6 @@ static int	read_map(t_map *map)
 	if (map->info_segment == NULL || map->map_segment == map->info_segment)
 		return (EXIT_FAILURE);
 	remove_empty_lines(map);
-	PRINT_LIST(map->map_segment)
 	return (EXIT_SUCCESS);
 }
 

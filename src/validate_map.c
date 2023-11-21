@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/17 12:16:18 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:26:31 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	validate_map(t_map *map)
 		++position;
 		map_lst = map_lst->next;
 	}
-	if (check_player(map->map_segment))
+	if (check_player(map->map_segment) || validate_walls(map))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -71,7 +71,7 @@ int	validate_line_content(char *line, int position, int lst_size)
 	while (start != end)
 	{
 		++start;
-		if (*start != '0' && *start != '1'
+		if (*start != '0' && *start != '1' && *start != ' '
 			&& ft_strchr("NSEW", *start) == NULL)
 			return (EXIT_FAILURE);
 	}
@@ -93,7 +93,7 @@ int	validate_characters(char *line)
 	{
 		if (*line != '1' && *line != '0')
 		{
-			if (ft_strchr("NSEW ", *line) == NULL)
+			if (ft_strchr("NSEW", *line) == NULL)
 				return (EXIT_FAILURE);
 		}
 		++line;
