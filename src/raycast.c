@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/23 16:50:32 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:18:46 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ unsigned int	get_texture_color(t_game *game, int tex_x, int tex_y)
 
 	r = &game->ray;
 	if (r->side == 0 && r->dir.x < 0)
-		i = &game->i_north;
-	else if (r->side == 0 && r->dir.x > 0)
-		i = &game->i_south;
-	else if (r->side == 1 && r->dir.y > 0)
-		i = &game->i_east;
-	else
 		i = &game->i_west;
+	else if (r->side == 0 && r->dir.x > 0)
+		i = &game->i_east;
+	else if (r->side == 1 && r->dir.y > 0)
+		i = &game->i_sourth;
+	else
+		i = &game->i_north;
 	color = i->address
 		+ (tex_y * i->line_length + tex_x * (i->bits_per_pixel / 8));
 	return (*(unsigned int *) color);
