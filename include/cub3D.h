@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:06:12 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 21:54:58 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:41:08 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 
 # include "macros.h"
 # include "structs.h"
-
-# include "_debug.h"
 
 //						map stuff
 int						parse_map(t_game *game, t_map *map, char *filename);
