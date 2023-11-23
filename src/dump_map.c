@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/23 17:28:47 by jsebasti         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:47:18 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,13 @@ static void	set_view_direction(t_player *player, char c)
 	}
 	else if (c == 'W')
 	{
-		player->dir.x = -1;
+		player->dir.x = 1;
 		player->plane.y = -0.66;
 		player->plane.x = 0;
 	}
 	else
 	{
-		player->dir.x = 1;
+		player->dir.x = -1;
 		player->plane.y = 0.66;
 		player->plane.x = 0;
 	}
