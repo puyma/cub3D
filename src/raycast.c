@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:25:44 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/14 12:42:14 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:50:32 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	calculate_hit(t_ray *r, t_map *map)
 			r->map.inty += r->step.inty;
 			r->side = 1;
 		}
-		if (map->board[r->map.intx][r->map.inty] == '1')
+		if (map->board[r->map.inty][r->map.intx] == '1')
 			r->hit = 1;
 	}
 	if (r->side == 0)
