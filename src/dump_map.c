@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dump_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/23 17:13:34 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:28:47 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,14 @@ void	fill_map(t_list *map_lst, t_map *map)
 	y = 0;
 	while (map_lst != NULL)
 	{
-		x = map->width - 1;
-		i = 0;
+		i = map->width;
+		x = 0;
 		str = map_lst->content;
-		while (x >= 0 && str[x] != '\0')
+		while (--i >= 0 && str[x] != '\0')
 		{
 			if (ft_strchr("NSEW10", str[x]) != NULL)
-				map->board[y][i] = str[x];
-			--x;
-			i++;
+				map->board[y][x] = str[x];
+			++x;
 		}
 		++y;
 		map_lst = map_lst->next;

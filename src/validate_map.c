@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/23 16:12:45 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:31:15 by jsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	validate_map(t_map *map, t_player *player)
 	t_list	*map_lst;
 	int		lst_size;
 
-	printf("validate_map\n");
 	map_lst = map->map_segment;
 	lst_size = ft_lstwidth(map_lst);
 	if (lst_size < 3 || ft_lstheight(map_lst) < 3)
@@ -46,7 +45,6 @@ int	validate_map(t_map *map, t_player *player)
 
 int	validate_line(char *str)
 {
-	printf("validate_line\n");
 	if (validate_characters(str) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (validate_line_content(str) == EXIT_FAILURE)
@@ -59,7 +57,6 @@ int	validate_line_content(char *line)
 	char	*start;
 	char	*end;
 
-	printf("validate_line_content\n");
 	start = ft_strchr(line, '1');
 	end = ft_strrchr(line, '1');
 	if (start == NULL)
@@ -82,7 +79,6 @@ int	validate_line_content(char *line)
 
 int	validate_characters(char *line)
 {
-	printf("validate_characters\n");
 	while (*line != '\0')
 	{
 		if (*line != '1' && *line != '0')
