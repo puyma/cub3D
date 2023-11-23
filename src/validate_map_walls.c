@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 16:16:52 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 21:56:04 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:27:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	validate_walls(t_map *map)
 		y = 0;
 		while (y < map->height)
 		{
-			if (map->board[x][y] == '0')
+			if (map->board[y][x] == '0')
 			{
-				if (x == 0 || map->board[x - 1][y] == '\0')
+				if (x == 0 || map->board[y][x - 1] == '\0')
 					return (EXIT_FAILURE);
-				if (x == map->width - 1 || map->board[x + 1][y] == '\0')
+				if (x == map->width - 1 || map->board[y][x + 1] == '\0')
 					return (EXIT_FAILURE);
-				if (y == 0 || map->board[x][y - 1] == '\0')
+				if (y == 0 || map->board[y - 1][x] == '\0')
 					return (EXIT_FAILURE);
-				if (y == map->height - 1 || map->board[x][y + 1] == '\0')
+				if (y == map->height - 1 || map->board[y + 1][x] == '\0')
 					return (EXIT_FAILURE);
 			}
 			++y;

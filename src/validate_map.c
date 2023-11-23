@@ -6,14 +6,14 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:15:26 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 22:11:03 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:12:45 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	validate_line(char *str, int position, int size);
-static int	validate_line_content(char *line, int position, int lst_size);
+static int	validate_line(char *str);
+static int	validate_line_content(char *line);
 static int	validate_characters(char *line);
 
 // WIP:
@@ -25,19 +25,17 @@ static int	validate_characters(char *line);
 int	validate_map(t_map *map, t_player *player)
 {
 	t_list	*map_lst;
-	int		position;
 	int		lst_size;
 
+	printf("validate_map\n");
 	map_lst = map->map_segment;
-	position = 0;
 	lst_size = ft_lstwidth(map_lst);
 	if (lst_size < 3 || ft_lstheight(map_lst) < 3)
 		return (EXIT_FAILURE);
 	while (map_lst != NULL)
 	{
-		if (validate_line(map_lst->content, position, lst_size))
+		if (validate_line(map_lst->content))
 			return (EXIT_FAILURE);
-		++position;
 		map_lst = map_lst->next;
 	}
 	if (check_player(map->map_segment) || check_player_edge(map, player)
@@ -46,21 +44,22 @@ int	validate_map(t_map *map, t_player *player)
 	return (EXIT_SUCCESS);
 }
 
-int	validate_line(char *str, int position, int lst_size)
+int	validate_line(char *str)
 {
+	printf("validate_line\n");
 	if (validate_characters(str) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (validate_line_content(str, position, lst_size) == EXIT_FAILURE)
+	if (validate_line_content(str) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	(void) position;
 	return (EXIT_SUCCESS);
 }
 
-int	validate_line_content(char *line, int position, int lst_size)
+int	validate_line_content(char *line)
 {
 	char	*start;
 	char	*end;
 
+	printf("validate_line_content\n");
 	start = ft_strchr(line, '1');
 	end = ft_strrchr(line, '1');
 	if (start == NULL)
@@ -72,8 +71,6 @@ int	validate_line_content(char *line, int position, int lst_size)
 			&& ft_strchr("NSEW", *start) == NULL)
 			return (EXIT_FAILURE);
 	}
-	(void) position;
-	(void) lst_size;
 	return (EXIT_SUCCESS);
 }
 
@@ -85,6 +82,7 @@ int	validate_line_content(char *line, int position, int lst_size)
 
 int	validate_characters(char *line)
 {
+	printf("validate_characters\n");
 	while (*line != '\0')
 	{
 		if (*line != '1' && *line != '0')

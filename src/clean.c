@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:36:39 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 20:31:51 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:03:51 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	clean(t_game *game)
 	if (game->map.board != NULL)
 	{
 		iterator = 0;
-		while (iterator < game->map.width)
+		while (iterator < game->map.height)
 			free(game->map.board[iterator++]);
 		free(game->map.board);
 	}
