@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 20:52:54 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:33:42 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	fill_map(t_list *map_lst, t_map *map)
 		while (x < map->width && str[x] != '\0')
 		{
 			if (ft_strchr("NSEW10", str[x]) != NULL)
-				map->board[x][y] = str[x];
+				map->board[y][x] = str[x];
 			++x;
 		}
 		++y;

@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 21:54:04 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/21 21:54:13 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:23:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	check_player(t_list *map_lst)
 	char	*str;
 	int		counter;
 
-	printf("check_player\n");
 	counter = 0;
 	while (map_lst != NULL)
 	{
@@ -41,7 +40,6 @@ int	check_player_edge(t_map *map, t_player *player)
 	int	x;
 	int	y;
 
-	printf("check_player_edge\n");
 	x = player->pos.x;
 	y = player->pos.y;
 	if (x == 0 || map->board[x - 1][y] == '\0')

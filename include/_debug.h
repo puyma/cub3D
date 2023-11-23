@@ -6,7 +6,7 @@
 /*   By: jsebasti <jsebasti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:43:28 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/16 16:59:17 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:30:11 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ while (ry < map->height) \
 	rx = 0; \
 	while (rx < map->width) \
 	{ \
-		rc = map->board[rx][ry]; \
+		rc = map->board[ry][rx]; \
 		if (rc == '0') { ft_printf("%c ", rc); } \
 		else if (rc == 0) { ft_printf("  "); } \
 		else if (ft_strchr(C_ALLOWED, rc) != NULL) \
