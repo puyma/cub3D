@@ -6,7 +6,7 @@
 /*   By: mpuig-ma <mpuig-ma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:26:11 by mpuig-ma          #+#    #+#             */
-/*   Updated: 2023/11/23 17:08:18 by mpuig-ma         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:13:34 by mpuig-ma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,26 +104,26 @@ static void	set_view_direction(t_player *player, char c)
 {
 	if (c == 'N')
 	{
-		player->dir.x = -1;
-		player->plane.x = 0;
-		player->plane.y = 0.66;
+		player->dir.y = -1;
+		player->plane.y = 0;
+		player->plane.x = -0.66;
 	}
 	else if (c == 'S')
 	{
-		player->dir.x = 1;
-		player->plane.x = 0;
-		player->plane.y = -0.66;
+		player->dir.y = 1;
+		player->plane.y = 0;
+		player->plane.x = 0.66;
 	}
 	else if (c == 'W')
 	{
-		player->dir.y = -1;
-		player->plane.x = -0.66;
-		player->plane.y = 0;
+		player->dir.x = -1;
+		player->plane.y = -0.66;
+		player->plane.x = 0;
 	}
 	else
 	{
-		player->dir.y = 1;
-		player->plane.x = 0.66;
-		player->plane.y = 0;
+		player->dir.x = 1;
+		player->plane.y = 0.66;
+		player->plane.x = 0;
 	}
 }
